@@ -20,8 +20,8 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
             style={{ backgroundColor: getNodeColor(selectedNode.type) }}
           ></div>
           <div>
-            <h2 className="text-xl font-bold text-gray-900">{selectedNode.name}</h2>
-            <p className="text-sm text-gray-500 font-medium">{selectedNode.type}</p>
+            <h2 className="text-2xl font-bold text-gray-900">{selectedNode.name}</h2>
+            <p className="text-base text-gray-500 font-medium">{selectedNode.type}</p>
           </div>
         </div>
         <button
@@ -40,25 +40,25 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
           {selectedNode.type === 'People' && (
             <>
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2">Biography</h3>
-                <p className="text-sm text-gray-700 leading-relaxed">{selectedNode.bio || '/'}</p>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg text-lg">Biography</h3>
+                <p className="text-base text-gray-700 leading-relaxed">{selectedNode.bio || '/'}</p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2">Institutional Connections</h3>
-                <div className="text-sm text-gray-700 p-4 rounded-lg border" style={{ backgroundColor: '#E6F7F6', borderColor: '#00837F' }}>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg text-lg">Institutional Connections</h3>
+                <div className="text-base text-gray-700 p-4 rounded-lg border" style={{ backgroundColor: '#E6F7F6', borderColor: '#00837F' }}>
                   {selectedNode.connections || '/'}
                 </div>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2">Website</h3>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Website</h3>
                 {selectedNode.website ? (
                   <a
                     href={selectedNode.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-sm p-4 rounded-lg border font-medium transition-colors hover:opacity-90"
+                    className="inline-flex items-center text-base p-4 rounded-lg border font-medium transition-colors hover:opacity-90"
                     style={{ 
                       backgroundColor: '#E6F7F6', 
                       borderColor: '#00837F',
@@ -68,7 +68,7 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
                     Visit Website <ExternalLink size={16} className="ml-2" />
                   </a>
                 ) : (
-                  <div className="text-sm text-gray-700">/</div>
+                  <div className="text-base text-gray-700">/</div>
                 )}
               </div>
             </>
@@ -78,18 +78,18 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
           {selectedNode.type === 'Institutions' && (
             <>
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2">Description</h3>
-                <p className="text-sm text-gray-700 leading-relaxed">{selectedNode.bio || '/'}</p>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Description</h3>
+                <p className="text-base text-gray-700 leading-relaxed">{selectedNode.bio || '/'}</p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2">Website</h3>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Website</h3>
                 {selectedNode.website ? (
                   <a
                     href={selectedNode.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-sm p-4 rounded-lg border font-medium transition-colors hover:opacity-90"
+                    className="inline-flex items-center text-base p-4 rounded-lg border font-medium transition-colors hover:opacity-90"
                     style={{ 
                       backgroundColor: '#E6F7F6', 
                       borderColor: '#00837F',
@@ -99,7 +99,7 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
                     Visit Website <ExternalLink size={16} className="ml-2" />
                   </a>
                 ) : (
-                  <div className="text-sm text-gray-700">/</div>
+                  <div className="text-base text-gray-700">/</div>
                 )}
               </div>
             </>
@@ -108,41 +108,41 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
           {selectedNode.type === 'Projects' && (
             <>
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2">Description</h3>
-                <p className="text-sm text-gray-700 leading-relaxed">{selectedNode.description || '/'}</p>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Description</h3>
+                <p className="text-base text-gray-700 leading-relaxed">{selectedNode.description || '/'}</p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2">Budget</h3>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Budget</h3>
                 {selectedNode.budget ? (
-                  <span className="inline-block px-4 py-2 bg-green-100 text-green-800 text-sm rounded-full font-medium">
+                  <span className="inline-block px-4 py-2 bg-green-100 text-green-800 text-base rounded-full font-medium">
                     {selectedNode.budget}
                   </span>
                 ) : (
-                  <div className="text-sm text-gray-700">/</div>
+                  <div className="text-base text-gray-700">/</div>
                 )}
               </div>
               
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2">Methods</h3>
-                <p className="text-sm text-gray-700 leading-relaxed">{selectedNode.methods || '/'}</p>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Methods</h3>
+                <p className="text-base text-gray-700 leading-relaxed">{selectedNode.methods || '/'}</p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2">Involved Institutions</h3>
-                <p className="text-sm text-gray-700 leading-relaxed">
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Involved Institutions</h3>
+                <p className="text-base text-gray-700 leading-relaxed">
                   {selectedNode.involved_institutions || '/'}
                 </p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2">Website</h3>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Website</h3>
                 {selectedNode.website ? (
                   <a
                     href={selectedNode.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-sm p-4 rounded-lg border font-medium transition-colors hover:opacity-90"
+                    className="inline-flex items-center text-base p-4 rounded-lg border font-medium transition-colors hover:opacity-90"
                     style={{ 
                       backgroundColor: '#E6F7F6', 
                       borderColor: '#00837F',
@@ -152,7 +152,7 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
                     Visit Website <ExternalLink size={16} className="ml-2" />
                   </a>
                 ) : (
-                  <div className="text-sm text-gray-700">/</div>
+                  <div className="text-base text-gray-700">/</div>
                 )}
               </div>
             </>
@@ -161,52 +161,52 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
           {selectedNode.type === 'Methods' && (
             <>
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2">Description</h3>
-                <p className="text-sm text-gray-700 leading-relaxed">{selectedNode.description || '/'}</p>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Description</h3>
+                <p className="text-base text-gray-700 leading-relaxed">{selectedNode.description || '/'}</p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2">Category</h3>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Category</h3>
                 {selectedNode.category && selectedNode.category !== '/' ? (
-                  <span className="inline-block px-4 py-2 text-sm rounded-full font-medium" style={{ backgroundColor: '#E6F7F6', color: '#00837F' }}>
+                  <span className="inline-block px-4 py-2 text-base rounded-full font-medium" style={{ backgroundColor: '#E6F7F6', color: '#00837F' }}>
                     {selectedNode.category}
                   </span>
                 ) : (
-                  <div className="text-sm text-gray-700">/</div>
+                  <div className="text-base text-gray-700">/</div>
                 )}
               </div>
               
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2">Steps</h3>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Steps</h3>
                 {selectedNode.steps ? (
-                  <div className="text-sm text-gray-700 whitespace-pre-line bg-gray-50 p-4 rounded-lg border">{selectedNode.steps}</div>
+                  <div className="text-base text-gray-700 whitespace-pre-line bg-gray-50 p-4 rounded-lg border">{selectedNode.steps}</div>
                 ) : (
-                  <div className="text-sm text-gray-700">/</div>
+                  <div className="text-base text-gray-700">/</div>
                 )}
               </div>
               
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2">What challenges might you encounter?</h3>
-                <p className="text-sm text-gray-700 leading-relaxed">
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">What challenges might you encounter?</h3>
+                <p className="text-base text-gray-700 leading-relaxed">
                   {selectedNode.challenges || '/'}
                 </p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2">What conditions / materials are needed?</h3>
-                <p className="text-sm text-gray-700 leading-relaxed">
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">What conditions / materials are needed?</h3>
+                <p className="text-base text-gray-700 leading-relaxed">
                   {selectedNode.conditions || '/'}
                 </p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2">Links</h3>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Links</h3>
                 {selectedNode.links ? (
                   <a
                     href={selectedNode.links}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-sm p-4 rounded-lg border font-medium transition-colors hover:opacity-90"
+                    className="inline-flex items-center text-base p-4 rounded-lg border font-medium transition-colors hover:opacity-90"
                     style={{ 
                       backgroundColor: '#E6F7F6', 
                       borderColor: '#00837F',
@@ -216,14 +216,14 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
                     View Publication <ExternalLink size={16} className="ml-2" />
                   </a>
                 ) : (
-                  <div className="text-sm text-gray-700">/</div>
+                  <div className="text-base text-gray-700">/</div>
                 )}
               </div>
             </>
           )}
 
           <div>
-            <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2">Connected Entities</h3>
+            <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Connected Entities</h3>
             <div className="space-y-3">
               {relatedLinks.map((link, index) => {
                 const connectedNodeId = link.source === selectedNode.id ? link.target : link.source;
@@ -237,7 +237,7 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
                       style={{ backgroundColor: getNodeColor(connectedNode.type) }}
                     ></div>
                     <div className="flex-1 min-w-0">
-                      <div className="font-medium text-sm text-gray-900 truncate">
+                      <div className="font-medium text-base text-gray-900 truncate">
                         {connectedNode.name}
                       </div>
                       <div className="text-xs text-gray-500 mt-1">

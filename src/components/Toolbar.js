@@ -23,7 +23,7 @@ const Toolbar = ({
               placeholder="Search nodes, descriptions, methods..."
               value={searchTerm}
               onChange={(e) => handleSearch(e.target.value)}
-              className="flex-1 outline-none text-sm bg-gray-50 px-3 py-2 rounded border"
+              className="flex-1 outline-none text-base bg-gray-50 px-3 py-2 rounded border"
             />
             {searchTerm && (
               <button
@@ -45,14 +45,14 @@ const Toolbar = ({
             title={`Switch to ${viewMode === 'graph' ? 'Simple' : 'Graph'} View`}
           >
             {viewMode === 'graph' ? <EyeOff size={16} /> : <Eye size={16} />}
-            <span className="ml-2 text-sm">
+            <span className="ml-2 text-base">
               {viewMode === 'graph' ? 'Simple View' : 'Graph View'}
             </span>
           </button>
           
           <button
             onClick={() => window.location.reload()}
-            className="px-3 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors text-sm"
+            className="px-3 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors text-base"
             title="Reset & Refresh"
           >
             Reset
@@ -61,7 +61,7 @@ const Toolbar = ({
       </div>
 
       {highlightedNodes.size > 0 && (
-        <div className="mt-2 text-center text-sm" style={{ color: '#00837F' }}>
+        <div className="mt-2 text-center text-base" style={{ color: '#00837F' }}>
           Found {highlightedNodes.size} matching node{highlightedNodes.size !== 1 ? 's' : ''}
         </div>
       )}

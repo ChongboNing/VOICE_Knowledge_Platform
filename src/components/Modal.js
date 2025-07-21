@@ -8,7 +8,7 @@ const Modal = ({ showModal, setShowModal }) => {
     <div className="fixed left-0 top-0 w-1/2 h-full bg-white shadow-2xl border-r border-gray-200 z-50 flex flex-col">
       {/* 模态框头部 */}
       <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
-        <h2 className="text-xl font-bold text-gray-900">{showModal.label}</h2>
+        <h2 className="text-2xl font-bold text-gray-900">{showModal.label}</h2>
         <button
           onClick={() => setShowModal(null)}
           className="p-2 hover:bg-gray-200 rounded-full transition-colors"
@@ -21,11 +21,11 @@ const Modal = ({ showModal, setShowModal }) => {
       {/* 可滚动内容区域 */}
       <div className="flex-1 overflow-y-auto">
         <div className="p-6">
-          <div className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
+          <div className="text-base text-gray-700 leading-relaxed whitespace-pre-line">
             {showModal.content.split('\n').map((line, index) => {
               // 处理标题
               if (line.startsWith('# ')) {
-                return <h2 key={index} className="text-lg font-bold text-gray-900 mt-4 mb-2">{line.substring(2)}</h2>;
+                return <h2 key={index} className="text-xl font-bold text-gray-900 mt-4 mb-2">{line.substring(2)}</h2>;
               }
               // 处理粗体文本
               if (line.includes('**') && line.includes('**:')) {

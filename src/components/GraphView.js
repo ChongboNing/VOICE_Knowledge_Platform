@@ -75,7 +75,7 @@ const GraphView = ({
       }))
       .force('charge', d3.forceManyBody().strength(-300))
       .force('center', d3.forceCenter(width / 2, height / 2))
-      .force('collision', d3.forceCollide().radius(80));
+      .force('collision', d3.forceCollide().radius(140));
 
     simulationRef.current = simulation;
 
@@ -95,10 +95,10 @@ const GraphView = ({
       .selectAll('foreignObject')
       .data(currentData.nodes)
       .enter().append('foreignObject')
-      .attr('width', 160)
-      .attr('height', 60)
-      .attr('x', -80)
-      .attr('y', -30)
+      .attr('width', 260)
+      .attr('height', 180)
+      .attr('x', -130)
+      .attr('y', -90)
       .style('cursor', 'pointer')
       .style('filter', d => highlightedNodes.size > 0 && !highlightedNodes.has(d.id) ? 'opacity(0.3)' : 'none')
       .call(d3.drag()
@@ -144,8 +144,8 @@ const GraphView = ({
       .style('align-items', 'center')
       .style('justify-content', 'center')
       .style('text-align', 'center')
-      .style('font-size', '12px')
-      .style('font-weight', '600')
+      .style('font-size', '18px')
+      .style('font-weight', '700')
       .style('line-height', '1.2')
       .style('word-wrap', 'break-word')
       .style('overflow-wrap', 'break-word')
@@ -167,8 +167,8 @@ const GraphView = ({
 
       // 更新节点位置
       node
-        .attr('x', d => d.x - 80)
-        .attr('y', d => d.y - 30);
+        .attr('x', d => d.x - 130)
+        .attr('y', d => d.y - 90);
 
 
     });

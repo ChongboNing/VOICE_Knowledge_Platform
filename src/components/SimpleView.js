@@ -7,7 +7,7 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, setSelectedNode }) =
   return (
     <div className="p-6 overflow-auto h-full">
       <div className="bg-white rounded-lg shadow border">
-        <div className="grid grid-cols-4 gap-4 p-4 bg-gray-50 font-semibold text-sm text-gray-700 rounded-t-lg border-b">
+        <div className="grid grid-cols-4 gap-4 p-4 bg-gray-50 font-semibold text-base text-gray-700 rounded-t-lg border-b">
           <div className="flex items-center">
             <div className="w-4 h-4 rounded mr-2" style={{backgroundColor: '#5F5BA3'}}></div>
             People ({data.nodes.filter(n => n.type === 'People' && visibleTypes.People).length})
@@ -40,9 +40,9 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, setSelectedNode }) =
                   borderColor: highlightedNodes.has(node.id) ? '#00837F' : '#e5e7eb'
                 }}
               >
-                <div className="font-medium text-sm text-gray-900">{node.name}</div>
-                <div className="text-xs text-gray-500 mt-1 line-clamp-2">{node.connections}</div>
-                <div className="text-xs text-gray-400 mt-1 truncate">{node.bio?.substring(0, 80)}...</div>
+                <div className="font-medium text-base text-gray-900">{node.name}</div>
+                <div className="text-base text-gray-500 mt-1 line-clamp-2">{node.connections}</div>
+                <div className="text-base text-gray-400 mt-1 truncate">{node.bio?.substring(0, 80)}...</div>
               </button>
             ))}
           </div>
@@ -56,10 +56,10 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, setSelectedNode }) =
                   highlightedNodes.has(node.id) ? 'bg-yellow-50 border-yellow-300 shadow-md' : 'hover:bg-gray-50 border-gray-200'
                 }`}
               >
-                <div className="font-medium text-sm text-gray-900">{node.name}</div>
-                <div className="text-xs text-gray-400 mt-1 truncate">{node.bio?.substring(0, 100)}...</div>
+                <div className="font-medium text-base text-gray-900">{node.name}</div>
+                <div className="text-base text-gray-400 mt-1 truncate">{node.bio?.substring(0, 100)}...</div>
                 {node.website && (
-                  <div className="text-xs mt-1 flex items-center" style={{ color: '#00837F' }}>
+                  <div className="text-base mt-1 flex items-center" style={{ color: '#00837F' }}>
                     <ExternalLink size={10} className="mr-1" />
                     Website
                   </div>
@@ -77,8 +77,8 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, setSelectedNode }) =
                   highlightedNodes.has(node.id) ? 'bg-yellow-50 border-yellow-300 shadow-md' : 'hover:bg-gray-50 border-gray-200'
                 }`}
               >
-                <div className="font-medium text-sm text-gray-900">{node.name}</div>
-                <div className="text-xs text-gray-400 mt-1 truncate">{node.description?.substring(0, 100)}...</div>
+                <div className="font-medium text-base text-gray-900">{node.name}</div>
+                <div className="text-base text-gray-400 mt-1 truncate">{node.description?.substring(0, 100)}...</div>
               </button>
             ))}
           </div>
@@ -92,13 +92,13 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, setSelectedNode }) =
                   highlightedNodes.has(node.id) ? 'bg-yellow-50 border-yellow-300 shadow-md' : 'hover:bg-gray-50 border-gray-200'
                 }`}
               >
-                <div className="font-medium text-sm text-gray-900">{node.name}</div>
+                <div className="font-medium text-base text-gray-900">{node.name}</div>
                 {node.category && (
-                  <div className="text-xs text-white mt-1 inline-block px-2 py-1 rounded" style={{ backgroundColor: '#00837F' }}>
+                  <div className="text-base text-white mt-1 inline-block px-2 py-1 rounded" style={{ backgroundColor: '#00837F' }}>
                     {node.category}
                   </div>
                 )}
-                <div className="text-xs text-gray-400 mt-2 line-clamp-3">{node.description?.substring(0, 100)}...</div>
+                <div className="text-base text-gray-400 mt-2 line-clamp-3">{node.description?.substring(0, 100)}...</div>
               </button>
             ))}
           </div>

@@ -44,7 +44,7 @@ Using a rhizomatic methodology, this platform displays emerging knowledge from t
             >
               <Icon size={20} className="text-gray-600 flex-shrink-0" />
               {isNavExpanded && (
-                <span className="ml-3 text-sm text-gray-700">{item.label}</span>
+                <span className="ml-3 text-base text-gray-700">{item.label}</span>
               )}
             </button>
           );
@@ -53,9 +53,9 @@ Using a rhizomatic methodology, this platform displays emerging knowledge from t
       
       {isNavExpanded && data.nodes && (
         <div className="absolute bottom-4 left-4 right-4 bg-gray-50 rounded-lg p-3">
-          <div className="text-xs text-gray-600 space-y-1">
+          <div className="text-sm text-gray-600 space-y-1">
             <div className="font-semibold">VOICE Prototype V1</div>
-            <div className="text-xs text-gray-500 mb-2">Network Statistics:</div>
+            <div className="text-sm text-gray-500 mb-2">Network Statistics:</div>
             <div>Total Nodes: {data.nodes.length}</div>
             <div>Total Links: {data.links?.length || 0}</div>
             <div>People: {data.nodes.filter(n => n.type === 'People').length}</div>
