@@ -21,7 +21,34 @@ const Modal = ({ showModal, setShowModal }) => {
       {/* 可滚动内容区域 */}
       <div className="flex-1 overflow-y-auto">
         <div className="p-6">
-          <div className="text-sm text-gray-700 leading-relaxed">{showModal.content}</div>
+          <div className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
+            {showModal.content.split('\n').map((line, index) => {
+              // 处理标题
+              if (line.startsWith('# ')) {
+                return <h2 key={index} className="text-lg font-bold text-gray-900 mt-4 mb-2">{line.substring(2)}</h2>;
+              }
+              // 处理粗体文本
+              if (line.includes('**') && line.includes('**:')) {
+                const parts = line.split('**');
+                return (
+                  <p key={index} className="mb-2">
+                    {parts.map((part, partIndex) => {
+                      if (partIndex % 2 === 1) {
+                        return <strong key={partIndex}>{part}</strong>;
+                      }
+                      return part;
+                    })}
+                  </p>
+                );
+              }
+              // 处理空行
+              if (line.trim() === '') {
+                return <br key={index} />;
+              }
+              // 普通段落
+              return <p key={index} className="mb-2">{line}</p>;
+            })}
+          </div>
         </div>
       </div>
     </div>
