@@ -23,12 +23,62 @@ const Modal = ({ showModal, setShowModal }) => {
         <div className="p-6">
           <div className="text-base text-gray-700 leading-relaxed whitespace-pre-line">
             {showModal.content.split('\n').map((line, index) => {
-              // 处理标题
+              // 处理一级标题
               if (line.startsWith('# ')) {
-                return <h2 key={index} className="text-xl font-bold text-gray-900 mt-4 mb-2">{line.substring(2)}</h2>;
+                return <h2 key={index} className="text-xl font-bold text-gray-900 mt-3 mb-1">{line.substring(2)}</h2>;
               }
+              
+              // 处理带链接的列表项
+              if (line.startsWith('- [') && line.includes('](') && line.includes(')')) {
+                const linkRegex = /- \[([^\]]+)\]\(([^)]+)\)/;
+                const match = line.match(linkRegex);
+                if (match) {
+                  return (
+                    <p key={index} className="mb-2 ml-4">
+                      • <a 
+                          href={match[2]} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="hover:underline"
+                          style={{ color: '#00837F' }}
+                        >
+                          {match[1]}
+                        </a>
+                    </p>
+                  );
+                }
+              }
+              
+              // 处理普通列表项（一级）
+              if (line.startsWith('- ') && !line.startsWith('  -')) {
+                return (
+                  <p key={index} className="mb-2 ml-4">
+                    • {line.substring(2).split('**').map((part, partIndex) => {
+                      if (partIndex % 2 === 1) {
+                        return <strong key={partIndex}>{part}</strong>;
+                      }
+                      return part;
+                    })}
+                  </p>
+                );
+              }
+              
+              // 处理嵌套列表项（二级）
+              if (line.startsWith('  - ')) {
+                return (
+                  <p key={index} className="mb-2 ml-8">
+                    • {line.substring(4).split('**').map((part, partIndex) => {
+                      if (partIndex % 2 === 1) {
+                        return <strong key={partIndex}>{part}</strong>;
+                      }
+                      return part;
+                    })}
+                  </p>
+                );
+              }
+              
               // 处理粗体文本
-              if (line.includes('**') && line.includes('**:')) {
+              if (line.includes('**')) {
                 const parts = line.split('**');
                 return (
                   <p key={index} className="mb-2">
@@ -41,10 +91,12 @@ const Modal = ({ showModal, setShowModal }) => {
                   </p>
                 );
               }
+              
               // 处理空行
               if (line.trim() === '') {
                 return <br key={index} />;
               }
+              
               // 普通段落
               return <p key={index} className="mb-2">{line}</p>;
             })}

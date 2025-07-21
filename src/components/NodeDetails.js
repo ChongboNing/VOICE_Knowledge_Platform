@@ -40,13 +40,13 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
           {selectedNode.type === 'People' && (
             <>
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg text-lg">Biography</h3>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Biography</h3>
                 <p className="text-base text-gray-700 leading-relaxed">{selectedNode.bio || '/'}</p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg text-lg">Institutional Connections</h3>
-                <div className="text-base text-gray-700 p-4 rounded-lg border" style={{ backgroundColor: '#E6F7F6', borderColor: '#00837F' }}>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Institutional Connections</h3>
+                <div className="text-base text-gray-700 p-4 rounded-lg border" style={{ backgroundColor: '#F4F3F8', borderColor: '#5F5BA3' }}>
                   {selectedNode.connections || '/'}
                 </div>
               </div>
@@ -60,9 +60,9 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center text-base p-4 rounded-lg border font-medium transition-colors hover:opacity-90"
                     style={{ 
-                      backgroundColor: '#E6F7F6', 
-                      borderColor: '#00837F',
-                      color: '#00837F'
+                      backgroundColor: '#F4F3F8', 
+                      borderColor: '#5F5BA3',
+                      color: '#5F5BA3'
                     }}
                   >
                     Visit Website <ExternalLink size={16} className="ml-2" />
@@ -91,9 +91,9 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center text-base p-4 rounded-lg border font-medium transition-colors hover:opacity-90"
                     style={{ 
-                      backgroundColor: '#E6F7F6', 
-                      borderColor: '#00837F',
-                      color: '#00837F'
+                      backgroundColor: '#FFF6FB', 
+                      borderColor: '#DC2680',
+                      color: '#DC2680'
                     }}
                   >
                     Visit Website <ExternalLink size={16} className="ml-2" />
@@ -115,7 +115,7 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
               <div>
                 <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Budget</h3>
                 {selectedNode.budget ? (
-                  <span className="inline-block px-4 py-2 bg-green-100 text-green-800 text-base rounded-full font-medium">
+                  <span className="inline-block px-4 py-2 text-base rounded-full font-medium" style={{ backgroundColor: '#FFFAF3', color: '#EB631A' }}>
                     {selectedNode.budget}
                   </span>
                 ) : (
@@ -144,9 +144,9 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center text-base p-4 rounded-lg border font-medium transition-colors hover:opacity-90"
                     style={{ 
-                      backgroundColor: '#E6F7F6', 
-                      borderColor: '#00837F',
-                      color: '#00837F'
+                      backgroundColor: '#FFFAF3', 
+                      borderColor: '#EB631A',
+                      color: '#EB631A'
                     }}
                   >
                     Visit Website <ExternalLink size={16} className="ml-2" />
@@ -168,7 +168,7 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
               <div>
                 <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Category</h3>
                 {selectedNode.category && selectedNode.category !== '/' ? (
-                  <span className="inline-block px-4 py-2 text-base rounded-full font-medium" style={{ backgroundColor: '#E6F7F6', color: '#00837F' }}>
+                  <span className="inline-block px-4 py-2 text-base rounded-full font-medium" style={{ backgroundColor: '#FFFBF2', color: '#F8AE15' }}>
                     {selectedNode.category}
                   </span>
                 ) : (
@@ -208,9 +208,9 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center text-base p-4 rounded-lg border font-medium transition-colors hover:opacity-90"
                     style={{ 
-                      backgroundColor: '#E6F7F6', 
-                      borderColor: '#00837F',
-                      color: '#00837F'
+                      backgroundColor: '#FFFBF2', 
+                      borderColor: '#F8AE15',
+                      color: '#F8AE15'
                     }}
                   >
                     View Publication <ExternalLink size={16} className="ml-2" />

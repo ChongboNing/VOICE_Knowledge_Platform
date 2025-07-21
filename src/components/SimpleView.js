@@ -33,16 +33,16 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, setSelectedNode }) =
                 key={node.id}
                 onClick={() => setSelectedNode(node)}
                 className={`w-full text-left p-3 rounded border transition-all hover:shadow-md ${
-                  highlightedNodes.has(node.id) ? 'shadow-md' : 'hover:bg-gray-50 border-gray-200'
+                  highlightedNodes.has(node.id) ? 'shadow-md' : 'hover:bg-gray-50'
                 }`}
                 style={{
-                  backgroundColor: highlightedNodes.has(node.id) ? '#E6F7F6' : 'white',
-                  borderColor: highlightedNodes.has(node.id) ? '#00837F' : '#e5e7eb'
+                  backgroundColor: highlightedNodes.has(node.id) ? '#F4F3F8' : '#F4F3F8',
+                  borderColor: highlightedNodes.has(node.id) ? '#5F5BA3' : 'rgba(95, 91, 163, 0.5)'
                 }}
               >
                 <div className="font-medium text-base text-gray-900">{node.name}</div>
-                <div className="text-base text-gray-500 mt-1 line-clamp-2">{node.connections}</div>
-                <div className="text-base text-gray-400 mt-1 truncate">{node.bio?.substring(0, 80)}...</div>
+                <div className="text-sm text-gray-500 mt-1 line-clamp-2">{node.connections}</div>
+                <div className="text-sm text-gray-400 mt-1 truncate">{node.bio?.substring(0, 80)}...</div>
               </button>
             ))}
           </div>
@@ -53,13 +53,17 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, setSelectedNode }) =
                 key={node.id}
                 onClick={() => setSelectedNode(node)}
                 className={`w-full text-left p-3 rounded border transition-all hover:shadow-md ${
-                  highlightedNodes.has(node.id) ? 'bg-yellow-50 border-yellow-300 shadow-md' : 'hover:bg-gray-50 border-gray-200'
+                  highlightedNodes.has(node.id) ? 'shadow-md' : 'hover:bg-gray-50'
                 }`}
+                style={{
+                  backgroundColor: highlightedNodes.has(node.id) ? '#FFF6FB' : '#FFF6FB',
+                  borderColor: highlightedNodes.has(node.id) ? '#DC2680' : 'rgba(220, 38, 128, 0.5)'
+                }}
               >
                 <div className="font-medium text-base text-gray-900">{node.name}</div>
-                <div className="text-base text-gray-400 mt-1 truncate">{node.bio?.substring(0, 100)}...</div>
+                <div className="text-sm text-gray-400 mt-1 truncate">{node.bio?.substring(0, 100)}...</div>
                 {node.website && (
-                  <div className="text-base mt-1 flex items-center" style={{ color: '#00837F' }}>
+                  <div className="text-sm mt-1 flex items-center" style={{ color: '#DC2680' }}>
                     <ExternalLink size={10} className="mr-1" />
                     Website
                   </div>
@@ -74,11 +78,15 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, setSelectedNode }) =
                 key={node.id}
                 onClick={() => setSelectedNode(node)}
                 className={`w-full text-left p-3 rounded border transition-all hover:shadow-md ${
-                  highlightedNodes.has(node.id) ? 'bg-yellow-50 border-yellow-300 shadow-md' : 'hover:bg-gray-50 border-gray-200'
+                  highlightedNodes.has(node.id) ? 'shadow-md' : 'hover:bg-gray-50'
                 }`}
+                style={{
+                  backgroundColor: highlightedNodes.has(node.id) ? '#FFFAF3' : '#FFFAF3',
+                  borderColor: highlightedNodes.has(node.id) ? '#EB631A' : 'rgba(235, 98, 26, 0.5)'
+                }}
               >
                 <div className="font-medium text-base text-gray-900">{node.name}</div>
-                <div className="text-base text-gray-400 mt-1 truncate">{node.description?.substring(0, 100)}...</div>
+                <div className="text-sm text-gray-400 mt-1 truncate">{node.description?.substring(0, 100)}...</div>
               </button>
             ))}
           </div>
@@ -89,16 +97,20 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, setSelectedNode }) =
                 key={node.id}
                 onClick={() => setSelectedNode(node)}
                 className={`w-full text-left p-3 rounded border transition-all hover:shadow-md ${
-                  highlightedNodes.has(node.id) ? 'bg-yellow-50 border-yellow-300 shadow-md' : 'hover:bg-gray-50 border-gray-200'
+                  highlightedNodes.has(node.id) ? 'shadow-md' : 'hover:bg-gray-50'
                 }`}
+                style={{
+                  backgroundColor: highlightedNodes.has(node.id) ? '#FFFBF2' : '#FFFBF2',
+                  borderColor: highlightedNodes.has(node.id) ? '#F8AE15' : 'rgba(248, 174, 21, 0.5)'
+                }}
               >
                 <div className="font-medium text-base text-gray-900">{node.name}</div>
                 {node.category && (
-                  <div className="text-base text-white mt-1 inline-block px-2 py-1 rounded" style={{ backgroundColor: '#00837F' }}>
+                  <div className="text-sm text-white mt-1 inline-block px-2 py-1 rounded" style={{ backgroundColor: '#F8AE15' }}>
                     {node.category}
                   </div>
                 )}
-                <div className="text-base text-gray-400 mt-2 line-clamp-3">{node.description?.substring(0, 100)}...</div>
+                <div className="text-sm text-gray-400 mt-2 line-clamp-3">{node.description?.substring(0, 100)}...</div>
               </button>
             ))}
           </div>
