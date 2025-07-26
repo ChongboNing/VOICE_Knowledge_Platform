@@ -1,5 +1,6 @@
 import React from 'react';
 import { Info, HelpCircle, Accessibility, Languages, Menu  } from 'lucide-react';
+import SimpleFeedback from './SimpleFeedback';
 
 const Navigation = ({ isNavExpanded, setIsNavExpanded, setShowModal, data }) => {
   const navItems = [
@@ -56,7 +57,7 @@ Once the tool is installed or enabled:
   ];
 
   return (
-    <div className={`bg-white shadow-lg transition-all duration-300 ${isNavExpanded ? 'w-64' : 'w-16'} border-r h-screen relative`}>
+    <div className={`bg-white shadow-lg transition-all duration-300 ${isNavExpanded ? 'w-64' : 'w-16'} border-r h-screen relative flex flex-col`}>
       <div className="p-4">
         <button
           onClick={() => setIsNavExpanded(!isNavExpanded)}
@@ -67,7 +68,7 @@ Once the tool is installed or enabled:
         </button>
       </div>
       
-      <nav className="mt-8">
+      <nav className="mt-8 flex-1">
         {navItems.map(item => {
           const Icon = item.icon;
           return (
@@ -85,9 +86,12 @@ Once the tool is installed or enabled:
           );
         })}
       </nav>
+
+      {/* Feedback按钮 - 现在是独立浮窗 */}
+      <SimpleFeedback />
       
       {isNavExpanded && data.nodes && (
-        <div className="absolute bottom-4 left-4 right-4 bg-gray-50 rounded-lg p-3">
+        <div className="mx-4 mb-20 bg-gray-50 rounded-lg p-3">
           <div className="text-sm text-gray-600 space-y-1">
             <div className="font-semibold">VOICE Prototype V1</div>
             <div className="text-sm text-gray-500 mb-2">Network Statistics:</div>
