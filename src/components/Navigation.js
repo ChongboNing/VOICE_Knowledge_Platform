@@ -26,15 +26,22 @@ This site supports screen readers and keyboard navigation to ensure inclusive ac
 - Use **Enter** or **Space** to activate buttons and links
 - Use **Escape** to close modal windows and detail panels
 - Use **Arrow keys** to navigate within the graph view
+- Use **Ctrl/Cmd + ← →** to resize panels when modals or details are open
 
 # Screen Reader Support
 The site includes proper semantic markup and ARIA labels for assistive technologies. All interactive elements have descriptive labels and roles.
 
 # Visual Accessibility
-- High contrast color scheme for better readability
+- High contrast color scheme for better readability (WCAG 2.2 AA compliant)
 - Scalable text that respects browser zoom settings
 - Clear visual focus indicators for keyboard navigation
-- Alternative text descriptions for visual elements` },
+- Alternative text descriptions for visual elements
+
+# Keyboard Shortcuts
+- **Ctrl/Cmd + E**: Switch between Graph and Table view
+- **Ctrl/Cmd + K**: Focus search box
+- **Ctrl/Cmd + B**: Toggle navigation sidebar
+- **?**: Show keyboard shortcuts help` },
     { id: 'translation', icon: Languages, label: 'Translation Help', content: `# Step 1: Choose a Translation Tool
 We recommend one of the following:
 - [Google Translate Extension (for Chrome)](https://chromewebstore.google.com/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb)
@@ -62,9 +69,10 @@ Once the tool is installed or enabled:
         <button
           onClick={() => setIsNavExpanded(!isNavExpanded)}
           className="w-full flex items-center justify-center p-2 hover:bg-gray-100 rounded transition-colors"
-          title="Toggle Navigation"
+          aria-label={`${isNavExpanded ? 'Collapse' : 'Expand'} navigation menu`}
+          aria-expanded={isNavExpanded}
         >
-          <Menu size={20} className="text-gray-600" />
+          <Menu size={20} className="text-gray-600" aria-hidden="true" />
         </button>
       </div>
       
@@ -76,12 +84,20 @@ Once the tool is installed or enabled:
               key={item.id}
               onClick={() => setShowModal(item)}
               className={`w-full flex items-center hover:bg-gray-100 transition-colors ${isNavExpanded ? 'p-4 text-left' : 'p-4 justify-center'}`}
-              title={item.label}
+              aria-label={`Open ${item.label} dialog`}
+              aria-describedby={`nav-${item.id}-desc`}
             >
-              <Icon size={20} className="text-gray-600 flex-shrink-0" />
+              <Icon size={20} className="text-gray-600 flex-shrink-0" aria-hidden="true" />
               {isNavExpanded && (
                 <span className="ml-3 text-base text-gray-700">{item.label}</span>
               )}
+              <span id={`nav-${item.id}-desc`} className="sr-only">
+                {item.id === 'intro' ? 'Learn about the VOICE Knowledge Platform' :
+                 item.id === 'howto' ? 'Instructions for using the platform' :
+                 item.id === 'accessibility' ? 'Accessibility features and keyboard shortcuts' :
+                 item.id === 'translation' ? 'Help with translating this site' :
+                 `Learn more about ${item.label}`}
+              </span>
             </button>
           );
         })}

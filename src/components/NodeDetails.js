@@ -1,10 +1,66 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { X, ExternalLink } from 'lucide-react';
 import { getNodeColor } from '../utils/graphUtils';
 
-const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
+const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
   const [width, setWidth] = useState(50); // 默认50%宽度
   const isDragging = useRef(false);
+  const detailsRef = useRef(null);
+  const previousFocusRef = useRef(null);
+
+  // 焦点管理effect
+  useEffect(() => {
+    if (selectedNode) {
+      // 保存当前焦点
+      previousFocusRef.current = document.activeElement;
+      
+      // 设置焦点到详情面板
+      setTimeout(() => {
+        detailsRef.current?.focus();
+      }, 100);
+      
+      // Escape键处理
+      const handleEscape = (e) => {
+        if (e.key === 'Escape') {
+          onNodeSelection(null);
+        }
+      };
+      
+      // 键盘调整大小功能 - WCAG 2.2 AA合规 (2.5.7)
+      const handleKeyResize = (e) => {
+        if ((e.metaKey || e.ctrlKey) && !e.shiftKey && !e.altKey) {
+          if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            const newWidth = Math.min(80, width + 5);
+            setWidth(newWidth);
+            // 添加屏幕阅读器反馈
+            const announcement = `Details panel width increased to ${Math.round(newWidth)}%`;
+            console.log(announcement); // 临时日志，可以连接到aria-live区域
+          }
+          if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            const newWidth = Math.max(20, width - 5);
+            setWidth(newWidth);
+            // 添加屏幕阅读器反馈
+            const announcement = `Details panel width decreased to ${Math.round(newWidth)}%`;
+            console.log(announcement); // 临时日志，可以连接到aria-live区域
+          }
+        }
+      };
+      
+      document.addEventListener('keydown', handleEscape);
+      document.addEventListener('keydown', handleKeyResize);
+      
+      return () => {
+        document.removeEventListener('keydown', handleEscape);
+        document.removeEventListener('keydown', handleKeyResize);
+        // 恢复焦点
+        if (previousFocusRef.current) {
+          previousFocusRef.current.focus();
+        }
+      };
+    }
+  }, [selectedNode, onNodeSelection, width]);
 
   if (!selectedNode || !data || !data.links) return null;
 
@@ -37,7 +93,14 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
   );
 
   return (
-    <div className="fixed right-0 top-0 h-full bg-white shadow-2xl border-l border-gray-200 z-50 flex flex-col" style={{ width: `${width}%` }}>
+    <div 
+      className="fixed right-0 top-0 h-full bg-white shadow-2xl border-l border-gray-200 z-50 flex flex-col" 
+      style={{ width: `${width}%` }}
+      role="complementary"
+      aria-labelledby="details-title"
+      ref={detailsRef}
+      tabIndex={-1}
+    >
       {/* 面板头部 */}
       <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
         <div className="flex items-center">
@@ -46,14 +109,19 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
             style={{ backgroundColor: getNodeColor(selectedNode.type) }}
           ></div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">{selectedNode.name}</h2>
-            <p className="text-base text-gray-500 font-medium">{selectedNode.type}</p>
+            <h2 id="details-title" className="text-2xl font-bold text-gray-900">{selectedNode.name}</h2>
+            <div className="flex items-center gap-4">
+              <p className="text-base text-gray-500 font-medium">{selectedNode.type}</p>
+              <p className="text-sm text-gray-600">
+                Use Ctrl/Cmd + ← → to resize panel
+              </p>
+            </div>
           </div>
         </div>
         <button
-          onClick={() => setSelectedNode(null)}
+          onClick={() => onNodeSelection(null)}
           className="p-2 hover:bg-gray-200 rounded-full transition-colors"
-          title="Close"
+          aria-label="Close details panel"
         >
           <X size={20} className="text-gray-500" />
         </button>
@@ -72,7 +140,7 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
               
               <div>
                 <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Institutional Connections</h3>
-                <div className="text-base text-gray-700 p-4 rounded-lg border" style={{ backgroundColor: '#F4F3F8', borderColor: '#5F5BA3' }}>
+                <div className="text-base p-4 rounded-lg border" style={{ backgroundColor: '#F4F3F8', borderColor: '#5F5BA3', color: '#5F5BA3' }}>
                   {selectedNode.connections || '/'}
                 </div>
               </div>
@@ -90,6 +158,7 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
                       borderColor: '#5F5BA3',
                       color: '#5F5BA3'
                     }}
+                    aria-label={`Visit ${selectedNode.name}'s website (opens in new tab)`}
                   >
                     Visit Website <ExternalLink size={16} className="ml-2" />
                   </a>
@@ -121,6 +190,7 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
                       borderColor: '#DC2680',
                       color: '#DC2680'
                     }}
+                    aria-label={`Visit institution website (opens in new tab)`}
                   >
                     Visit Website <ExternalLink size={16} className="ml-2" />
                   </a>
@@ -174,6 +244,7 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
                       borderColor: '#EB631A',
                       color: '#EB631A'
                     }}
+                    aria-label={`Visit project website (opens in new tab)`}
                   >
                     Visit Website <ExternalLink size={16} className="ml-2" />
                   </a>
@@ -238,6 +309,7 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
                       borderColor: '#F8AE15',
                       color: '#F8AE15'
                     }}
+                    aria-label={`View method publication (opens in new tab)`}
                   >
                     View Publication <ExternalLink size={16} className="ml-2" />
                   </a>
@@ -257,7 +329,7 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
                 if (!connectedNode) return null;
                 return (
                   <div key={index} className="flex items-center p-4 bg-gray-50 rounded-lg border hover:bg-gray-100 transition-colors cursor-pointer"
-                       onClick={() => setSelectedNode(connectedNode)}>
+                       onClick={() => onNodeSelection(connectedNode)}>
                     <div 
                       className="w-4 h-4 rounded-full mr-4 flex-shrink-0"
                       style={{ backgroundColor: getNodeColor(connectedNode.type) }}

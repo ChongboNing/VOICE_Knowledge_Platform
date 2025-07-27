@@ -9,7 +9,7 @@ const GraphView = ({
   toggleNodeType, 
   highlightedNodes, 
   selectedNode, 
-  setSelectedNode,
+  onNodeSelection,
   zoomLevel,
   setZoomLevel
 }) => {
@@ -106,7 +106,7 @@ const GraphView = ({
         .on('drag', dragged)
         .on('end', dragended))
       .on('click', (event, d) => {
-        setSelectedNode(d);
+        onNodeSelection(d);
       })
       .on('mouseover', function(event, d) {
         // 改变字体大小
@@ -156,8 +156,6 @@ const GraphView = ({
       .style('transition', 'transform 0.2s ease')
       .text(d => d.name);
 
-
-
     simulation.on('tick', () => {
       link
         .attr('x1', d => d.source.x)
@@ -169,8 +167,6 @@ const GraphView = ({
       node
         .attr('x', d => d.x - 130)
         .attr('y', d => d.y - 90);
-
-
     });
 
     function dragstarted(event, d) {
@@ -193,17 +189,23 @@ const GraphView = ({
     return () => {
       simulation.stop();
     };
-  }, [data, visibleTypes, highlightedNodes,setSelectedNode, setZoomLevel]);
+  }, [data, visibleTypes, highlightedNodes, onNodeSelection, setZoomLevel]);
 
   return (
     <div className="w-full h-full relative">
-      <svg ref={svgRef} className="w-full h-full bg-gradient-to-br from-gray-50 to-white"></svg>
+      <svg 
+        ref={svgRef} 
+        className="w-full h-full bg-gradient-to-br from-gray-50 to-white"
+        role="img"
+        aria-label="VOICE Project Network Visualization - Interactive network showing relationships between entities across people, institutions, projects, and methods"
+      >
+      </svg>
  
       <div className="absolute top-4 left-4 bg-white rounded-lg shadow-lg p-4 max-w-xs">
-        <h3 className="font-semibold text-sm mb-3 flex items-center">
+        <h2 className="font-semibold text-sm mb-3 flex items-center">
           <Filter size={16} className="mr-2 text-gray-500" />
           Filters
-        </h3>
+        </h2>
         <div className="space-y-3">
           {[
             { type: 'People', color: '#5F5BA3', count: data.nodes?.filter(n => n.type === 'People').length || 0 },

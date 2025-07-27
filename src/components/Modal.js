@@ -1,9 +1,95 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { X } from 'lucide-react';
 
 const Modal = ({ showModal, setShowModal }) => {
   const [width, setWidth] = useState(50); // 默认50%宽度
   const isDragging = useRef(false);
+  const modalRef = useRef(null);
+  const previousFocusRef = useRef(null);
+
+  // 焦点管理effect
+  useEffect(() => {
+    if (showModal) {
+      // 保存当前焦点
+      previousFocusRef.current = document.activeElement;
+      
+      // 设置焦点到模态框
+      setTimeout(() => {
+        modalRef.current?.focus();
+      }, 100);
+      
+      // Escape键处理
+      const handleEscape = (e) => {
+        if (e.key === 'Escape') {
+          setShowModal(null);
+        }
+      };
+      
+      // 键盘调整大小功能 - WCAG 2.2 AA合规 (2.5.7)
+      const handleKeyResize = (e) => {
+        if ((e.metaKey || e.ctrlKey) && !e.shiftKey && !e.altKey) {
+          if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            const newWidth = Math.max(20, width - 5);
+            setWidth(newWidth);
+            // 添加屏幕阅读器反馈
+            const announcement = `Panel width decreased to ${Math.round(newWidth)}%`;
+            console.log(announcement); // 临时日志，可以连接到aria-live区域
+          }
+          if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            const newWidth = Math.min(80, width + 5);
+            setWidth(newWidth);
+            // 添加屏幕阅读器反馈
+            const announcement = `Panel width increased to ${Math.round(newWidth)}%`;
+            console.log(announcement); // 临时日志，可以连接到aria-live区域
+          }
+        }
+      };
+      
+      // 焦点陷阱
+      const handleTabKey = (e) => {
+        if (e.key === 'Tab') {
+          const focusableElements = modalRef.current?.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          );
+          
+          if (focusableElements && focusableElements.length > 0) {
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+            
+            if (e.shiftKey) {
+              // Shift + Tab
+              if (document.activeElement === firstElement) {
+                e.preventDefault();
+                lastElement.focus();
+              }
+            } else {
+              // Tab
+              if (document.activeElement === lastElement) {
+                e.preventDefault();
+                firstElement.focus();
+              }
+            }
+          }
+        }
+      };
+      
+      document.addEventListener('keydown', handleEscape);
+      document.addEventListener('keydown', handleKeyResize);
+      document.addEventListener('keydown', handleTabKey);
+      
+      return () => {
+        document.removeEventListener('keydown', handleEscape);
+        document.removeEventListener('keydown', handleKeyResize);
+        document.removeEventListener('keydown', handleTabKey);
+        // 恢复焦点
+        if (previousFocusRef.current) {
+          previousFocusRef.current.focus();
+        }
+      };
+    }
+  }, [showModal, setShowModal, width]);
 
   if (!showModal) return null;
 
@@ -31,13 +117,27 @@ const Modal = ({ showModal, setShowModal }) => {
   };
 
   return (
-    <div className="fixed left-0 top-0 h-full bg-white shadow-2xl border-r border-gray-200 z-50 flex flex-col" style={{ width: `${width}%` }}>
+    <div 
+      className="fixed left-0 top-0 h-full bg-white shadow-2xl border-r border-gray-200 z-50 flex flex-col" 
+      style={{ width: `${width}%` }}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      ref={modalRef}
+      tabIndex={-1}
+    >
       {/* 模态框头部 */}
       <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
-        <h2 className="text-2xl font-bold text-gray-900">{showModal.label}</h2>
+        <div>
+          <h2 id="modal-title" className="text-2xl font-bold text-gray-900">{showModal.label}</h2>
+          <p className="text-sm text-gray-600 mt-1">
+            Use Ctrl/Cmd + ← → to resize panel, or drag the right edge
+          </p>
+        </div>
         <button
           onClick={() => setShowModal(null)}
           className="p-2 hover:bg-gray-200 rounded-full transition-colors"
+          aria-label="Close dialog"
           title="Close"
         >
           <X size={20} className="text-gray-500" />
