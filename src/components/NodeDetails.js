@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { X, ExternalLink } from 'lucide-react';
 import { getNodeColor } from '../utils/graphUtils';
 
 const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
+  const [width, setWidth] = useState(50); // 默认50%宽度
+  const isDragging = useRef(false);
+
   if (!selectedNode || !data || !data.links) return null;
+
+  const handleMouseDown = (e) => {
+    isDragging.current = true;
+    e.preventDefault();
+    
+    const handleMouseMove = (e) => {
+      if (!isDragging.current) return;
+      
+      const newWidth = ((window.innerWidth - e.clientX) / window.innerWidth) * 100;
+      // 限制宽度在20%到80%之间
+      const clampedWidth = Math.min(Math.max(newWidth, 20), 80);
+      setWidth(clampedWidth);
+    };
+    
+    const handleMouseUp = () => {
+      isDragging.current = false;
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+    
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+  };
 
   // 获取相关连接
   const relatedLinks = data.links.filter(
@@ -11,7 +37,7 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
   );
 
   return (
-    <div className="fixed right-0 top-0 w-1/2 h-full bg-white shadow-2xl border-l border-gray-200 z-50 flex flex-col">
+    <div className="fixed right-0 top-0 h-full bg-white shadow-2xl border-l border-gray-200 z-50 flex flex-col" style={{ width: `${width}%` }}>
       {/* 面板头部 */}
       <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
         <div className="flex items-center">
@@ -254,6 +280,15 @@ const NodeDetails = ({ selectedNode, setSelectedNode, data }) => {
           </div>
         </div>
       </div>
+      
+      {/* 左侧拖拽手柄 */}
+      <div 
+        className="absolute left-0 top-0 w-1 h-full bg-gray-300 cursor-col-resize transition-colors"
+        onMouseDown={handleMouseDown}
+        onMouseEnter={(e) => e.target.style.backgroundColor = '#00837F'}
+        onMouseLeave={(e) => e.target.style.backgroundColor = '#d1d5db'}
+        title="Drag to resize"
+      />
     </div>
   );
 };

@@ -99,7 +99,7 @@ const RelationshipGraphApp = () => {
         />
 
         {/* 主视图区域 */}
-        <div className={`flex-1 relative bg-white transition-all duration-300 ${selectedNode ? 'w-1/2' : showModal ? 'ml-1/2' : 'w-full'}`}>
+        <div className="flex-1 relative bg-white">
           {viewMode === 'graph' ? (
             <GraphView 
               data={data}

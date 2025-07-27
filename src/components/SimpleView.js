@@ -36,8 +36,8 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, setSelectedNode }) =
                   highlightedNodes.has(node.id) ? 'shadow-md' : 'hover:bg-gray-50'
                 }`}
                 style={{
-                  backgroundColor: highlightedNodes.has(node.id) ? '#F4F3F8' : '#F4F3F8',
-                  borderColor: highlightedNodes.has(node.id) ? '#5F5BA3' : 'rgba(95, 91, 163, 0.5)'
+                  backgroundColor: highlightedNodes.has(node.id) ? '#F6FFFF' : '#F4F3F8',
+                  borderColor: highlightedNodes.has(node.id) ? '#00837F' : 'rgba(95, 91, 163, 0.5)'
                 }}
               >
                 <div className="font-medium text-base text-gray-900">{node.name}</div>
@@ -56,8 +56,8 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, setSelectedNode }) =
                   highlightedNodes.has(node.id) ? 'shadow-md' : 'hover:bg-gray-50'
                 }`}
                 style={{
-                  backgroundColor: highlightedNodes.has(node.id) ? '#FFF6FB' : '#FFF6FB',
-                  borderColor: highlightedNodes.has(node.id) ? '#DC2680' : 'rgba(220, 38, 128, 0.5)'
+                  backgroundColor: highlightedNodes.has(node.id) ? '#F6FFFF' : '#FFF6FB',
+                  borderColor: highlightedNodes.has(node.id) ? '#00837F' : 'rgba(220, 38, 128, 0.5)'
                 }}
               >
                 <div className="font-medium text-base text-gray-900">{node.name}</div>
@@ -81,8 +81,8 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, setSelectedNode }) =
                   highlightedNodes.has(node.id) ? 'shadow-md' : 'hover:bg-gray-50'
                 }`}
                 style={{
-                  backgroundColor: highlightedNodes.has(node.id) ? '#FFFAF3' : '#FFFAF3',
-                  borderColor: highlightedNodes.has(node.id) ? '#EB631A' : 'rgba(235, 98, 26, 0.5)'
+                  backgroundColor: highlightedNodes.has(node.id) ? '#F6FFFF' : '#FFFAF3',
+                  borderColor: highlightedNodes.has(node.id) ? '#00837F' : 'rgba(235, 98, 26, 0.5)'
                 }}
               >
                 <div className="font-medium text-base text-gray-900">{node.name}</div>
@@ -100,8 +100,8 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, setSelectedNode }) =
                   highlightedNodes.has(node.id) ? 'shadow-md' : 'hover:bg-gray-50'
                 }`}
                 style={{
-                  backgroundColor: highlightedNodes.has(node.id) ? '#FFFBF2' : '#FFFBF2',
-                  borderColor: highlightedNodes.has(node.id) ? '#F8AE15' : 'rgba(248, 174, 21, 0.5)'
+                  backgroundColor: highlightedNodes.has(node.id) ? '#F6FFFF' : '#FFFBF2',
+                  borderColor: highlightedNodes.has(node.id) ? '#00837F' : 'rgba(248, 174, 21, 0.5)'
                 }}
               >
                 <div className="font-medium text-base text-gray-900">{node.name}</div>

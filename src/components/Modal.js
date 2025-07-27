@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { X } from 'lucide-react';
 
 const Modal = ({ showModal, setShowModal }) => {
+  const [width, setWidth] = useState(50); // 默认50%宽度
+  const isDragging = useRef(false);
+
   if (!showModal) return null;
 
+  const handleMouseDown = (e) => {
+    isDragging.current = true;
+    e.preventDefault();
+    
+    const handleMouseMove = (e) => {
+      if (!isDragging.current) return;
+      
+      const newWidth = (e.clientX / window.innerWidth) * 100;
+      // 限制宽度在20%到80%之间
+      const clampedWidth = Math.min(Math.max(newWidth, 20), 80);
+      setWidth(clampedWidth);
+    };
+    
+    const handleMouseUp = () => {
+      isDragging.current = false;
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+    
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+  };
+
   return (
-    <div className="fixed left-0 top-0 w-1/2 h-full bg-white shadow-2xl border-r border-gray-200 z-50 flex flex-col">
+    <div className="fixed left-0 top-0 h-full bg-white shadow-2xl border-r border-gray-200 z-50 flex flex-col" style={{ width: `${width}%` }}>
       {/* 模态框头部 */}
       <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
         <h2 className="text-2xl font-bold text-gray-900">{showModal.label}</h2>
@@ -103,6 +129,16 @@ const Modal = ({ showModal, setShowModal }) => {
           </div>
         </div>
       </div>
+      
+      {/* 右侧拖拽手柄 */}
+      <div 
+        className="absolute right-0 top-0 w-1 h-full bg-gray-300 cursor-col-resize transition-colors"
+        style={{ ':hover': { backgroundColor: '#00837F' } }}
+        onMouseDown={handleMouseDown}
+        onMouseEnter={(e) => e.target.style.backgroundColor = '#00837F'}
+        onMouseLeave={(e) => e.target.style.backgroundColor = '#d1d5db'}
+        title="Drag to resize"
+      />
     </div>
   );
 };
