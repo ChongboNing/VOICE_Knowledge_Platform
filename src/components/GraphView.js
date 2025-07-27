@@ -28,6 +28,52 @@ const GraphView = ({
     }
   };
 
+  // SVG文本换行函数
+  const addTextWithWrapping = (textElement, text, maxWidth = 240, maxLines = 6) => {
+    const words = text.split(/\s+/);
+    const lineHeight = 1.2;
+    let lines = [];
+    let currentLine = [];
+
+    // 逐词测试宽度
+    for (let i = 0; i < words.length; i++) {
+      currentLine.push(words[i]);
+      const testText = currentLine.join(' ');
+      
+      textElement.text(testText);
+      const textWidth = textElement.node().getComputedTextLength();
+      
+      if (textWidth > maxWidth && currentLine.length > 1) {
+        currentLine.pop();
+        lines.push(currentLine.join(' '));
+        currentLine = [words[i]];
+        
+        if (lines.length >= maxLines - 1) {
+          currentLine.push('...');
+          break;
+        }
+      }
+    }
+    
+    if (currentLine.length > 0) {
+      lines.push(currentLine.join(' '));
+    }
+
+    // 清空并重新添加文本
+    textElement.text('');
+    
+    // 计算垂直居中的起始位置
+    const totalHeight = lines.length * lineHeight;
+    const startY = -(totalHeight - 1) * 0.5;
+    
+    lines.forEach((line, index) => {
+      textElement.append('tspan')
+        .attr('x', 0)
+        .attr('dy', index === 0 ? `${startY}em` : `${lineHeight}em`)
+        .text(line);
+    });
+  };
+
   // 初始化D3力导向图
   useEffect(() => {
     if (!data || !data.nodes || !data.links) return;
@@ -89,30 +135,75 @@ const GraphView = ({
       .attr('stroke-opacity', 0.6)
       .attr('stroke-width', d => Math.sqrt(d.strength) * 2);
 
-    // 节点
-    const node = g.append('g')
+    // 创建节点组 - 只包含文本，没有背景
+    const nodeGroup = g.append('g')
       .attr('class', 'nodes')
-      .selectAll('foreignObject')
+      .selectAll('g')
       .data(currentData.nodes)
-      .enter().append('foreignObject')
+      .enter().append('g')
+      .style('cursor', 'pointer')
+      .style('filter', d => highlightedNodes.size > 0 && !highlightedNodes.has(d.id) ? 'opacity(0.3)' : 'none');
+
+    // 添加透明的交互区域（用于点击和拖拽，但不可见）
+    nodeGroup.append('rect')
       .attr('width', 260)
       .attr('height', 180)
       .attr('x', -130)
       .attr('y', -90)
-      .style('cursor', 'pointer')
-      .style('filter', d => highlightedNodes.size > 0 && !highlightedNodes.has(d.id) ? 'opacity(0.3)' : 'none')
-      .call(d3.drag()
-        .on('start', dragstarted)
-        .on('drag', dragged)
-        .on('end', dragended))
-      .on('click', (event, d) => {
-        onNodeSelection(d);
+      .attr('fill', 'transparent')  // 完全透明
+      .attr('stroke', 'none');
+
+    // 添加彩色文本 - 这是唯一可见的元素
+    const nodeText = nodeGroup.append('text')
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'central')
+      .attr('fill', d => getNodeColor(d.type))  // 使用彩色文字
+      .style('font-family', '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif')
+      .style('font-size', '20px')
+      .style('font-weight', '800')
+      .style('line-height', '1.2')
+      .style('pointer-events', 'none');  // 文本不参与鼠标事件
+
+    // 为每个节点添加换行文本
+    nodeText.each(function(d) {
+      addTextWithWrapping(d3.select(this), d.name, 240, 6);
+    });
+
+    // 拖拽行为
+    const drag = d3.drag()
+      .on('start', function(event, d) {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+        event.sourceEvent.stopPropagation();
       })
-      .on('mouseover', function(event, d) {
-        // 改变字体大小
-        d3.select(this).select('div')
-          .transition().duration(200)
-          .style('transform', 'scale(1.15)');
+      .on('drag', function(event, d) {
+        d.fx = event.x;
+        d.fy = event.y;
+      })
+      .on('end', function(event, d) {
+        if (!event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+      });
+
+    nodeGroup.call(drag);
+
+    // 点击事件
+    nodeGroup.on('click', function(event, d) {
+      event.stopPropagation();
+      onNodeSelection(d);
+    });
+
+    // 鼠标悬停效果 - 只放大文字
+    nodeGroup
+      .on('mouseenter', function(event, d) {
+        // 放大文字效果
+        d3.select(this).select('text')
+          .transition()
+          .duration(200)
+          .style('font-size', '24px')  // 文字放大
+          .style('font-weight', '900');
         
         // 高亮相连的节点和线
         const connectedNodes = new Set();
@@ -121,41 +212,24 @@ const GraphView = ({
           if (l.target.id === d.id) connectedNodes.add(l.source.id);
         });
         
-        g.selectAll('foreignObject')
+        g.selectAll('g.nodes > g')
           .style('opacity', n => n.id === d.id || connectedNodes.has(n.id) ? 1 : 0.3);
         g.selectAll('line')
           .style('opacity', l => l.source.id === d.id || l.target.id === d.id ? 1 : 0.2);
       })
-      .on('mouseout', function(event, d) {
-        // 恢复原始大小
-        d3.select(this).select('div')
-          .transition().duration(200)
-          .style('transform', 'scale(1)');
+      .on('mouseleave', function(event, d) {
+        // 恢复原始文字大小
+        d3.select(this).select('text')
+          .transition()
+          .duration(200)
+          .style('font-size', '20px')
+          .style('font-weight', '800');
         
-        g.selectAll('foreignObject').style('opacity', 1);
+        g.selectAll('g.nodes > g').style('opacity', 1);
         g.selectAll('line').style('opacity', 0.6);
       });
 
-    // 添加HTML内容到foreignObject
-    node.append('xhtml:div')
-      .style('width', '100%')
-      .style('height', '100%')
-      .style('display', 'flex')
-      .style('align-items', 'center')
-      .style('justify-content', 'center')
-      .style('text-align', 'center')
-      .style('font-size', '20px')
-      .style('font-weight', '800')
-      .style('line-height', '1.2')
-      .style('word-wrap', 'break-word')
-      .style('overflow-wrap', 'break-word')
-      .style('hyphens', 'auto')
-      .style('color', d => getNodeColor(d.type))
-      .style('padding', '8px')
-      .style('transform-origin', 'center')
-      .style('transition', 'transform 0.2s ease')
-      .text(d => d.name);
-
+    // Tick函数
     simulation.on('tick', () => {
       link
         .attr('x1', d => d.source.x)
@@ -163,28 +237,9 @@ const GraphView = ({
         .attr('x2', d => d.target.x)
         .attr('y2', d => d.target.y);
 
-      // 更新节点位置
-      node
-        .attr('x', d => d.x - 130)
-        .attr('y', d => d.y - 90);
+      nodeGroup
+        .attr('transform', d => `translate(${d.x},${d.y})`);
     });
-
-    function dragstarted(event, d) {
-      if (!event.active) simulation.alphaTarget(0.3).restart();
-      d.fx = d.x;
-      d.fy = d.y;
-    }
-
-    function dragged(event, d) {
-      d.fx = event.x;
-      d.fy = event.y;
-    }
-
-    function dragended(event, d) {
-      if (!event.active) simulation.alphaTarget(0);
-      d.fx = null;
-      d.fy = null;
-    }
 
     return () => {
       simulation.stop();

@@ -61,7 +61,7 @@ const RelationshipGraphApp = () => {
 
   // 设置页面标题
   useEffect(() => {
-    document.title = 'VOICE Prototype V1';
+    document.title = 'VOICE Knowledge Platform';
   }, []);
 
   // 全局键盘快捷键

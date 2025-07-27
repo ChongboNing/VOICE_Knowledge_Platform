@@ -17,6 +17,51 @@ code {
     monospace;
 }
 
+/* SVG 跨浏览器兼容性优化 */
+svg {
+  /* 确保SVG在所有浏览器中正确渲染 */
+  shape-rendering: optimizeSpeed;
+  text-rendering: optimizeSpeed;
+  color-rendering: optimizeSpeed;
+}
+
+/* Safari 专用的 SVG 文本渲染优化 */
+svg text {
+  /* 确保文本在Safari中正确显示 */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+  /* 改善文本渲染质量 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* 确保字体加载 */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+/* SVG 节点交互优化 */
+svg g.nodes g {
+  /* 确保变换原点正确 */
+  transform-origin: center center;
+  transform-box: fill-box;
+  
+  /* 改善交互性能 */
+  will-change: transform;
+}
+
+/* Safari transform 兼容性 */
+@supports (-webkit-appearance: none) {
+  svg g.nodes g {
+    /* Safari 特定的变换优化 */
+    -webkit-transform-origin: center center;
+    -webkit-transform-style: preserve-3d;
+  }
+}
+
 /* 可访问性样式 */
 .sr-only {
   position: absolute;
@@ -120,6 +165,12 @@ input:focus-visible,
   .transition-transform {
     transition: none !important;
   }
+  
+  /* 禁用 SVG 动画 */
+  svg * {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 
 /* 提升颜色对比度以满足WCAG 2.2 AA标准 */
@@ -151,5 +202,16 @@ input:focus-visible,
   
   .border-gray-200 {
     border-color: #000000 !important;
+  }
+  
+  /* 高对比度下的SVG优化 */
+  svg text {
+    stroke: none;
+    fill: #000000;
+  }
+  
+  svg rect {
+    stroke: #000000;
+    stroke-width: 2px;
   }
 }
