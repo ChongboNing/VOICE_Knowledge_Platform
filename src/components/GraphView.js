@@ -100,6 +100,9 @@ const GraphView = ({
     zoomRef.current = zoom;
     svg.call(zoom);
 
+    // 直接设置初始缩放为50%，无动画
+    svg.call(zoom.transform, d3.zoomIdentity.scale(0.5));
+
     // 确保连线数据中的source和target是对象引用
     const nodesMap = new Map(currentData.nodes.map(d => [d.id, d]));
     const processedLinks = currentData.links.map(link => ({

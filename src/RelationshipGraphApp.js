@@ -17,7 +17,7 @@ const RelationshipGraphApp = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedNode, setSelectedNode] = useState(null);
   const [isNavExpanded, setIsNavExpanded] = useState(false);
-  const [zoomLevel, setZoomLevel] = useState(1);
+  const [zoomLevel, setZoomLevel] = useState(0.5);
   const [showModal, setShowModal] = useState(null);
   const [highlightedNodes, setHighlightedNodes] = useState(new Set());
   const [announcements, setAnnouncements] = useState('');
