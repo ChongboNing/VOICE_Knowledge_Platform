@@ -71,7 +71,7 @@ const RelationshipGraphApp = () => {
       if ((e.metaKey || e.ctrlKey) && !e.shiftKey && !e.altKey && (e.code === 'KeyE' || e.key.toLowerCase() === 'e')) {
         e.preventDefault();
         handleViewModeChange(viewMode === 'graph' ? 'simple' : 'graph');
-        setAnnouncements(`Switched to ${viewMode === 'graph' ? 'accessible table' : 'interactive graph'} view`);
+        setAnnouncements(`Switched to ${viewMode === 'graph' ? 'accessible table' : 'interactive map'} view`);
       }
       
       // Cmd/Ctrl + K: 聚焦到搜索框 (通用快捷键)
@@ -175,6 +175,8 @@ const RelationshipGraphApp = () => {
             onViewModeChange={handleViewModeChange}
             highlightedNodes={highlightedNodes}
             onShowKeyboardHelp={() => setShowKeyboardHelp(true)}
+            isNavExpanded={isNavExpanded}
+            setIsNavExpanded={setIsNavExpanded}
           />
         </header>
 

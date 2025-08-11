@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, X, Eye, EyeOff } from 'lucide-react';
+import { Search, X, Eye, EyeOff, Menu } from 'lucide-react';
 
 const Toolbar = ({ 
   searchTerm, 
@@ -7,23 +7,33 @@ const Toolbar = ({
   viewMode, 
   onViewModeChange, 
   highlightedNodes,
-  onShowKeyboardHelp
+  onShowKeyboardHelp,
+  isNavExpanded,
+  setIsNavExpanded
 }) => {
   const handleSearch = (term) => {
     setSearchTerm(term);
   };
 
   return (
-    <div className="bg-white shadow-sm border-b px-6 py-3">
-      <div className="flex items-center justify-between">
-        {/* 左侧标题 */}
-        <div className="flex-shrink-0 mr-6">
-          <h1 className="text-xl font-bold text-gray-900">VOICE Knowledge Platform</h1>
+    <div className="bg-white shadow-sm border-b px-4 md:px-6 py-3">
+      <div className="flex flex-col space-y-3 md:flex-row md:space-y-0 md:items-center md:justify-between">
+        {/* 标题区域 + 移动端菜单按钮 */}
+        <div className="flex items-center justify-between">
+          <h1 className="text-lg md:text-xl font-bold text-gray-900">VOICE Knowledge Platform</h1>
+          {/* 移动端汉堡菜单按钮 */}
+          <button 
+            className="md:hidden p-2 hover:bg-gray-100 rounded transition-colors"
+            onClick={() => setIsNavExpanded(!isNavExpanded)}
+            aria-label={`${isNavExpanded ? 'Close' : 'Open'} navigation menu`}
+          >
+            <Menu size={20} className="text-gray-600" />
+          </button>
         </div>
 
-        {/* 中间搜索区域 */}
-        <div className="flex-1 flex justify-center">
-          <div className="flex items-center max-w-md w-full">
+        {/* 搜索区域 - 移动端独占一行 */}
+        <div className="w-full md:flex-1 md:flex md:justify-center">
+          <div className="flex items-center w-full md:max-w-md">
             <Search size={20} className="text-gray-400 mr-3" aria-hidden="true" />
             <input
               type="text"
@@ -47,17 +57,17 @@ const Toolbar = ({
           </div>
         </div>
         
-        {/* 右侧按钮区域 */}
-        <div className="flex items-center space-x-2 flex-shrink-0">
+        {/* 按钮区域 */}
+        <div className="flex items-center space-x-2 justify-center md:justify-end flex-shrink-0">
           <button
             onClick={() => onViewModeChange(viewMode === 'graph' ? 'simple' : 'graph')}
             className="flex items-center px-4 py-2 text-white rounded hover:opacity-90 transition-colors"
             style={{ backgroundColor: '#00837F' }}
-            aria-label={`Switch to ${viewMode === 'graph' ? 'accessible simple table' : 'interactive graph'} view`}
+            aria-label={`Switch to ${viewMode === 'graph' ? 'accessible simple table' : 'interactive map'} view`}
           >
             {viewMode === 'graph' ? <EyeOff size={16} aria-hidden="true" /> : <Eye size={16} aria-hidden="true" />}
             <span className="ml-2 text-base">
-              {viewMode === 'graph' ? 'Simple View' : 'Graph View'}
+              {viewMode === 'graph' ? 'Simple View' : 'Map View'}
             </span>
           </button>
           

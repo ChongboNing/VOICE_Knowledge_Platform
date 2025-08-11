@@ -8,7 +8,7 @@ const KeyboardHelp = ({ show, onClose }) => {
   const cmdKey = isMac ? '⌘' : 'Ctrl';
 
   const shortcuts = [
-    { key: `${cmdKey} + E`, description: 'Toggle between Graph and Table view' },
+    { key: `${cmdKey} + E`, description: 'Toggle between Map and Table view' },
     { key: `${cmdKey} + K`, description: 'Focus search box' },
     { key: `${cmdKey} + B`, description: 'Toggle navigation sidebar' },
     { key: `${cmdKey} + ← →`, description: 'Resize panels (when modal or details open)' },

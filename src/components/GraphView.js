@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
-import { ZoomIn, ZoomOut, Filter } from 'lucide-react';
+import { ZoomIn, ZoomOut, Filter, X } from 'lucide-react';
 import { getNodeColor, getFilteredData } from '../utils/graphUtils';
 
 const GraphView = ({ 
@@ -16,6 +16,8 @@ const GraphView = ({
   const svgRef = useRef();
   const simulationRef = useRef();
   const zoomRef = useRef();
+
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
   // 处理缩放
   const handleZoom = (direction) => {
@@ -99,6 +101,9 @@ const GraphView = ({
 
     zoomRef.current = zoom;
     svg.call(zoom);
+
+    // 直接设置初始缩放为50%，无动画
+    svg.call(zoom.transform, d3.zoomIdentity.scale(0.5));
 
     // 直接设置初始缩放为50%，无动画
     svg.call(zoom.transform, d3.zoomIdentity.scale(0.5));
@@ -259,7 +264,8 @@ const GraphView = ({
       >
       </svg>
  
-      <div className="absolute top-4 left-4 bg-white rounded-lg shadow-lg p-4 max-w-xs">
+      {/* 桌面端过滤器 - 保持原有样式 */}
+      <div className="hidden md:block absolute top-4 left-4 bg-white rounded-lg shadow-lg p-4 max-w-xs">
         <h2 className="font-semibold text-sm mb-3 flex items-center">
           <Filter size={16} className="mr-2 text-gray-500" />
           Filters
@@ -304,6 +310,67 @@ const GraphView = ({
           </div>
         </div>
       </div>
+
+      {/* 移动端过滤器按钮 */}
+      <button
+        className="md:hidden absolute bottom-24 left-4 bg-white rounded-full shadow-lg p-3 border"
+        onClick={() => setIsMobileFilterOpen(true)}
+        aria-label="Open filters"
+      >
+        <Filter size={20} className="text-gray-600" />
+      </button>
+
+      {/* 移动端过滤器全屏模态框 */}
+      {isMobileFilterOpen && (
+        <div className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-end">
+          <div className="bg-white w-full rounded-t-xl p-4 max-h-96 overflow-y-auto">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="font-semibold text-lg flex items-center">
+                <Filter size={20} className="mr-2 text-gray-500" />
+                Filters
+              </h2>
+              <button
+                onClick={() => setIsMobileFilterOpen(false)}
+                className="p-2 hover:bg-gray-100 rounded-full"
+                aria-label="Close filters"
+              >
+                <X size={20} className="text-gray-500" />
+              </button>
+            </div>
+            <div className="space-y-4">
+              {[
+                { type: 'People', color: '#5F5BA3', count: data.nodes?.filter(n => n.type === 'People').length || 0 },
+                { type: 'Institutions', color: '#DC2680', count: data.nodes?.filter(n => n.type === 'Institutions').length || 0 },
+                { type: 'Projects', color: '#EB631A', count: data.nodes?.filter(n => n.type === 'Projects').length || 0 },
+                { type: 'Methods', color: '#148D66', count: data.nodes?.filter(n => n.type === 'Methods').length || 0 }
+              ].map(item => (
+                <div 
+                  key={item.type} 
+                  className="flex items-center cursor-pointer hover:bg-gray-50 p-3 rounded-lg transition-colors"
+                  onClick={() => toggleNodeType(item.type)}
+                >
+                  <div 
+                    className={`w-6 h-6 rounded border-2 flex items-center justify-center mr-4 transition-all`}
+                    style={{ 
+                      backgroundColor: visibleTypes[item.type] ? item.color : 'white',
+                      borderColor: visibleTypes[item.type] ? item.color : '#d1d5db'
+                    }}
+                  >
+                    {visibleTypes[item.type] && (
+                      <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    )}
+                  </div>
+                  <span className={`text-base select-none ${visibleTypes[item.type] ? 'text-gray-900' : 'text-gray-400'}`}>
+                    {item.type} ({item.count})
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="absolute bottom-4 right-4 flex flex-col gap-2">
         <button

@@ -11,10 +11,10 @@ The VOICE Knowledge Platform is a publicly accessible resource designed for arti
 Using a rhizomatic methodology, this platform displays emerging knowledge from the VOICE project as an interconnected ecosystem. The visualization maps relationships between People, Institutions, Projects, and Methods, revealing the holistic and reciprocal nature of creative research networks.
 
 # Core Features
-**Network Graph View**: Navigate an interactive D3.js-powered visualization displaying relationships between People, Institutions, Projects, and Methods. Each connection represents verified collaborations and influences within the VOICE research ecosystem.
+**Network Map View**: Navigate an interactive D3.js-powered visualization displaying relationships between People, Institutions, Projects, and Methods. Each connection represents verified collaborations and influences within the VOICE research ecosystem.
 **Simple Table View**: Access the same data through a streamlined, accessible table format for enhanced readability and data analysis.
 **Advanced Filtering**: Refine your exploration using category-based filters to focus on specific entity types or relationship patterns.` },
-    { id: 'howto', icon: HelpCircle, label: 'How to use it', content: `**Graph View**: Click and drag nodes to explore relationships. Hover over nodes to see connections and discover how different entities collaborate and influence each other.
+    { id: 'howto', icon: HelpCircle, label: 'How to use it', content: `**Map View**: Click and drag nodes to explore relationships. Hover over nodes to see connections and discover how different entities collaborate and influence each other.
 **Simple View**: Toggle to table format using the "Simple View" button for a more traditional data browsing experience.
 **Navigation**: Use sidebar controls to switch between view modes, apply filters, or access detailed entity information. Each interaction reveals new pathways through the evolving landscape of interactive art and research.` },
     { id: 'accessibility', icon: Accessibility, label: 'Accessibility', content: `# Accessibility Features
@@ -25,7 +25,7 @@ This site supports screen readers and keyboard navigation to ensure inclusive ac
 - Use **Tab** to navigate through interactive elements
 - Use **Enter** or **Space** to activate buttons and links
 - Use **Escape** to close modal windows and detail panels
-- Use **Arrow keys** to navigate within the graph view
+- Use **Arrow keys** to navigate within the map view
 - Use **Ctrl/Cmd + ← →** to resize panels when modals or details are open
 
 # Screen Reader Support
@@ -38,7 +38,7 @@ The site includes proper semantic markup and ARIA labels for assistive technolog
 - Alternative text descriptions for visual elements
 
 # Keyboard Shortcuts
-- **Ctrl/Cmd + E**: Switch between Graph and Table view
+- **Ctrl/Cmd + E**: Switch between Map and Table view
 - **Ctrl/Cmd + K**: Focus search box
 - **Ctrl/Cmd + B**: Toggle navigation sidebar
 - **?**: Show keyboard shortcuts help` },
@@ -64,7 +64,28 @@ Once the tool is installed or enabled:
   ];
 
   return (
-    <div className={`bg-white shadow-lg transition-all duration-300 ${isNavExpanded ? 'w-64' : 'w-16'} border-r h-screen relative flex flex-col`}>
+    <>
+      {/* 移动端遮罩层 - 只在移动端显示 */}
+      {isNavExpanded && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          onClick={() => setIsNavExpanded(false)}
+          aria-label="Close navigation menu"
+        />
+      )}
+      
+      <div className={`
+        bg-white shadow-lg transition-all duration-300 border-r h-screen flex flex-col
+        
+        // 移动端样式
+        fixed md:relative
+        w-full md:w-auto
+        z-50 md:z-auto
+        ${isNavExpanded ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0
+        
+        // 桌面端样式（保持原有逻辑）
+        md:${isNavExpanded ? 'w-64' : 'w-16'}
+      `}>
       <div className="p-4">
         <button
           onClick={() => setIsNavExpanded(!isNavExpanded)}
@@ -121,6 +142,7 @@ Once the tool is installed or enabled:
         </div>
       )}
     </div>
+    </>
   );
 };
 

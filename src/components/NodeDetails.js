@@ -94,15 +94,36 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
 
   return (
     <div 
-      className="fixed right-0 top-0 h-full bg-white shadow-2xl border-l border-gray-200 z-50 flex flex-col" 
-      style={{ width: `${width}%` }}
+      className={`
+        fixed bg-white shadow-2xl border-l border-gray-200 z-50 flex flex-col
+        
+        // 桌面端：保持原有样式和功能
+        md:right-0 md:top-0 md:h-full
+        
+        // 移动端：全屏显示
+        inset-0 md:inset-auto
+      `}
+      style={{ width: window.innerWidth > 768 ? `${width}%` : '100%' }}
       role="complementary"
       aria-labelledby="details-title"
       ref={detailsRef}
       tabIndex={-1}
     >
-      {/* 面板头部 */}
-      <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
+      {/* 移动端顶部导航条 */}
+      <div className="flex items-center p-4 border-b bg-gray-50 md:hidden">
+        <button
+          onClick={() => onNodeSelection(null)}
+          className="p-2 hover:bg-gray-200 rounded transition-colors"
+          aria-label="Close details and return to main view"
+        >
+          <span className="text-lg">←</span>
+        </button>
+        <h2 className="flex-1 text-center font-bold text-lg">{selectedNode.name}</h2>
+        <div className="w-10"></div> {/* 占位符保持居中 */}
+      </div>
+      
+      {/* 桌面端面板头部 */}
+      <div className="hidden md:flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
         <div className="flex items-center">
           <div 
             className="w-6 h-6 rounded-full mr-3 flex-shrink-0"

@@ -17,7 +17,18 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, onNodeSelection }) =
         </div>
         
         <div 
-          className="grid grid-cols-4 gap-4 p-4 bg-gray-50 font-semibold text-base text-gray-700 rounded-t-lg border-b"
+          className={`
+            grid gap-4 p-4 bg-gray-50 font-semibold text-base text-gray-700 rounded-t-lg border-b
+            
+            // 移动端：单列
+            grid-cols-1
+            
+            // 平板：双列  
+            sm:grid-cols-2
+            
+            // 桌面端：保持原有四列
+            lg:grid-cols-4
+          `}
           role="row"
         >
           <div className="flex items-center" role="columnheader">
@@ -39,7 +50,18 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, onNodeSelection }) =
         </div>
         
         <div 
-          className="grid grid-cols-4 gap-4 p-4"
+          className={`
+            grid gap-4 p-4
+            
+            // 移动端：单列
+            grid-cols-1
+            
+            // 平板：双列  
+            sm:grid-cols-2
+            
+            // 桌面端：保持原有四列
+            lg:grid-cols-4
+          `}
           role="grid"
           aria-label="Entities organized by type"
         >
