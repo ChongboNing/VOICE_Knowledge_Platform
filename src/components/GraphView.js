@@ -266,7 +266,7 @@ const GraphView = ({
             { type: 'People', color: '#5F5BA3', count: data.nodes?.filter(n => n.type === 'People').length || 0 },
             { type: 'Institutions', color: '#DC2680', count: data.nodes?.filter(n => n.type === 'Institutions').length || 0 },
             { type: 'Projects', color: '#EB631A', count: data.nodes?.filter(n => n.type === 'Projects').length || 0 },
-            { type: 'Methods', color: '#F8AE15', count: data.nodes?.filter(n => n.type === 'Methods').length || 0 }
+            { type: 'Methods', color: '#148D66', count: data.nodes?.filter(n => n.type === 'Methods').length || 0 }
           ].map(item => (
             <div 
               key={item.type} 

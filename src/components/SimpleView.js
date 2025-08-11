@@ -33,7 +33,7 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, onNodeSelection }) =
             Projects ({data.nodes.filter(n => n.type === 'Projects' && visibleTypes.Projects).length})
           </div>
           <div className="flex items-center" role="columnheader">
-            <div className="w-4 h-4 rounded mr-2" style={{backgroundColor: '#F8AE15'}} aria-hidden="true"></div>
+            <div className="w-4 h-4 rounded mr-2" style={{backgroundColor: '#148D66'}} aria-hidden="true"></div>
             Methods ({data.nodes.filter(n => n.type === 'Methods' && visibleTypes.Methods).length})
           </div>
         </div>
@@ -50,7 +50,7 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, onNodeSelection }) =
               <button
                 key={node.id}
                 onClick={() => onNodeSelection(node)}
-                className={`w-full text-left p-3 rounded border transition-all hover:shadow-md focus:ring-2 focus:ring-blue-500 focus:outline-none ${
+                className={`w-full text-left p-3 rounded border transition-all hover:shadow-md focus-ring-brand ${
                   highlightedNodes.has(node.id) ? 'shadow-md' : 'hover:bg-gray-50'
                 }`}
                 style={{
@@ -77,7 +77,7 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, onNodeSelection }) =
               <button
                 key={node.id}
                 onClick={() => onNodeSelection(node)}
-                className={`w-full text-left p-3 rounded border transition-all hover:shadow-md focus:ring-2 focus:ring-blue-500 focus:outline-none ${
+                className={`w-full text-left p-3 rounded border transition-all hover:shadow-md focus-ring-brand ${
                   highlightedNodes.has(node.id) ? 'shadow-md' : 'hover:bg-gray-50'
                 }`}
                 style={{
@@ -109,7 +109,7 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, onNodeSelection }) =
               <button
                 key={node.id}
                 onClick={() => onNodeSelection(node)}
-                className={`w-full text-left p-3 rounded border transition-all hover:shadow-md focus:ring-2 focus:ring-blue-500 focus:outline-none ${
+                className={`w-full text-left p-3 rounded border transition-all hover:shadow-md focus-ring-brand ${
                   highlightedNodes.has(node.id) ? 'shadow-md' : 'hover:bg-gray-50'
                 }`}
                 style={{
@@ -135,19 +135,19 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, onNodeSelection }) =
               <button
                 key={node.id}
                 onClick={() => onNodeSelection(node)}
-                className={`w-full text-left p-3 rounded border transition-all hover:shadow-md focus:ring-2 focus:ring-blue-500 focus:outline-none ${
+                className={`w-full text-left p-3 rounded border transition-all hover:shadow-md focus-ring-brand ${
                   highlightedNodes.has(node.id) ? 'shadow-md' : 'hover:bg-gray-50'
                 }`}
                 style={{
-                  backgroundColor: highlightedNodes.has(node.id) ? '#F6FFFF' : '#FFFBF2',
-                  borderColor: highlightedNodes.has(node.id) ? '#00837F' : 'rgba(248, 174, 21, 0.5)'
+                  backgroundColor: highlightedNodes.has(node.id) ? '#F6FFFF' : '#EEF9F6',
+                  borderColor: highlightedNodes.has(node.id) ? '#00837F' : 'rgba(20, 141, 102, 0.5)'
                 }}
                 aria-label={`View details for ${node.name}, method ${index + 1} of ${data.nodes.filter(n => n.type === 'Methods' && visibleTypes.Methods).length}`}
                 {...(node.description && { 'aria-describedby': `node-${node.id}-summary` })}
               >
                 <div className="font-medium text-base text-gray-900">{node.name}</div>
                 {node.category && (
-                  <div className="text-sm text-white mt-1 inline-block px-2 py-1 rounded" style={{ backgroundColor: '#F8AE15' }}>
+                  <div className="text-sm text-white mt-1 inline-block px-2 py-1 rounded" style={{ backgroundColor: '#148D66' }}>
                     {node.category}
                   </div>
                 )}

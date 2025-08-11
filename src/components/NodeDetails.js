@@ -265,7 +265,7 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
               <div>
                 <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Category</h3>
                 {selectedNode.category && selectedNode.category !== '/' ? (
-                  <span className="inline-block px-4 py-2 text-base rounded-full font-medium" style={{ backgroundColor: '#FFFBF2', color: '#F8AE15' }}>
+                  <span className="inline-block px-4 py-2 text-base rounded-full font-medium" style={{ backgroundColor: '#EEF9F6', color: '#148D66' }}>
                     {selectedNode.category}
                   </span>
                 ) : (
@@ -305,9 +305,9 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center text-base p-4 rounded-lg border font-medium transition-colors hover:opacity-90"
                     style={{ 
-                      backgroundColor: '#FFFBF2', 
-                      borderColor: '#F8AE15',
-                      color: '#F8AE15'
+                      backgroundColor: '#EEF9F6', 
+                      borderColor: '#148D66',
+                      color: '#148D66'
                     }}
                     aria-label={`View method publication (opens in new tab)`}
                   >
