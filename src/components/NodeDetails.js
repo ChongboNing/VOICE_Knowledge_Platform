@@ -8,6 +8,78 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
   const detailsRef = useRef(null);
   const previousFocusRef = useRef(null);
 
+  // 将文本中的URL转换为可点击链接的函数
+  const renderTextWithLinks = (text) => {
+    if (!text) return null;
+    
+    // URL正则表达式
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    const parts = text.split(urlRegex);
+    
+    return parts.map((part, index) => {
+      if (part.match(urlRegex)) {
+        return (
+          <a 
+            key={index}
+            href={part}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:opacity-80 underline break-all"
+            style={{ color: '#148D66' }}
+          >
+            {part}
+          </a>
+        );
+      }
+      return part;
+    });
+  };
+
+  // 处理带冒号的文本，冒号前加粗
+  const renderFormattedText = (text, fieldType) => {
+    if (!text) return null;
+    
+    // 处理步骤列表（数字开头的项目）- 冒号前加粗
+    if (fieldType === 'steps') {
+      const items = text.split(/(?=\d+\.)/);
+      return items.map((item, index) => {
+        if (item.trim()) {
+          const colonIndex = item.indexOf(':');
+          if (colonIndex > -1) {
+            const title = item.substring(0, colonIndex + 1);
+            const description = item.substring(colonIndex + 1);
+            return (
+              <div key={index} className="mb-4">
+                <span className="font-bold">{title}</span>
+                <span> {renderTextWithLinks(description)}</span>
+              </div>
+            );
+          }
+          return (
+            <div key={index} className="mb-4">
+              {renderTextWithLinks(item)}
+            </div>
+          );
+        }
+        return null;
+      });
+    }
+    
+    // 处理挑战、条件等列表（每行前加bullet point）
+    if (fieldType === 'challenges' || fieldType === 'conditions') {
+      const paragraphs = text.split('\n').filter(p => p.trim());
+      return paragraphs.map((para, index) => (
+        <div key={index} className="mb-3 flex items-start">
+          <span className="text-green-600 mr-2 mt-1">•</span>
+          <span className="flex-1">{renderTextWithLinks(para.trim())}</span>
+        </div>
+      ));
+    }
+    
+    // 默认处理
+    return renderTextWithLinks(text);
+  };
+
   // 焦点管理effect
   useEffect(() => {
     if (selectedNode) {
@@ -155,12 +227,22 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
           {selectedNode.type === 'People' && (
             <>
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Biography</h3>
-                <p className="text-base text-gray-700 leading-relaxed">{selectedNode.bio || '/'}</p>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Bio</h3>
+                {Array.isArray(selectedNode.bio) ? (
+                  <div className="space-y-4">
+                    {selectedNode.bio.map((paragraph, index) => (
+                      <p key={index} className="text-base text-gray-700 leading-relaxed">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-base text-gray-700 leading-relaxed">{selectedNode.bio || '/'}</p>
+                )}
               </div>
               
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Institutional Connections</h3>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Connections to institution</h3>
                 <div className="text-base p-4 rounded-lg border" style={{ backgroundColor: '#F4F3F8', borderColor: '#5F5BA3', color: '#5F5BA3' }}>
                   {selectedNode.connections || '/'}
                 </div>
@@ -168,25 +250,64 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
               
               <div>
                 <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Website</h3>
-                {selectedNode.website ? (
-                  <a
-                    href={selectedNode.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-base p-4 rounded-lg border font-medium transition-colors hover:opacity-90"
-                    style={{ 
-                      backgroundColor: '#F4F3F8', 
-                      borderColor: '#5F5BA3',
-                      color: '#5F5BA3'
-                    }}
-                    aria-label={`Visit ${selectedNode.name}'s website (opens in new tab)`}
-                  >
-                    Visit Website <ExternalLink size={16} className="ml-2" />
-                  </a>
-                ) : (
-                  <div className="text-base text-gray-700">/</div>
-                )}
+                {(() => {
+                  // 统一转换为数组处理
+                  const websiteArray = Array.isArray(selectedNode.websites) 
+                    ? selectedNode.websites 
+                    : selectedNode.website && selectedNode.website !== '/' ? [selectedNode.website] : [];
+                  
+                  return websiteArray.length > 0 ? (
+                    <div className="space-y-2">
+                      {websiteArray.map((website, index) => (
+                        <a
+                          key={index}
+                          href={website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-base p-3 rounded-lg border font-medium transition-colors hover:opacity-90 w-full"
+                          style={{ 
+                            backgroundColor: '#F4F3F8', 
+                            borderColor: '#5F5BA3',
+                            color: '#5F5BA3'
+                          }}
+                          aria-label={`Visit website ${index + 1} (opens in new tab)`}
+                        >
+                          <span className="flex-1 text-left truncate">{website}</span>
+                          <ExternalLink size={16} className="ml-2 flex-shrink-0" />
+                        </a>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-base text-gray-700">/</div>
+                  );
+                })()}
               </div>
+
+              {selectedNode.social && selectedNode.social.length > 0 && (
+                <div>
+                  <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Social</h3>
+                  <div className="space-y-2">
+                    {selectedNode.social.map((socialLink, index) => (
+                      <a
+                        key={index}
+                        href={socialLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-base p-3 rounded-lg border font-medium transition-colors hover:opacity-90 w-full"
+                        style={{ 
+                          backgroundColor: '#F4F3F8', 
+                          borderColor: '#5F5BA3',
+                          color: '#5F5BA3'
+                        }}
+                        aria-label={`Visit social media profile ${index + 1} (opens in new tab)`}
+                      >
+                        <span className="flex-1 text-left truncate">{socialLink}</span>
+                        <ExternalLink size={16} className="ml-2 flex-shrink-0" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
             </>
           )}
           
@@ -194,13 +315,23 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
           {selectedNode.type === 'Institutions' && (
             <>
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Description</h3>
-                <p className="text-base text-gray-700 leading-relaxed">{selectedNode.bio || '/'}</p>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Bio</h3>
+                {Array.isArray(selectedNode.bio) ? (
+                  <div className="space-y-4">
+                    {selectedNode.bio.map((paragraph, index) => (
+                      <p key={index} className="text-base text-gray-700 leading-relaxed">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-base text-gray-700 leading-relaxed">{selectedNode.bio || '/'}</p>
+                )}
               </div>
               
               <div>
                 <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Website</h3>
-                {selectedNode.website ? (
+                {selectedNode.website && selectedNode.website !== '/' ? (
                   <a
                     href={selectedNode.website}
                     target="_blank"
@@ -226,11 +357,36 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
             <>
               <div>
                 <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Description</h3>
-                <p className="text-base text-gray-700 leading-relaxed">{selectedNode.description || '/'}</p>
+                {Array.isArray(selectedNode.description) ? (
+                  <div className="space-y-4">
+                    {selectedNode.description.map((paragraph, index) => (
+                      <p key={index} className="text-base text-gray-700 leading-relaxed">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-base text-gray-700 leading-relaxed">{selectedNode.description || '/'}</p>
+                )}
               </div>
               
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Budget</h3>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Who was involved</h3>
+                <p className="text-base text-gray-700 leading-relaxed field-content">{selectedNode.who_involved || '/'}</p>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Legacy / Impacts</h3>
+                <p className="text-base text-gray-700 leading-relaxed field-content">{selectedNode.legacy_impacts || '/'}</p>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Challenges the project faced</h3>
+                <p className="text-base text-gray-700 leading-relaxed field-content">{selectedNode.challenges || '/'}</p>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">What kind of budget was it?</h3>
                 {selectedNode.budget ? (
                   <span className="inline-block px-4 py-2 text-base rounded-full font-medium" style={{ backgroundColor: '#FFFAF3', color: '#EB631A' }}>
                     {selectedNode.budget}
@@ -241,37 +397,56 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
               </div>
               
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Methods</h3>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">What methods were used?</h3>
                 <p className="text-base text-gray-700 leading-relaxed">{selectedNode.methods || '/'}</p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Involved Institutions</h3>
-                <p className="text-base text-gray-700 leading-relaxed">
-                  {selectedNode.involved_institutions || '/'}
-                </p>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Website / Links to videos</h3>
+                {(() => {
+                  // 统一转换为数组处理
+                  const websiteArray = Array.isArray(selectedNode.website) 
+                    ? selectedNode.website 
+                    : selectedNode.website && selectedNode.website !== '/' ? [selectedNode.website] : [];
+                  
+                  return websiteArray.length > 0 ? (
+                    <div className="space-y-2">
+                      {websiteArray.map((link, index) => {
+                        // 支持两种格式：带标题的对象 或 纯URL字符串
+                        const url = typeof link === 'string' ? link : link.url;
+                        const title = typeof link === 'string' ? link : link.title;
+                        
+                        return (
+                          <a
+                            key={index}
+                            href={url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center text-base p-3 rounded-lg border font-medium transition-colors hover:opacity-90 w-full"
+                            style={{ 
+                              backgroundColor: '#FFFAF3', 
+                              borderColor: '#EB631A',
+                              color: '#EB631A'
+                            }}
+                            aria-label={`${title} (opens in new tab)`}
+                          >
+                            <span className="flex-1 text-left truncate">{title}</span>
+                            <ExternalLink size={16} className="ml-2 flex-shrink-0" />
+                          </a>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className="text-base text-gray-700">/</div>
+                  );
+                })()}
               </div>
               
               <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Website</h3>
-                {selectedNode.website ? (
-                  <a
-                    href={selectedNode.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-base p-4 rounded-lg border font-medium transition-colors hover:opacity-90"
-                    style={{ 
-                      backgroundColor: '#FFFAF3', 
-                      borderColor: '#EB631A',
-                      color: '#EB631A'
-                    }}
-                    aria-label={`Visit project website (opens in new tab)`}
-                  >
-                    Visit Website <ExternalLink size={16} className="ml-2" />
-                  </a>
-                ) : (
-                  <div className="text-base text-gray-700">/</div>
-                )}
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Who was involved (Institutions)</h3>
+                <p className="text-base text-gray-700 leading-relaxed field-content">
+                  {selectedNode.involved_institutions || '/'}
+                </p>
               </div>
             </>
           )}
@@ -280,7 +455,83 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
             <>
               <div>
                 <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Description</h3>
-                <p className="text-base text-gray-700 leading-relaxed">{selectedNode.description || '/'}</p>
+                {Array.isArray(selectedNode.description) ? (
+                  <div className="space-y-4">
+                    {selectedNode.description.map((paragraph, index) => (
+                      <p key={index} className="text-base text-gray-700 leading-relaxed">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-base text-gray-700 leading-relaxed">{selectedNode.description || '/'}</p>
+                )}
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Step-by-step guide</h3>
+                {selectedNode.steps ? (
+                  <div className="text-base text-gray-700 field-content bg-gray-50 p-4 rounded-lg border">
+                    {renderFormattedText(selectedNode.steps, 'steps')}
+                  </div>
+                ) : (
+                  <div className="text-base text-gray-700">/</div>
+                )}
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Challenges of this method</h3>
+                {selectedNode.challenges && selectedNode.challenges !== '/' ? (
+                  <div className="text-base text-gray-700 leading-relaxed field-content">
+                    {renderFormattedText(selectedNode.challenges, 'challenges')}
+                  </div>
+                ) : (
+                  <div className="text-base text-gray-700">/</div>
+                )}
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">What conditions / materials are needed?</h3>
+                {selectedNode.conditions && selectedNode.conditions !== '/' ? (
+                  <div className="text-base text-gray-700 leading-relaxed field-content">
+                    {renderFormattedText(selectedNode.conditions, 'conditions')}
+                  </div>
+                ) : (
+                  <div className="text-base text-gray-700">/</div>
+                )}
+              </div>
+
+              <div>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Links to reports / publications</h3>
+                {selectedNode.publications && selectedNode.publications !== '/' ? (
+                  Array.isArray(selectedNode.publications) ? (
+                    <div className="space-y-3">
+                      {selectedNode.publications.map((pub, index) => (
+                        <div key={index} className="text-base text-gray-700 leading-relaxed field-content flex items-start">
+                          <span className="text-green-600 mr-2 mt-1">•</span>
+                          <span className="flex-1">{renderTextWithLinks(pub)}</span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-base text-gray-700 leading-relaxed field-content">
+                      {renderFormattedText(selectedNode.publications, 'conditions')}
+                    </div>
+                  )
+                ) : (
+                  <div className="text-base text-gray-700">/</div>
+                )}
+              </div>
+
+              <div>
+                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Downloadable Templates you might need</h3>
+                {selectedNode.templates && selectedNode.templates !== '/' ? (
+                  <div className="text-base text-gray-700 leading-relaxed field-content">
+                    {renderFormattedText(selectedNode.templates, 'conditions')}
+                  </div>
+                ) : (
+                  <div className="text-base text-gray-700">/</div>
+                )}
               </div>
               
               <div>
@@ -289,51 +540,6 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
                   <span className="inline-block px-4 py-2 text-base rounded-full font-medium" style={{ backgroundColor: '#EEF9F6', color: '#148D66' }}>
                     {selectedNode.category}
                   </span>
-                ) : (
-                  <div className="text-base text-gray-700">/</div>
-                )}
-              </div>
-              
-              <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Steps</h3>
-                {selectedNode.steps ? (
-                  <div className="text-base text-gray-700 whitespace-pre-line bg-gray-50 p-4 rounded-lg border">{selectedNode.steps}</div>
-                ) : (
-                  <div className="text-base text-gray-700">/</div>
-                )}
-              </div>
-              
-              <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">What challenges might you encounter?</h3>
-                <p className="text-base text-gray-700 leading-relaxed">
-                  {selectedNode.challenges || '/'}
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">What conditions / materials are needed?</h3>
-                <p className="text-base text-gray-700 leading-relaxed">
-                  {selectedNode.conditions || '/'}
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Links</h3>
-                {selectedNode.links ? (
-                  <a
-                    href={selectedNode.links}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-base p-4 rounded-lg border font-medium transition-colors hover:opacity-90"
-                    style={{ 
-                      backgroundColor: '#EEF9F6', 
-                      borderColor: '#148D66',
-                      color: '#148D66'
-                    }}
-                    aria-label={`View method publication (opens in new tab)`}
-                  >
-                    View Publication <ExternalLink size={16} className="ml-2" />
-                  </a>
                 ) : (
                   <div className="text-base text-gray-700">/</div>
                 )}

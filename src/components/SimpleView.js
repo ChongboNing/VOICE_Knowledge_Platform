@@ -86,7 +86,12 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, onNodeSelection }) =
                 {node.connections && (
                   <div id={`node-${node.id}-summary`} className="text-sm mt-1 line-clamp-2" style={{ color: '#5F5BA3' }}>{node.connections}</div>
                 )}
-                <div className="text-sm text-gray-400 mt-1 truncate">{node.bio?.substring(0, 80)}...</div>
+                <div className="text-sm text-gray-400 mt-1 truncate">
+                  {Array.isArray(node.bio) 
+                    ? node.bio[0]?.substring(0, 80) + '...'
+                    : node.bio?.substring(0, 80) + '...'
+                  }
+                </div>
               </button>
             ))}
             </div>
@@ -111,7 +116,12 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, onNodeSelection }) =
               >
                 <div className="font-medium text-base text-gray-900">{node.name}</div>
                 {node.bio && (
-                  <div id={`node-${node.id}-summary`} className="text-sm text-gray-400 mt-1 truncate">{node.bio?.substring(0, 100)}...</div>
+                  <div id={`node-${node.id}-summary`} className="text-sm text-gray-400 mt-1 truncate">
+                    {Array.isArray(node.bio) 
+                      ? node.bio[0]?.substring(0, 100) + '...'
+                      : node.bio?.substring(0, 100) + '...'
+                    }
+                  </div>
                 )}
                 {node.website && (
                   <div className="text-sm mt-1 flex items-center" style={{ color: '#DC2680' }}>
@@ -143,7 +153,12 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, onNodeSelection }) =
               >
                 <div className="font-medium text-base text-gray-900">{node.name}</div>
                 {node.description && (
-                  <div id={`node-${node.id}-summary`} className="text-sm text-gray-400 mt-1 line-clamp-2">{node.description?.substring(0, 100)}...</div>
+                  <div id={`node-${node.id}-summary`} className="text-sm text-gray-400 mt-1 line-clamp-2">
+                    {Array.isArray(node.description) 
+                      ? node.description[0]?.substring(0, 100) + '...'
+                      : node.description?.substring(0, 100) + '...'
+                    }
+                  </div>
                 )}
               </button>
             ))}
@@ -174,7 +189,12 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, onNodeSelection }) =
                   </div>
                 )}
                 {node.description && (
-                  <div id={`node-${node.id}-summary`} className="text-sm text-gray-400 mt-2 line-clamp-2">{node.description?.substring(0, 100)}...</div>
+                  <div id={`node-${node.id}-summary`} className="text-sm text-gray-400 mt-2 line-clamp-2">
+                    {Array.isArray(node.description) 
+                      ? node.description[0]?.substring(0, 100) + '...'
+                      : node.description?.substring(0, 100) + '...'
+                    }
+                  </div>
                 )}
               </button>
             ))}

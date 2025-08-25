@@ -8,6 +8,11 @@
   outline: none !important;
 }
 
+/* 节点详情字段内容 - 支持换行 */
+.field-content {
+  white-space: pre-line;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
