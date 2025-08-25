@@ -32,17 +32,11 @@ const Modal = ({ showModal, setShowModal }) => {
             e.preventDefault();
             const newWidth = Math.max(20, width - 5);
             setWidth(newWidth);
-            // 添加屏幕阅读器反馈
-            const announcement = `Panel width decreased to ${Math.round(newWidth)}%`;
-            console.log(announcement); // 临时日志，可以连接到aria-live区域
           }
           if (e.key === 'ArrowRight') {
             e.preventDefault();
             const newWidth = Math.min(80, width + 5);
             setWidth(newWidth);
-            // 添加屏幕阅读器反馈
-            const announcement = `Panel width increased to ${Math.round(newWidth)}%`;
-            console.log(announcement); // 临时日志，可以连接到aria-live区域
           }
         }
       };

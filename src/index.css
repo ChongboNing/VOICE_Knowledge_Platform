@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 自定义主题色焦点环 */
+/* Custom brand focus ring */
 .focus-ring-brand:focus {
   box-shadow: 0 0 0 2px rgba(0, 131, 127, 1) !important;
   outline: none !important;
 }
 
-/* 节点详情字段内容 - 支持换行 */
+/* Node details field content - supports line breaks */
 .field-content {
   white-space: pre-line;
 }
@@ -134,20 +134,20 @@ a:focus-visible {
     transition: none !important;
   }
   
-  /* 禁用 SVG 动画 */
+  /* Disable SVG animations */
   svg * {
     transition: none !important;
     animation: none !important;
   }
 }
 
-/* 提升颜色对比度以满足WCAG 2.2 AA标准 */
+/* Improve color contrast to meet WCAG 2.2 AA standards */
 .text-gray-400 {
-  color: #58606B !important; /* 优化后的灰色，对比度6.36:1 */
+  color: #58606B !important; /* Optimized gray, contrast ratio 6.36:1 */
 }
 
 .border-gray-200 {
-  border-color: #E5E7EB !important; /* 更浅的分隔线颜色 */
+  border-color: #E5E7EB !important; /* Lighter divider color */
 }
 
 /* 高对比度支持 */
@@ -165,14 +165,14 @@ a:focus-visible {
   }
   
   .text-gray-400 {
-    color: #000000 !important; /* 高对比度模式下使用黑色 */
+    color: #000000 !important; /* Use black in high contrast mode */
   }
   
   .border-gray-200 {
     border-color: #000000 !important;
   }
   
-  /* 高对比度下的SVG优化 */
+  /* High contrast SVG optimization */
   svg text {
     stroke: none;
     fill: #000000;

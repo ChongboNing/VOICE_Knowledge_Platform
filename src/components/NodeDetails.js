@@ -66,11 +66,17 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
     }
     
     // 处理挑战、条件等列表（每行前加bullet point）
-    if (fieldType === 'challenges' || fieldType === 'conditions') {
+    if (fieldType === 'challenges' || fieldType === 'conditions' || fieldType === 'legacy' || fieldType === 'project_challenges') {
       const paragraphs = text.split('\n').filter(p => p.trim());
+      
+      // 根据字段类型选择颜色
+      const bulletColor = (fieldType === 'legacy' || fieldType === 'project_challenges') 
+        ? 'text-orange-600'  // Projects用橙色
+        : 'text-green-600';  // Methods用绿色
+        
       return paragraphs.map((para, index) => (
         <div key={index} className="mb-3 flex items-start">
-          <span className="text-green-600 mr-2 mt-1">•</span>
+          <span className={`${bulletColor} mr-2 mt-1`}>•</span>
           <span className="flex-1">{renderTextWithLinks(para.trim())}</span>
         </div>
       ));
@@ -105,17 +111,11 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
             e.preventDefault();
             const newWidth = Math.min(80, width + 5);
             setWidth(newWidth);
-            // 添加屏幕阅读器反馈
-            const announcement = `Details panel width increased to ${Math.round(newWidth)}%`;
-            console.log(announcement); // 临时日志，可以连接到aria-live区域
           }
           if (e.key === 'ArrowRight') {
             e.preventDefault();
             const newWidth = Math.max(20, width - 5);
             setWidth(newWidth);
-            // 添加屏幕阅读器反馈
-            const announcement = `Details panel width decreased to ${Math.round(newWidth)}%`;
-            console.log(announcement); // 临时日志，可以连接到aria-live区域
           }
         }
       };
@@ -439,12 +439,22 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
               
               <div>
                 <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Legacy / Impacts</h3>
-                <p className="text-base text-gray-700 leading-relaxed field-content">{selectedNode.legacy_impacts || '/'}</p>
+                <div className="text-base text-gray-700 leading-relaxed field-content">
+                  {selectedNode.legacy_impacts && selectedNode.legacy_impacts !== '/' ? 
+                    renderFormattedText(selectedNode.legacy_impacts, 'legacy') : 
+                    '/'
+                  }
+                </div>
               </div>
               
               <div>
                 <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Challenges the project faced</h3>
-                <p className="text-base text-gray-700 leading-relaxed field-content">{selectedNode.challenges || '/'}</p>
+                <div className="text-base text-gray-700 leading-relaxed field-content">
+                  {selectedNode.challenges && selectedNode.challenges !== '/' ? 
+                    renderFormattedText(selectedNode.challenges, 'project_challenges') : 
+                    '/'
+                  }
+                </div>
               </div>
               
               <div>

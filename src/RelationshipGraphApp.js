@@ -9,7 +9,7 @@ import KeyboardHelp from './components/KeyboardHelp';
 import { searchNodes } from './utils/graphUtils';
 
 const RelationshipGraphApp = () => {
-  // 状态管理
+  // State management
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -29,17 +29,17 @@ const RelationshipGraphApp = () => {
     Methods: true
   });
 
-  // 处理节点选择
+  // Handle node selection
   const handleNodeSelection = useCallback((node) => {
     setSelectedNode(node);
   }, []);
 
-  // 处理视图模式切换
+  // Handle view mode change
   const handleViewModeChange = useCallback((mode) => {
     setViewMode(mode);
   }, []);
 
-  // 加载数据
+  // Load data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -59,12 +59,12 @@ const RelationshipGraphApp = () => {
     fetchData();
   }, []);
 
-  // 设置页面标题
+  // Set page title
   useEffect(() => {
     document.title = 'VOICE Knowledge Platform';
   }, []);
 
-  // 全局键盘快捷键
+  // Global keyboard shortcuts
   useEffect(() => {
     const handleGlobalKeydown = (e) => {
       // Cmd/Ctrl + E: 切换视图模式 (E = Exchange views, 避免Shift组合)
@@ -105,7 +105,7 @@ const RelationshipGraphApp = () => {
     };
   }, [viewMode, handleViewModeChange, isNavExpanded, setAnnouncements]);
 
-  // 处理搜索
+  // Handle search
   useEffect(() => {
     if (data) {
       const matches = searchNodes(data, searchTerm);
@@ -113,32 +113,32 @@ const RelationshipGraphApp = () => {
     }
   }, [searchTerm, data]);
 
-  // 切换节点类型显示
+  // Toggle node type visibility
   const toggleNodeType = (type) => {
     setVisibleTypes(prev => {
       const newState = {
         ...prev,
         [type]: !prev[type]
       };
-      // 添加状态通知
+      // Add status announcement
       setAnnouncements(`${type} nodes ${newState[type] ? 'shown' : 'hidden'}`);
       return newState;
     });
   };
 
-  // 加载状态
+  // Loading state
   if (loading) {
     return <div className="h-screen flex items-center justify-center bg-gray-50">Loading data...</div>;
   }
 
-  // 错误状态
+  // Error state
   if (error) {
     return <div className="h-screen flex items-center justify-center bg-gray-50 text-red-500">Error: {error}</div>;
   }
 
   return (
     <div className="h-screen bg-gray-50 flex">
-      {/* 跳过导航链接 - 仅在获得焦点时可见 */}
+      {/* Skip navigation link - only visible when focused */}
       <a 
         href="#main-content" 
         className="skip-link"
@@ -154,7 +154,7 @@ const RelationshipGraphApp = () => {
         Skip to main content
       </a>
 
-      {/* 左侧导航栏 */}
+      {/* Left navigation panel */}
       <aside role="navigation" aria-label="Main navigation">
         <Navigation 
           isNavExpanded={isNavExpanded} 
@@ -164,9 +164,9 @@ const RelationshipGraphApp = () => {
         />
       </aside>
 
-      {/* 主内容区域 */}
+      {/* Main content area */}
       <main className="flex-1 flex flex-col" role="main">
-        {/* 顶部工具栏 */}
+        {/* Top toolbar */}
         <header role="banner">
           <Toolbar 
             searchTerm={searchTerm}
@@ -180,7 +180,7 @@ const RelationshipGraphApp = () => {
           />
         </header>
 
-        {/* 主视图区域 */}
+        {/* Main view area */}
         <section id="main-content" className="flex-1 relative bg-white" tabIndex={-1} aria-label="Data visualization content">
           {viewMode === 'graph' ? (
             <GraphView 
@@ -204,26 +204,26 @@ const RelationshipGraphApp = () => {
         </section>
       </main>
 
-      {/* 节点详情面板 */}
+      {/* Node details panel */}
       <NodeDetails 
         selectedNode={selectedNode} 
         onNodeSelection={handleNodeSelection}
         data={data}
       />
 
-      {/* 导航栏模态框 */}
+      {/* Navigation modal */}
       <Modal 
         showModal={showModal} 
         setShowModal={setShowModal} 
       />
 
-      {/* 键盘快捷键帮助 */}
+      {/* Keyboard shortcuts help */}
       <KeyboardHelp 
         show={showKeyboardHelp} 
         onClose={() => setShowKeyboardHelp(false)} 
       />
 
-      {/* 屏幕阅读器通知区域 */}
+      {/* Screen reader announcement area */}
       <div
         role="status"
         aria-live="polite"

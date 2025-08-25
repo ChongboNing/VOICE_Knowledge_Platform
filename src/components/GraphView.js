@@ -102,10 +102,7 @@ const GraphView = ({
     zoomRef.current = zoom;
     svg.call(zoom);
 
-    // 直接设置初始缩放为50%，无动画
-    svg.call(zoom.transform, d3.zoomIdentity.scale(0.5));
-
-    // 直接设置初始缩放为50%，无动画
+    // Set initial zoom to 50% without animation
     svg.call(zoom.transform, d3.zoomIdentity.scale(0.5));
 
     // 确保连线数据中的source和target是对象引用
@@ -128,7 +125,7 @@ const GraphView = ({
         }
       }))
       .force('charge', d3.forceManyBody().strength(-300))
-      .force('center', d3.forceCenter(width / 2, height / 2))
+      .force('center', d3.forceCenter(width / 2 + 120, height / 2))
       .force('collision', d3.forceCollide().radius(140));
 
     simulationRef.current = simulation;
