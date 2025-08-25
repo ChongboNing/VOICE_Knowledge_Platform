@@ -331,25 +331,87 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
               
               <div>
                 <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Website</h3>
-                {selectedNode.website && selectedNode.website !== '/' ? (
-                  <a
-                    href={selectedNode.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-base p-4 rounded-lg border font-medium transition-colors hover:opacity-90"
-                    style={{ 
-                      backgroundColor: '#FFF6FB', 
-                      borderColor: '#DC2680',
-                      color: '#DC2680'
-                    }}
-                    aria-label={`Visit institution website (opens in new tab)`}
-                  >
-                    Visit Website <ExternalLink size={16} className="ml-2" />
-                  </a>
-                ) : (
-                  <div className="text-base text-gray-700">/</div>
-                )}
+                {(() => {
+                  // 支持 websites 数组或单个 website
+                  const websites = selectedNode.websites || (selectedNode.website ? [selectedNode.website] : []);
+                  
+                  if (websites.length > 0 && websites.some(site => site !== '/')) {
+                    const validWebsites = websites.filter(site => site !== '/');
+                    
+                    if (validWebsites.length === 1) {
+                      // 单个网站，使用原样式
+                      return (
+                        <a
+                          href={validWebsites[0]}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-base p-4 rounded-lg border font-medium transition-colors hover:opacity-90"
+                          style={{ 
+                            backgroundColor: '#FFF6FB', 
+                            borderColor: '#DC2680',
+                            color: '#DC2680'
+                          }}
+                          aria-label={`Visit institution website (opens in new tab)`}
+                        >
+                          Visit Website <ExternalLink size={16} className="ml-2" />
+                        </a>
+                      );
+                    } else {
+                      // 多个网站，使用列表样式
+                      return (
+                        <div className="space-y-2">
+                          {validWebsites.map((website, index) => (
+                            <a
+                              key={index}
+                              href={website}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center text-base p-3 rounded-lg border font-medium transition-colors hover:opacity-90 w-full"
+                              style={{ 
+                                backgroundColor: '#FFF6FB', 
+                                borderColor: '#DC2680',
+                                color: '#DC2680'
+                              }}
+                              aria-label={`Visit website ${index + 1} (opens in new tab)`}
+                            >
+                              <span className="flex-1 text-left truncate">{website}</span>
+                              <ExternalLink size={16} className="ml-2 flex-shrink-0" />
+                            </a>
+                          ))}
+                        </div>
+                      );
+                    }
+                  } else {
+                    return <div className="text-base text-gray-700">/</div>;
+                  }
+                })()}
               </div>
+              
+              {selectedNode.social && selectedNode.social.length > 0 && (
+                <div>
+                  <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Social</h3>
+                  <div className="space-y-2">
+                    {selectedNode.social.map((socialLink, index) => (
+                      <a
+                        key={index}
+                        href={socialLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-base p-3 rounded-lg border font-medium transition-colors hover:opacity-90 w-full"
+                        style={{ 
+                          backgroundColor: '#FFF6FB', 
+                          borderColor: '#DC2680',
+                          color: '#DC2680'
+                        }}
+                        aria-label={`Visit social media profile ${index + 1} (opens in new tab)`}
+                      >
+                        <span className="flex-1 text-left truncate">{socialLink}</span>
+                        <ExternalLink size={16} className="ml-2 flex-shrink-0" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
             </>
           )}
 

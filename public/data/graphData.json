@@ -92,6 +92,85 @@
       "connections": "RCA; Futherfield"
     },
     {
+      "id": "P006",
+      "name": "Camille Baker",
+      "type": "People",
+      "bio": [
+        "Camille is Professor of Interactive and Immersive Art at the Royal Collage of Art in London UK. She is an interdisciplinary digital artist, curator and researcher in Immersive Experiences, Interactive Art, XR design, interactive art, participatory performance, e-textiles, emerging technologies, and digital art curating – across creative disciplines – now primarily focussed on XR artworks on women’s healthcare stories, to validate patients’ experiences and create empathy in others. "
+      ],
+      "websites": [
+        "https://www.rca.ac.uk/more/staff/camille-baker/",
+        "https://camillebaker.me/"
+      ],
+      "social": [],
+      "connections": "RCA"
+    },
+    {
+      "id": "P007",
+      "name": "Lizbeth Goodman",
+      "type": "People",
+      "bio": [
+        "Chair of Creative Technology Innovation & Director of SMARTlab, University College Dublin, where she directs the Inclusive Design Research Centre of Ireland at UCD, in partnership with SMARTlab clg and the Academy4theFuture. She is Chair of EDI for SMME and is an Athena Swan programme representative for Engineering & Architecture. Lizbeth founded the SMARTlab in its first iteration in 1992 and has developed the award-winning practice-based PhD Programme through the institute, along with the associated MAGIC Multimedia and Games Innovation Centre and Gamelab, which Lizbeth designed with industry collaborators as a prime knowledge transfer space in the London docklands prior to moving the lab to Dublin in 2010-11. Lizbeth and her teams specialise in developing ground-up technology solutions with and for people of all levels of cognitive and physical ability. in all her work, she applies an inclusive design method to practice-based innovation to transform lives through providing unlimited access to education and tools for creative expression."
+      ],
+      "websites": [
+        "https://people.ucd.ie/lizbeth.goodman"
+      ],
+      "social": [],
+      "connections": "University College Dublin; Cambridge University"
+    },
+    {
+      "id": "P008",
+      "name": "Hua Dong",
+      "type": "People",
+      "bio": [
+        "Dr Hua Dong is Professor in Design and Director of Brunel Design Research Centre. She was elected Vice-Chair of the Design Research Society  (DRS) in 2024. Trained at Univeristy of Cambridge, Hua Dong specialises in inclusive design. She founded the inclusive design research group at Brunel University and Tongji University.",
+        "Her research contributed to the  Design Council's 'Design Bugs Out' Challenge, with successful products on market and exhibition at the Design Museum. Hua introdcued 'Fixperts' to teaching at three univeristies, facilitating design students to work with critical users/local communities to solve real-world problems. As the AHRC SEED Fellow, Hua promotes UK-China creative industries research and innovation collaboration. Hua is the Brunel's Principal Invetigator of the VOICE project (https://voice-community.eu/)."
+      ],
+      "websites": [
+        "https://www.brunel.ac.uk/people/hua-dong"
+      ],
+      "social": [
+        "https://www.linkedin.com/in/huadonginclusivedesign/?originalSubdomain=uk"
+      ],
+      "connections": "Brunel University of London"
+    },
+    {
+      "id": "P009",
+      "name": "Maro Pebo",
+      "type": "People",
+      "bio": [
+        "Maro Pebo (Mariana Pérez Bobadilla) curates exhibitions, projects, and events in art and science at Waag. She develops learning situations where artist-led innovation supports critical perspectives on technoscience. She is an artist and art historian specialising in the cultural dimensions of the life sciences. Maro was born in Mexico City and holds a Ph.D. in Creative Media (City University of Hong Kong) and an MA in Critical and Gender Studies (Bologna University). Her trans-disciplinary work complements and transforms the life sciences' responsibility to think about the materiality of the living.  "
+      ],
+      "websites": [
+        "https://waag.org/en/maro-pebo/"
+      ],
+      "social": [],
+      "connections": "Waag Futurelab"
+    },
+    {
+      "id": "P010",
+      "name": "Anita McKeown",
+      "type": "People",
+      "bio": [
+        "Dr Anita McKeown, artist, academic and systems thinker, bringing 30 years of practice across education, community, and cultural sectors. Her work integrates STEAM, place-based learning and trauma-informed methodologies. Co-author of Trauma-Informed Placemaking (Routledge, 2024) with Dr Cara Courage, Anita's practice supports inclusive, regenerative futures through co-creation and critical care.",
+        "As Director of SMARTlab Skelligs,  an elected fellow of the RSA and the Institute of Place Management, she is committed to cultivating belonging and resilience through ethical, participatory arts and design across diverse and marginalised communities."
+      ],
+      "websites": [],
+      "social": ["https://www.linkedin.com/in/amckeownasu/"],
+      "connections": "SMARTlab UCD and SMARTlab Skelligs (split site host resesarch organisation for UCD)"
+    },
+    {
+      "id": "P011",
+      "name": "Zeynep Birsel",
+      "type": "People",
+      "bio": [
+        "Zeynep Birsel is concept and project developer for the Open Design Lab and Space Lab at Waag. She has over fifteen years of professional experience in working with scientists, academic entrepreneurs, start-ups and mid-size companies in commercial development of early stage technologies and designing for sustainable innovation. She is also experienced in policy development for regional innovation. Currently she is also a PhD researcher at Erasmus University. Her research focuses on art-science-technology collaborations, how they form and function. Her recent work at Waag heavily involves designing and implementing artist residencies under the S+T+ARTS scheme."
+      ],
+      "websites": ["https://waag.org/en/art-science-artists-researchers/"],
+      "social": ["https://www.linkedin.com/in/zeynep-birsel/"],
+      "connections": "Waag Futurelab"
+    },
+    {
       "id": "PR001",
       "name": "RiverSync",
       "type": "Projects",
@@ -192,6 +271,113 @@
         "https://www.furtherfield.org/felixstowe-youth-voice/"
       ],
       "involved_institutions": "Funded by the Horizon Europe VOICE Project (https://www.voice-community.eu/).\nFunded by the European Union under Grant Agreement No.101135803."
+    },
+    {
+      "id": "PR006",
+      "name": "Mammary Mountain",
+      "type": "Projects",
+      "description": [
+        "An intimate performative VR experience that explores “dis-ease” within the body through the experience of breast cancer. This interactive experience told the stories of patient healthcare struggles, particularly on the hidden experiences of breast cancer treatment. This artwork was presented through a combination of interactive VR art installation and creative methodologies, audiences experienced the stories of survivors, the treatments, and the often unspoken effects of the journey. ",
+        "This project uses wearable technology, VR, haptics and mobile systems as expressive tools. Actuators that deliver felt experience vibration in different parts of the chest, on each side where the mammary glands and lymph nodes are, and in varied patterns and intensities depending on the scene and story content."
+      ],
+      "who_involved": "This artwork was created by Tara Baoth Mooney, Camille Baker, Maf’J Alvarez, with sub-contractors Sophie Skach & Paul Hayes. Breast cancer survivors and their families were also key collaborators in the creation of this artwork.",
+      "legacy_impacts": "It toured Europe, the UK and the US to immersive and digital arts festivals from December 2023 to August 2025. ",
+      "challenges": "It has had trouble accessing healthcare contexts and charities, where women may benefit from experiencing it, especially at the start of their breast cancer journey, to help them understand the possible treatments they face (to reassure them they can get through it), mostly due to red-tape and the healthcare gatekeepers.\nSome common issues which arose during this project included:\nTechnical failure: Technology may fail mid-experience. This can be addressed with testing, clear setup, and fallback systems help.\nEmotional triggering: Stories may be too intense. Solutions include: strong trigger warnings, optional exit at any time, debriefing with audience and emotional support on-site.\nCommunity access barriers: Reaching participants is hard, especially when dealing with health-related trauma. It can be useful to reach out through existing networks, charities, and careful outreach to build trust (this can take time!).\nData ethics: Stories are only used with full consent; no sensitive data is stored beyond what's agreed to.",      
+      "budget": "Baker got £40,000 for project production funds, plus £4000+ from Baker's personal funds and travel funding of £10,000 to participate in the Venice Biennale 2024 Immersive Exhibition = £54,000 (but costs continue to be incurred, covered by Baker as the producer)",
+      "methods": "Workshops with the survivors and their families,\nInvestigative Story Development,\nExperience Design in the development,\nUser testing of the final piece,\nAudience interaction and observation in exhibitions",
+      "website": [
+        "https://mammary-vr.art/",
+        "Mixed Reality in Culture Podcast (February 12, 21024) Host:  Mariza Dima Season 4 Episode 1: \"Addressing the Gender Data Gap in Medicine Through VR\" https://podcasters.spotify.com/pod/show/mixed-reality-culture/episodes/S4---Ep01-Addressing-the-gender-data-gap-in-medicine-through-VR-e2fmoic",
+        "Design Week (December 20, 2023)by journalist Emily Gosling, \"Using VR to break outdated taboos around women's health\" online at https://www.designweek.co.uk/issues/18-december-22-december-2023/using-vr-to-break-outdated-taboos-around-womens-health/ (Accessed December 30, 2023)",
+        "November 11, 2021 - Interview with Dundee Courier journalist Rebecca Baird, *behind a paywall https://www.thecourier.co.uk/fp/entertainment/2730651/video-whats-the-pink-igloo-in-dundees-overgate/  (Accessed November 22, 2021) **videos can be seen here if not shared https://jwp.io/s/8TUzZ913  and https://jwp.io/s/pERhVeOw"
+      ],
+      "involved_institutions": "Funders:  Arts Council England/ National Lottery Funding, British Council, Irish Arts Council, Camille Baker, the Irish Embassy in the US, Creative Ireland, Culture Ireland\nPartners: NEoN Digital Arts, Access Space, Root Interactive and Creative Heartlands"    
+    },
+    {
+      "id": "PR007",
+      "name": "INTER/her: Journey Inside the Female Body",
+      "type": "Projects",
+      "description": [
+        "The INTER/her project is an immersive installation and virtual experience. It was created to open up the conversation about phenomena experienced by women in their late 30’s (sometimes earlier) their 40’s, and sometimes after menopause. Working in consultation with a gynaecologist, the project features interviews with a number of women telling their stories. INTER/her has a focus on female reproductive diseases explored through a feminist lens; as personal exploration, as a conversation starter, to raise greater public awareness and encourage community building."
+      ],
+      "who_involved": "This artwork was created by Camille Baker and Maf’j Alvarez. The community here is mostly women who have suffered from breast cancer treatment and survived, as well as their families and clinicians.",
+      "legacy_impacts": "It has toured around the UK and Canada in various arts organiation locations and site-specific spaces (shopping malls, parking gargages, and libraries) from June 2021 to October 2023",
+      "challenges": "It has had trouble accessing healthcare contexts where women may benefit from experiencing it, and be more emboldened to self-advocate for earlier diagnosis and treatment - or just to be taken seriously - mostly due to GP's lack of training and understanding of women's reproductive health concerns, NHS red-tape and the healthcare gatekeepersnot recognising the relevance.",
+      "budget": "Baker got £15,000 grant funding and put in another £7000 of her own personal funds into the project for travel and exhibitions as well as ongoing tech support.",
+      "methods": "Interaction Design,\nExperience Design in the User testing of the final piece,\nAudience interaction and observation in exhibitions",
+      "website": [
+        "https://inter-her.art/"
+      ],
+      "involved_institutions": "Funders: The Arts Council England / National Lottery Fund, The University of the Creative Arts and Camille Baker\nPartners: Access Space, New Malden Studios, Centre Neptune, Inky Bits and Root Interactive."
+    },
+    {
+      "id": "PR008",
+      "name": "Fixperts",
+      "type": "Projects",
+      "description": [
+        "Fixperts was initiated by Daniel Charney and partners to provide a programme and platform for connecting students with real people and communities, linking imagination with skills, and ideas with hands-on experimentation. The Fixperts programme has been adopted by educators around the world and various models were developed. More than a thousand Fixperts videos were created to show how co-creation leads to design innovation and empowerment."
+      ],
+      "who_involved": "Creators (e.g. design students), communities",
+      "legacy_impacts": "Over 50 universities have run the Fixperts programme worldwide, producing hundreds of videos showing how designers work with fix partners (e.g., an individual or a community) to co-create real-world solutions to improve people’s life. The outcome has been exhibited in London, Milan, Shanghai, and Tokyo. Fixperts received multiple awards (e.g., RSA Pupil Design Awards, Sir Misha Black Award for Innovation in Design Education)",
+      "challenges": "Having initiated Fixperts projects at Brunel University of London, Tongji University, and Loughborough University, I notice that the challenge is to identify appropriate fix partners to work with, and (for designers) to develop skills in listening and co-creating – these are key to the success of the project.",
+      "budget": "Budgets varied, and Fixperts projects can be run with zero budget.",
+      "methods": "Quick rig-building",
+      "website": [
+        "https://fixperts.org/films/"
+      ],
+      "involved_institutions": "Over 50 universities and hundreds and thousands of individuals/communities were involved, including Brunel University (partners included the Hillingdon Library), Tongji University (partners included Neighbourhood communities in Yangpu District), Loughborough University (Partners included a disabled art teacher), and Mimar Sinan Fine Arts University (partners included local disability organisations such as the Six Dots)"
+    },
+    {
+      "id": "PR009",
+      "name": "CoDesRes: Codesigning for Resilience in rural development through P2P networks and STEAM place-based learning interventions",
+      "type": "Projects",
+      "description": [
+        "CoDesRes was one of six national EPA-funded United Nations Sustainable Development Goals Projects. CoDesRes brings together an interdisciplinary team of artists, scholars, engineers and marine biologists to co-design and co-develop a multi-stakeholder approach for a ‘beyond-compliance’ engagement with the Sustainable Development Goals 4, Education; 11, Sustainable Cities And Communities; 14. Life Below Water and 15, Life On Land."
+      ],
+      "who_involved": "Dr Anita McKeown - project concept / methodology and oversight. Also included delivery and PhD supervision; Lucy Hunt, SMARTlab PhD candidate, School of Materials and Mechanical Engineering; Eleanor Turner, SMARTlab PhD candidate, School of Materials and Mechanical Engineering; Rebecca White, James Murphy, Dr Colin Keogh, Rapid Foundation and Séan O'Laoghaire, artist, educator and storytellerCommunity partners - 22 organisations\nDirect engagement with 4503 people",
+      "legacy_impacts": "1.Seven proof of concept  interventions and step-by-step plans for community projects\n2.Series of formal and informal education interventions to localise the SDGs\n3. Open source SDG resources for educators and communities available at www.codesres.ie/ resources\n4. Caherdaniel River Restoration project National and Cultural Heritage Strategy and Implementation plan and pilot project\n5. Muinín Catalyst legacy funding to build out and trial the education SDG toolkit - €50K\n6. Successful Rural Regeneration Development Fund (RRDF) bid - €200K in partnership with Kerry County Council - to develop 'shovel ready' feasibility for place-based STEAM education and Placemaking Research Development and Innovation centre of excellence in Cahersiveen\n7. Development and transfer of the project's circular economic focus and co-design through the EPA funded sister project MARplas €100k; addressing marine plastic waste in coastal communities through innovation and local sustainable enterprise continuing to contribute to six part-time employment positions and additional learning resources\n8. RRDF Clár Innovation Fund successful bid €50K  - Include Labs SMARTlab Skelligs\n8. Upskilled research team within local context, with economic impact further evidenced through employment positions and new professional collaborations\n9. Educational development spin-out company, Future Focus21c - with SMARTlab Skelligs raised €300K for Muinin Catalyst Sustainable STEAM project and created the SME now part of VOICE",      
+      "challenges": "Introduction of arts-led regeneration / systemic thinking to rural / coastal community - community activity often linked to GAA (sports) Traditional music\nCollaboration in a high context / non-tech literate context is not easy.  The communities' knowledge and connection are not implicit / relational\nLocal wisdom needed alignment with 21c expertise\nSchool engagement - CPD for 21c pedagogies and inter / muti - literacy development is not high among local educators - but this is also a national / international issue esp. with climate, futures and digital literacies\nWP leads were early-stage researchers - learning engaged / embedded and non standard research skills 'on the job'",      
+      "budget": "Original 165k with raised an additional €359,100 for legacy projects and €41,200 in-kind",
+      "methods": "Core methodolgy / methods were pCr and inclusive design for education - proof of concepts developed / iterated 7 new arts-led methods ",
+      "website": [
+        "https://www.futurefocus21c.com/codesres-overview"
+      ],
+      "involved_institutions": "/"
+    },
+    {
+      "id": "PR010",
+      "name": "Trauma Informed Placemaking",
+      "type": "Projects",
+      "description": [
+        "‘Trauma-informed placemaking’ is a new praxis conceived by Dr Cara Courage and Dr Anita McKeown. It originated in their observations of the traumatic rupture in the people-place relation during COVID-19 pandemic and the sites of Black Lives Matter protests and police brutality; people were either ‘removed’ from their public realm through lockdown/shelter in place strictures, or the streets they had peacefully inhabited became sites of violent unrest."
+      ],
+      "who_involved": "It features 66 indigenous, community, artist and practitioner contributors, from 14 countries, across 36 chapters. ",      
+      "legacy_impacts": "Publication of book offering 20 original frameworks and toolkits related to trauma informed placemaking practices.\nCreation of website of resources linked to authors / international projects\nIrish Architecture CPD - Reimagine Series of Masterclasses\nIrish Architecture pocket guide - trauma informed placemaking\nBlog and podcasts linked to chapter's authors",
+      "challenges": "Editing deadlines being balanced with work.\nPersonal / Professional - many of the authors were working in fast changing traumatic contexts e.g. changes in US policy and practices, civil war, surveillance, civil unrest\nFormatting (expression of arts processes within academic formats)",
+      "budget": "Self-funded Royalites pays for website and hosting events ",
+      "methods": "Various / multi-disciplinary insights  - many of the practice chapters are unique methods the artists developed over years of operating in eco-social contexts. The book presents 20 original frameworks, toolkits, and learning exercises, these are signposted and cross-referenced throughout the book.",
+      "website": [
+        "https://www.traumainformed.place/",
+        "McKeown & Courage (2024) Trauma Informed Placemaking: https://www.routledge.com/Trauma-Informed-Placemaking/Courage-McKeown/p/book/9781032443102?srsltid=AfmBOor-RRNb4DLeZR133T6_7G0y06x-Ocku_zHHo3c5mRz9fC4ZW1hI",
+        "Masterclass in Placemaking: https://architecturefoundation.ie/event/reimagine-masterclasses-in-placemaking/"
+      ],
+      "involved_institutions": "/"
+    },
+    {
+      "id": "PR011",
+      "name": "S+T+ARTS Aqua Motion",
+      "type": "Projects",
+      "description": [
+        "The S+T+ARTS AQUA MOTION project is set to transform water management in Europe by merging artistic experimentation with cutting-edge technological innovations. Over 24 months, artists will collaborate with researchers, policymakers, businesses, and local communities to develop sustainable, creative solutions for pressing water challenges. The project focuses on four major European water basins—Atlantic-Arctic, Baltic-North Sea, Mediterranean, and Danube-Black Sea—ensuring regionally relevant interventions that align with local needs and broader European objectives. A total of 25 residencies will support artists in developing experimental, technology-driven artistic solutions to water-related challenges. Hosted in four countries, the residencies will facilitate deep engagement with local communities, scientists, and environmental stakeholders to explore creative interventions that promote water sustainability​."
+      ],
+      "who_involved": "INOVA+ (Portugal) (Coordinator), AIR CENTRE (Portugal), +ATLANTIC CoLAB (Portugal), Rio Neiva (Portugal), WAAG (Netherlands), Hortimare VM (Netherlands), Ars Electronica (Austria), TU Wien (Austria), WAMU-NET (Italy), MUSE (Italy), Pro Progressione (Hungary), KIKK (Belgium)",
+      "legacy_impacts": "/",
+      "budget": "EU funded - roughly 3 million euros.",
+      "methods": "Co-creation, Design Sprints",
+      "website": [
+        "https://starts.eu/what-we-do/residences/startsaquamotion/"
+      ],
+      "involved_institutions": "/"
     },
     {
       "id": "M001",
@@ -299,6 +485,126 @@
       "category": "/"
     },
     {
+      "id": "M008",
+      "name": "Interaction and Experience Design",
+      "type": "Methods",
+      "description": [
+        "Interaction and experience design processes are used to create a participatory, performative and immersive practice, this method combines physical interaction, storytelling, haptics and emotional engagement.",
+        "This method intersects digital art, performance, immersive storytelling, feminist healthcare activism, interaction design and VR technology. It also draws from theater, sound design, and embodied practices.",
+        "This method uses wearable technology, VR, haptics and mobile systems as expressive tools.",
+        "Actuators that deliver felt experience of vibration in different parts of the lower abdomen over where the reproductive health concern would take place inside the body (cervix, womb, fallopain tubes, ovaries, etc) and in specific patterns and intensities triggered by story content."
+      ],
+      "steps": "1. Topic selection and funding: start with a strong story-driven concept, ideally rooted in social or personal urgency. Funding applications are part of this phase.\n2. Community outreach: engage those with lived experience. Often this involves interviews, workshops and forming ethical relationships.\n3. Consent and data gathering: record stories with clear consent protocols. Stories become the material, not traditional 'data'.\n4. Team assembly: includes creative technologists, sound designers, set designers, animators, etc. Whoever might be needed for your project execution.\n5. Interaction and experience design: map out what the audience will see, feel and hear.\n6. Prototype and audience testing especially with wearable elements and haptics with critical friends and typlical audience members\n7. Build and deploy: design the immersive environment. Calibrate physical setup, headset, haptic feedback, etc.\n8. Plan transitions (onboarding/offboarding), emotional pacing, and tactile/ haptic engagement.\n9. Exhibition and caretaking: carefully manage audience onboarding and offboarding, including emotional debriefing and support for triggered responses.",
+      "challenges": "Some common issues when using this method include:\nTechnical failure: Technology may fail mid-experience. This can be addressed with testing, clear setup, and fallback systems help.\nEmotional triggering: Stories may be too intense. Solutions include: strong trigger warnings, optional exit at any time, debriefing with audience and emotional support on-site.\nCommunity access barriers: Reaching participants is hard, especially when dealing with health-related trauma. It can be useful to reach out through existing networks, charities, and careful outreach to build trust (this can take time!).\nData ethics: Stories are only used with full consent; no sensitive data is stored beyond what's agreed to.",      
+      "conditions": "It requires extensive planning around story development, tech integration (e.g., haptics, VR), ethical considerations, community collaboration, and emotional safety protocols. Camille emphasises mapping emotional intentions at every stage. These are the areas to take into consideration during preparation:\nStory development\nTech and haptic integration\nCommunity engagement and ethics\nEmotional risk-mapping\nSpatial and sensory design\nAssembling the right collaborators\nThe preparation is as much about emotional design as it is about technical execution.",
+      "publications": "Baker, C. C. (in preparation, due Spring 2026) Book Chapter: \"Haptics and the role of 'body-as-interface' in artistic immersive / virtual experiences\", IN Expanded.Animation. Synaesthetic.Syntax, eds Birgitta Hosea and Juergen Hagler, London: Palgrave Macmillan Press.\nBaker, C. C. (in preparation, due Sept 2025) Book Chapter: \"Immersive Art and Embodiment: Emotional Haptic and Immersive XR Storytelling\" (proposed title), IN Routledge Handbook of Immersive Arts & Media, eds. Sarah Atkinson, Joanna Bucknall and Helen W. Kennedy, Oxford, New York: Routledge, Taylor & Francis.\nBaker, C. C. (June 28, 2024) Book Chapter: \"Curating digital experiences: Insights in extending the senses and embodying technology in arts and performance, a journey through time and space.\" IN The Arts and Computational Culture: Real and Virtual Worlds, eds. T. Giannini & J.P. Bowen (eds.), part of the Museums and Digital Culture, Springer Series on Cultural Computing, New York: Springer Publishing. Available online at https://link.springer.com/chapter/10.1007/978-3-031-53865-0_22\nBaker, C. C. (April 2023) \"INTER/her: An immersive journey inside the female body - Experience Reflections\" IN Virtual Creativity, Volume 12, Issue 2, p. 181 - 194. DOI: https://doi.org/10.1386/vcr_00067_1 Available online at https://intellectdiscover.com/content/journals/10.1386/vcr_00067_1\nBaker, C.C. (February 14, 2023) 'INTER/her: An immersive journey inside the female body – Creative Processes, Reflections and Revelations', IN Body, Space and Technology Journal, Volume 22, 2023, pages 1-19 DOI: https://doi.org/10.16995/bst.9724. Available online at https://www.bstjournal.com/article/id/9724/",      
+      "templates": "/",      
+      "category": "/"
+    },
+    {
+      "id": "M009",
+      "name": "Inclusive Design",
+      "type": "Methods",
+      "description": [
+        "Inclusive Design is a philosophy, movement and methodology that aims to centre those traditionally excluded from design and cultural processes. As defined by the Inclusive Design Research Centre (http://idrc.ocadu.ca/),inclusive design is, “design that considers the full range of human diversity with respect to ability, language, culture, gender, age and other forms of human difference”. It is an approach used by designers, artists, community workers, researchers, educators, and practitioners who want to engage with diverse perspectives to produce artworks, products, or outcomes that are usable by and respectful of the people they aim to serve. Inclusive Design is an approach rather than one specific tool or method. As a foundational approach within the VOICE project, we have gathered multiple tools and methods used within Inclusive Design processes. Many of these methods are adaptable across disciplines and can be scaled depending on context, budget, or stage of project development. For example, Unlearning & Questioning (UQ),  a method for recognising and dismantling internal biases, and Who’s at the Table? / Virtuous Tornado,  a framework for rethinking inclusion and stakeholder presence throughout an artistic or technological process."
+      ],
+      "steps": "/",
+      "challenges": "Some common pitfalls associated with this method include:\n1. Confusing Inclusive Design with Universal Design: Universal Design assumes a 'universal' user and flattens difference. Inclusive Design starts from the edges and prioritizes personalization.\nMistaking the two can lead to well-meaning but exclusionary design.\n2. Tokenism: Inviting people in without centering their perspective can create a superficial sense of inclusion.\nTools like 'Who's at the Table?'  guard against this by focusing on power and presence.\n3. Unacknowledged Subjectivity: Artists often view their practice as open to interpretation, but Inclusive Design reminds us that our own perspective is also subjective and can benefit from reflection and recalibration.\n4. Unclear ownership: Failing to clarify contributions, authorship and ownership can cause issues later. It is crucial to agree early on how participants will be credited and acknowledged.\n5. Excessive data: Workshops can often yield more data than teams can handle. Even within artistic projects it's important to plan for data management and, where possible, design for future reuse of anonymized material.",
+      "conditions": "In preparing to use Inclusive Design within your work it is important to:\n- Be open to self-reflection and discomfort\n- Plan how insights gained from activities might influence the project's structure, presentation, and legacy\n- Research your participants (needs, contexts, preferences)\n- Plan inclusive formats for engagement - think about your participants needs and the project's needs when deciding which tools and methods to use\n- Prepare materials that are rough enough to invite interaction, overly polished tools can intimidate participants\n- Create time for trust-building, onboarding, and clear communication of purpose and expectations\n- Plan for consent and data handling, especially if feedback will be reused",
+      "publications": "Inclusive Design Research Centre: https://idrc.ocadu.ca/\nTeaching Inclusive Design: A Toolkit: https://www.responsiblefuturedesigners.com/resources/diam-donec-adipiscing-risus/\nM. Moisen (2025), Designing for Everyone: The imperative of Inclusive AI: https://medium.com/@moisenm/designing-for-everyone-the-imperative-of-inclusive-ai-in-the-era-of-gpt-51e82d32276c",
+      "templates": "https://www.inclusivedesigntoolkit.com/",      
+      "category": "INCLUSIVE DESIGN"
+    },
+    {
+      "id": "M010",
+      "name": "Unlearning & Questioning",
+      "type": "Methods",
+      "description": [
+        "A method to be used as part of an Inclusive Design process, designed to examine and unlearn individual, institutional, and societal assumptions and conventions that block designing for human diversity, variability, and equity and global complexity. Closely connected with the method 'Unlearning and Unsettling'." 
+      ],
+      "steps": "1. Acknowledge your own position, background, and assumptions.\n2. Engage in structured reflection exercises to surface unconscious bias.\n3. Question how these biases influence your art, audience, and methods.\n4. Adjust or reframe your creative decisions to allow more equitable access and relevance.\n5. Repeat this process iteratively, reflection is ongoing, not one-time.",
+      "challenges": "/",   
+      "conditions": "/",   
+      "publications": "Unlearning and Unsettling: Questioning and Reflecting (Module 1 as part of Learning to be Human Together, An online course co-designed by Students, Faculty and Staff at OCAD University, Mohawk College, Brock University, Trent University, Nipissing University, University of Windsor, University of Toronto-Mississauga)\nhttps://ecampusontario.pressbooks.pub/onhumanlearn/chapter/module-1-unlearning-and-unsettling-questioning-and-reflecting/\nTreviranus, Jutta (2018) If you want the best design, ask strangers to help. The Medium. Available at: https://medium.com/@jutta.trevira/if-you-want-the-best-design-ask-strangers-to-help-e37bdb73567",
+      "templates": "/",      
+      "category": "INCLUSIVE DESIGN"
+    },
+    {
+      "id": "M011",
+      "name": "Who’s at the Table? / Virtuous Tornado",
+      "type": "Methods",
+      "description": [
+        "A collaborative and speculative tool to explore representation, power and inclusion. It is designed to help us rethink inclusion and stakeholder presence throughout an artistic, design or technological process. This method is centred around these questions:",
+        "Who are we designing with?",
+        "Who couldn't access this process or space?",
+        "How do we build a project where their voice is central, not peripheral?"
+      ],
+      "steps": "1. Map out who is currently involved in your project.\n2. Ask: 'Who is missing?', 'Why are they missing?'\n3. Use speculative personas or communities to rethink access and voice.\n4. Imagine the project from these perspectives, what changes?\n5. Revise, re-engage, and re-centre those previously excluded.",      
+      "challenges": "/",   
+      "conditions": "Preparing personas or scenarios for this methodology can take time and requires research. It is important that personas are based on real-life examples. Consider what information you'll need for each 'persona' and how you will find this information.",   
+      "publications": "Zhang, B., Robb, N., Eyerman, J., & Goodman, L. (2017). Virtual worlds and gamification to increase integration of international students in higher education: an inclusive design approach. International Journal of E-Learning & Distance Education Revue Internationale Du E-Learning Et La Formation à Distance, 32(2). Retrieved from https://ijede.ca/index.php/jde/article/view/1057",
+      "templates": "/",      
+      "category": "INCLUSIVE DESIGN"
+    },
+    {
+      "id": "M012",
+      "name": "Critical User Forums",
+      "type": "Methods",
+      "description": [
+        "Workshops, forums and design session involving direct interaction between design teams and a mixed group of users with severe disabilities. Typical forums consist of roughly 4 - 7 people with different disabilities. Over the course of the session a range of scenarios are explored to assist with the design and development of the artwork, product and/or output. "
+      ],
+      "steps": "1. Recognise exclusion (who are excluded, and why)\n2. Identify critical users you intend to reach to gain insights for inclusion and innovation\n3. Hosting a forum with key critical users. In these sessions you'll co-create solutions to improve inclusivity (e.g. a participatory process, and a more inclusive intervention)\n4. Reflection  (e.g. on the early decision, the process, and the outcome, what can be learned, and what can be improved)\n5. Revise, re-engage, and re-centre those previously excluded.",
+      "challenges": "Difficulties in identifying critical users.\nLack of time and space given to reflection",   
+      "conditions": "Understanding of who 'critical users' might be and how best to work with them.",   
+      "publications": "Dong, H., & Cassim, J. (2007). Critical User Forums for Inclusive Design. Ergonomics in Design, 15(4), 4-30. https://journals.sagepub.com/doi/abs/10.1518/106480407X255233",
+      "templates": "/",      
+      "category": "INCLUSIVE DESIGN"
+    },
+    {
+      "id": "M013",
+      "name": "Empathy Toolkit",
+      "type": "Methods",
+      "description": [
+        "A tool used within Inclusive Design to support awareness building and testing out new ideas, productions or artworks. The Empathy Toolkit offers a structured way to simulate physical or sensory limitations to better understand others’ experiences."
+      ],
+      "steps": "1. Use materials (e.g. gloves, goggles, tape, straps) to simulate specific impairments.\n2. Perform a range of everyday tasks with these constraints.\n3. Reflect and document your reactions (journaling, sketching, etc.).\n4. Use these insights to ideate design adaptations or provocations.\n5. Supplement this method with engagement with people who have lived experience (to avoid assumptions).\n\nNote: Empathy simulation is not a replacement for working with real users, it's a starting point for building awareness and sensitivity.",
+      "challenges": "Some challenges which may arise include:\nMisguided empathy: Participants may become patronizing or rush to conclusions without deeply listening. It's important to build relationships slowly and center co-creation throughout.\nOverdominant participants: In co-creation, louder voices can drown out others. When delivering these workshops make sure to moderate actively, observe body language, and use checklists to track whose input is being represented.",
+      "conditions": "/", 
+      "publications": "/", 
+      "templates": "/",      
+      "category": "INCLUSIVE DESIGN"
+    },
+    {
+      "id": "M014",
+      "name": "More-than-human attunement",
+      "type": "Methods",
+      "description": [
+        "A way for designers and artists to engage with other species, shifting how we understand, relate to, and design with them. It connects more-than-human design with interdisciplinary and transdisciplinary practices, especially between life sciences and creative fields, like biodesign and bioart. It's especially useful for those who want to move beyond treating other species as objects and instead recognize them as subjects with their own agency.",
+        "It cultivates empathy, sensory awareness, and the ability to engage with complexity. While we can't fully know what another species wants, careful observation can help us attune to their presence, impact, and needs. It reminds us that we're always in relation, with microbes, plants, animals, even when we don't realize it."
+      ],
+      "steps": "1. Shift into active sensing : Slow down and become present.\n2. Engage all senses: Touch, smell, hear, observe. Move beyond measurement tools.\n3. Practice multispecies observation – Notice what species are present, how they interact.\n4. Use creative techniques like:\n- Mapping: trace origins, politics, ecologies, and power dynamics of objects/species.\n- Journaling: reflect and record lived experience.\n- Sound/Photo/Video: document multisensory impressions.\n- Material sampling: interact physically with the object or species—don't just research it online.\n5. Recognize shifts: Pay attention to changes, growth, or new relationships forming.\n6. Allow for wonder:  Let surprise guide new questions and insights.",      
+      "challenges": "One major risk is assuming you know what another species wants. You're always interpreting from your own perspective, so it's essential to remain cautious and humble.\nAnother important critique is that more-than-human methodologies can overlook human injustice. When people are still suffering, due to poverty or exclusion, it raises the ethical question: how do we care for non-humans while so many humans remain uncared for? This method must always exist within a broader context of justice and responsibility.\nThis approach isn't meant to stand alone. It's a small, valuable addition to existing methodologies, especially ethnographic and ecological ones, and can enrich them by inviting in more-than-human perspectives.",
+      "conditions": "The key is learning to speak the community’s language, especially when working with scientists. That means understanding the basics of their scientific framework so you can communicate clearly and respectfully. Once that connection is made, you can open more sensory and emotional channels, bringing in time-lapse videos, personal observations, or embodied experiences to complement the data. This creates space for deeper dialogue and shared insight.", 
+      "publications": "/", 
+      "templates": "/",      
+      "category": "/"
+    },
+    {
+      "id": "M015",
+      "name": "The PermaCultural Resilience praxis",
+      "type": "Methods",
+      "description": [
+        "The pCr praxis is a framework and toolkit inspired by and borrowing from permaculture methodology. It is a structured, holistic approach to eco-social arts practice and creative placemaking (working with communities to shape the places where they live). It focuses on collaboration, where artists work closely with local people, and it puts fairness, sustainability, and care for both people and the environment at the heart of the process.",
+        "Think of it like an \"open-source operating system\" for arts-led community projects: it provides tools and methods that any artist or other person can use, adapt, and share. The aim is to bring together three key areas: social wellbeing, environmental health, and economic strength — so that communities can build more resilient, healthy, and balanced local systems that support both people and nature."
+      ],
+      "steps": "1. Relationships: Stakeholder consultation of partners and audiences carried out within the two-day design sprint at the beginning of the project with all partners. This uses the pCr OBREDIM Audit survey tool - a complexity mapping tool – to identify and track the relationships and actors over time. This will be used to map the existing ecosystem and develop the project and expand the initial theory of change once artists and communities are on board.\n2. Zoning: the pCr zoning process maps the information from the stakeholder in proximity to the project and will develop the initial signposts to extend the ecosystem.\n3. The Vital Signs Matrix (VSM) Life Cycle Analysis (LCA): the pCr LCA maps the inputs, processes and outputs of the individual projects and the overall programme; this will be used to ascertain the sustainability and insure an eco-social approach to the project.\n4. Final Evaluation using the Vital Signs Matrix (VSM): the VSM identifies the health and efficacy of a project's vital signs across 12 indices that embeds social, environmental, and economic justice in its processes. It maps the ambition, outputs and outcomes, and is undertaken at the beginning of the project and will be updated at quarterly intervals to track progress against the Theory of Change to capture emerging impact and behaviour change.",
+      "challenges": "pCr is a whole system approach. It can be used as such or used method by method, yet the over arching ethos is grounded in complexity. Online training can mitigate some aspects of this but really a mentoring situation over a few sessions + later check-ins is most supportive.\nCurrent Mindset 1: Eco-Social, Climate, sustainability and futures literacy is a spectrum of understanding and not common practice despite artists, policies and institutions rhetoric\nThe understanding and practice of integrated literacies, sustainability, climate and collaborative healthy / vital practices is low. Many organisations / practices are within the ambition of the Brundlant Report's 1987 definition of sustainability, which is almost 40 years old and completely out of date.",
+      "conditions": "/", 
+      "publications": "CoDesRes report(https://www.epa.ie/publications/research/socio-economics/Research_Report_409.pdf) and supporting appendix (https://www.futurefocus21c.com/_files/ugd/92a067_e61bb1c853074097bda23e81a0eb55b5.pdf)\nResearch Highlights short video https://www.youtube.com/watch?v=UF9RlOn_lLE&t=8s\nHandbook of Placemaking(https://www.routledge.com/The-Routledge-Handbook-of-Placemaking/Courage-Borrup-RosarioJackson-Legge-Mckeown-Platt-Schupbach/p/book/9780367684099) - sub-editor section\nPart 5: Placemaking, Environment and Sustaining Ecologies",
+      "templates": "/",      
+      "category": "/"
+    },
+    {
       "id": "I001",
       "name": "Waag Futurelab",
       "type": "Institutions",
@@ -338,6 +644,160 @@
         "The University's main Dublin campus occupies a parkland estate of 133 hectares and offers world-leading facilities including the UCD O'Brien Centre for Science, UCD Sutherland School of Law, UCD Lochlan Quinn School of Business, UCD Moore Centre for Business, and the UCD Student Centre."
       ],
       "website": "https://www.ucd.ie/"
+    },
+    {
+      "id": "I005",
+      "name": "Confluence of European Water Bodies",
+      "type": "Institutions",
+      "bio": [
+        "A grassroots, growing community of care and concern, the Confluence of European Water Bodies which aims to foster new dialogues and relationships with water."
+      ],
+      "website": "https://water-bodies.eu/about/"
+    },
+    {
+      "id": "I006",
+      "name": "SciArt: Science Art Society",
+      "type": "Institutions",
+      "bio": [
+        "The JRC SciArt project, founded in 2016, brokers and curates transdisciplinary exchanges and encounters between art science and policy within the JRC and wider European Commission. Resonances is their main initative. Informed by cutting-edge scientific research and public policy discussions, the aim of Resonances IV is to explore contemporary societal concerns with a transdisciplinary approach. Spurred by artists and creatives around the world we want to develop discourse, visions, artworks and exhibition that raise questions, change perceptions and widen awareness, that can trigger systemic change in support of the European Commission’s Green Deal."
+      ],
+      "website": "https://science-art-society.ec.europa.eu/resonances-iv"
+    },
+    {
+      "id": "I007",
+      "name": "Natura2000",
+      "type": "Institutions",
+      "bio": [
+        "There are over 27 000 nature sites protected by EU legislation. These form the Natura 2000 network.",
+        "Natura 2000 sites reflect Europe's rich variety of wildlife and habitats. They cover almost one fifth of land and one tenth of surrounding seas - which is about the size of Spain and Italy combined.",
+        "The sites range in size from less then one hectare to hundreds of square kilometres. Sites include several strictly protected nature reserves, and habitat types such as forests, grasslands, wetlands and coastal and marine habitats.",
+        "For over 30 years, the Birds and Habitats Directives (the 'Nature Directives') have set out the overall legal framework for protecting and managing Natura 2000 sites."
+      ],
+      "website": "https://environment.ec.europa.eu/topics/nature-and-biodiversity/natura-2000_en"
+    },
+    {
+      "id": "I008",
+      "name": "Furtherfield",
+      "type": "Institutions",
+      "bio": [
+        "We organise for inclusivity and equity in art and technology and advocate for their use in imagining and building real social change and positive environmental impact.",
+        "For over 25 years, through nearly 70 exhibitions, and over 125 national/international partnerships, we have developed alternative systems of co-creation and co-organisation across digital and physical networks."
+      ],
+      "website": "https://www.furtherfield.org/",
+      "social": ["https://www.instagram.com/furtherfield/"]
+    },
+    {
+      "id": "I009",
+      "name": "Future Focus21c",
+      "type": "Institutions", 
+      "bio": [
+        "Future Focus21c (FF21C) employ innovative, creative strategies to foster profound learning through tangible, evidence-based activities across three pillars of work: Research, Innovation and Delivery in education and community contexts. By tapping into and cultivating the creativity of learners, individuals and professionals FF21C aim to instil innovative thinking that is applicable across various domains and locally relevant, appropriate and context-responsive.",
+        "Their goal is to equip individuals for the challenges of the 21st century by providing experiences that facilitate the development of both content knowledge and practical skills with real-world applications. Collaborating with fellow researchers, they strive to reimagine various facets of contemporary life, aligning education, lifelong learning and professional development with the needs of society.",
+        "Their comprehensive approach represents Ireland's sole research-driven, evidence-based, systemic, and integrated programmes and approaches, encompassing place-based STEAM education, circular design thinking in solution-oriented projects, inquiry-based learning, and alignment with Sustainable Development Goals and the Earth Charter."
+      ],
+      "website": "/"
+    },
+    {
+      "id": "I010",
+      "name": "SMARTlab",
+      "type": "Institutions",
+      "bio": [
+        "SMARTlab promotes user-driven, transdisciplinary research, leveraging Creative Technology Innovations for social change.",
+        "For three decades, SMARTlab has run an award-winning practice-based PhD programme and delivered high-impact research, development and innovation programmes and projects. SMARTlab aims to bring together the brightest minds across disciplines and to provide them with the tools they need to contribute to solving real-world problems and building sustainable solutions.",
+        "SMARTlab specialises in developing ground-up technology solutions for people of all levels of cognitive and physical ability, from mainstream learners of all ages to 'special' and 'gifted' learners and lifelong learners in the developed and developing worlds. The aim is to transform lives through providing unlimited access to education and tools for creative expression."
+      ],
+      "websites": [
+        "https://www.smartlabskelligs.com/",
+        "https://www.ucd.ie/smartlab/"
+      ]
+    },
+    {
+      "id": "I011",
+      "name": "Helen Hamlyn Centre",
+      "type": "Institutions",
+      "bio": [
+        "The Helen Hamlyn Centre for design is the RCA’s longest-standing research centre, a global leader in inclusive design."
+      ],
+      "website": "https://www.rca.ac.uk/",
+      "social": [
+      ]
+    },
+    {
+      "id": "I012",
+      "name": "Loughborough University",
+      "type": "Institutions",
+      "bio": [
+        "Loughborough University is a public research university in Loughborough, Leicester. It has a London campus. It ranks No 1 for Sports (QS subject ranking), and is a top ten UK university for undergraduate education."
+      ],
+      "website": "https://www.lboro.ac.uk/",
+      "social": [
+      ]
+    },
+    {
+      "id": "I013",
+      "name": "Tongji University",
+      "type": "Institutions",
+      "bio": [
+        "Established in 1907 by German physicians in Shanghai, Tongji University is a comprehensive university, renowned for design and engineering. It is located in Shanghai, China. The university is one of the 211, 985 and the Double First-Class elite."
+      ],
+      "website": "https://en.tongji.edu.cn/p/",
+      "social": [
+      ]
+    },
+    {
+      "id": "I014",
+      "name": "Mimar Sinan Fine Art University ",
+      "type": "Institutions",
+      "bio": [
+        "Mimar Sinan Fine Arts University is the oldest public art university in Istanbul, Turkey"
+      ],
+      "website": "https://msgsu.edu.tr/",
+      "social": [
+      ]
+    },
+    {
+      "id": "I015",
+      "name": "University of the Creative Arts",
+      "type": "Institutions",
+      "bio": [
+        "UCA is the specialist creative arts university in the UK, offering undergraduate and postgraduate degree courses in Creative Arts, Business and Technology. It is based in Caterbury, UK."
+      ],
+      "website": "https://www.uca.ac.uk/",
+      "social": [
+      ]
+    },
+    {
+      "id": "I016",
+      "name": "NEoN Digital Arts",
+      "type": "Institutions",
+      "bio": [
+        "NEoN Digital Arts (SCIO) advocates for digital art and technology while at the same time addressing the negatives aspects that can often arise from their use. We provide access to expertise and equipment in a safe, inclusive environment, using free, open-source or low cost software while simultaneously explaining the ethical issues surrounding their construction, use and disposal."
+      ],
+      "website": "https://neondigitalarts.com/",
+      "social": [
+      ]
+    },
+    {
+      "id": "I017",
+      "name": "Access Space",
+      "type": "Institutions",
+      "bio": [
+        "Access Space is an arts and education organisation, where people interested in art, design, computers, recycling, music, electronics, photography and more, meet like-minded people, share and develop skills. We engage with and encourage a very broad section of the community to get involved with artistic, creative and technical projects."
+      ],
+      "website": "https://access-space.org/",
+      "social": [
+      ]
+    },
+    {
+      "id": "I018",
+      "name": "Brunel University of London",
+      "type": "Institutions",
+      "bio": [
+        "As one of the UK’s foremost technical universities, Brunel has a rich history of world-leading research, innovation and teaching excellenceIt is a member of the University of London. It is the 1st Most International University in the UK and in the top 10% for social and environmental impact research. It was founded in 1966. It is a member of the University of London. "
+      ],
+      "website": "https://www.brunel.ac.uk/",
+      "social": [
+      ]
     }
   ],
   "links": [
@@ -482,6 +942,270 @@
     {
       "source": "PR005",
       "target": "M007",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "PR005",
+      "target": "I008",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P005",
+      "target": "I008",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "PR002",
+      "target": "I007",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "PR002",
+      "target": "I006",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P001",
+      "target": "I005",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P006",
+      "target": "I003",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P006",
+      "target": "PR006",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P006",
+      "target": "PR007",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P006",
+      "target": "I015",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "PR006",
+      "target": "I016",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "PR006",
+      "target": "I017",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "PR007",
+      "target": "I017",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "PR006",
+      "target": "M008",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "PR007",
+      "target": "M008",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P007",
+      "target": "I004",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P007",
+      "target": "I010",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P007",
+      "target": "M009",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P007",
+      "target": "M010",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P007",
+      "target": "M011",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P007",
+      "target": "P006",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P007",
+      "target": "P010",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P008",
+      "target": "I018",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P008",
+      "target": "I011",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "I003",
+      "target": "I011",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P008",
+      "target": "PR008",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P008",
+      "target": "M009",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P008",
+      "target": "M012",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P008",
+      "target": "M013",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "PR008",
+      "target": "I018",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "PR008",
+      "target": "I012",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "PR008",
+      "target": "I013",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "PR008",
+      "target": "I014",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P009",
+      "target": "I001",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P009",
+      "target": "M014",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P010",
+      "target": "I009",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P010",
+      "target": "I010",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P010",
+      "target": "PR009",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P010",
+      "target": "PR010",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P010",
+      "target": "M015",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "M015",
+      "target": "M002",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P011",
+      "target": "I001",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "P011",
+      "target": "PR011",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "PR011",
+      "target": "I001",
+      "relationship": "connected",
+      "strength": 1
+    },
+    {
+      "source": "PR0011",
+      "target": "I002",
       "relationship": "connected",
       "strength": 1
     }

@@ -30,12 +30,42 @@ export const searchNodes = (data, term) => {
   
   const matches = new Set();
   data.nodes.forEach(node => {
-    if (node.name.toLowerCase().includes(term.toLowerCase()) ||
-        (node.bio && node.bio.toLowerCase().includes(term.toLowerCase())) ||
-        (node.description && node.description.toLowerCase().includes(term.toLowerCase())) ||
-        (node.methods && node.methods.toLowerCase().includes(term.toLowerCase())) ||
-        (node.category && node.category.toLowerCase().includes(term.toLowerCase()))) {
+    const lowerTerm = term.toLowerCase();
+    
+    // 检查名称
+    if (node.name.toLowerCase().includes(lowerTerm)) {
       matches.add(node.id);
+      return;
+    }
+    
+    // 检查 bio（可能是字符串或数组）
+    if (node.bio) {
+      const bioText = Array.isArray(node.bio) ? node.bio.join(' ') : node.bio;
+      if (bioText.toLowerCase().includes(lowerTerm)) {
+        matches.add(node.id);
+        return;
+      }
+    }
+    
+    // 检查 description（可能是字符串或数组）
+    if (node.description) {
+      const descText = Array.isArray(node.description) ? node.description.join(' ') : node.description;
+      if (descText.toLowerCase().includes(lowerTerm)) {
+        matches.add(node.id);
+        return;
+      }
+    }
+    
+    // 检查 methods
+    if (node.methods && node.methods.toLowerCase().includes(lowerTerm)) {
+      matches.add(node.id);
+      return;
+    }
+    
+    // 检查 category
+    if (node.category && node.category.toLowerCase().includes(lowerTerm)) {
+      matches.add(node.id);
+      return;
     }
   });
   
