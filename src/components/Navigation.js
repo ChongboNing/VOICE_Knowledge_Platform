@@ -4,16 +4,31 @@ import SimpleFeedback from './SimpleFeedback';
 
 const Navigation = ({ isNavExpanded, setIsNavExpanded, setShowModal, data }) => {
   const navItems = [
-    { id: 'intro', icon: Info, label: 'Introduction', content: `# VOICE Knowledge Platform
+    { id: 'intro', icon: Info, label: 'Introduction', content: `# About this website
 
-The VOICE Knowledge Platform is a publicly accessible resource designed for artists, researchers, the public, and funders. This collaborative space enables artists to discover, follow, and adapt methods developed by VOICE artists for their own contexts and creative practices.
+Welcome to the VOICE Knowledge Platform: a rhizomatic map of projects, methods, people, and organisations working at the intersections of art, environmental action, and technology. 
 
-Using a rhizomatic methodology, this platform displays emerging knowledge from the VOICE project as an interconnected ecosystem. The visualization maps relationships between People, Institutions, Projects, and Methods, revealing the holistic and reciprocal nature of creative research networks.
+This platform is an accessible digital resource created for and by artists, researchers, policy makers, community groups and funders. It has been designed to share resources and tools, to offer insights and ideas, and to make the case for the important civic, social, and environmental role this work can play. This platform is a collaborative space, which we hope you'll add your own insights, projects and methods to! 
+
+We are using a rhizomatic mapping method – inspired by mycelium and constellations of stars, so that we can showcase the emerging knowledge from the VOICE project and its partners as an interconnected ecosystem. Explore the 'nodes' across this constellation to learn about some of the organisations, methods, artists we've been working with, and projects we've been working on within VOICE so far.
+
+We are still in the pilot phase of this project and would love your feedback and your contributions. Right now, the 'nodes' you'll find in the map are mostly those linked in some way to the VOICE project. Find the speech bubble icon in the bottom left corner to let us know your thoughts and to contribute your own 'nodes' to the map!
 
 # Core Features
+
 **Network Map View**: Navigate an interactive D3.js-powered visualization displaying relationships between People, Institutions, Projects, and Methods. Each connection represents verified collaborations and influences within the VOICE research ecosystem.
+
 **Simple Table View**: Access the same data through a streamlined, accessible table format for enhanced readability and data analysis.
-**Advanced Filtering**: Refine your exploration using category-based filters to focus on specific entity types or relationship patterns.` },
+
+**Advanced Filtering**: Refine your exploration using category-based filters to focus on specific entity types or relationship patterns.
+
+# About VOICE
+
+VOICE: Valorising Artist-led Innovation through Citizen Engagement is a European Commission/UKRI funded project (2024-2026) exploring how artist-led innovation can address pressing societal and environmental challenges through active citizen engagement. It is a European-wide collaboration between Inova+, WAAG FutureLab, University College of Dublin, Future Focus 21c, EURICE, RISE, Royal College of Art, and Brunel University of London. 
+ 
+Using a combination of Inclusive Design and The PermaCultural Resilience Praxis, VOICE supports 'artist-driven' interventions, formulated as Art-Technology-Society Interactions (ATSI), to enable co-designed solutions to remedy regional or local challenges related to environmental and ecological sustainability.
+ 
+Learn more about VOICE [here](https://www.voice-community.eu/).` },
     { id: 'howto', icon: HelpCircle, label: 'How to use it', content: `**Map View**: Click and drag nodes to explore relationships. Hover over nodes to see connections and discover how different entities collaborate and influence each other.
 **Simple View**: Toggle to table format using the "Simple View" button for a more traditional data browsing experience.
 **Navigation**: Use sidebar controls to switch between view modes, apply filters, or access detailed entity information. Each interaction reveals new pathways through the evolving landscape of interactive art and research.` },

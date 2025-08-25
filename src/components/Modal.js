@@ -224,14 +224,71 @@ const Modal = ({ showModal, setShowModal }) => {
                 );
               }
               
-              // 处理粗体文本
-              if (line.includes('**')) {
-                const parts = line.split('**');
+              // 处理粗体文本和链接
+              if (line.includes('**') || (line.includes('[') && line.includes('](') && line.includes(')'))) {
+                let processedLine = line;
+                
+                // 处理链接
+                const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+                const parts = [];
+                let lastIndex = 0;
+                let match;
+                
+                while ((match = linkRegex.exec(line)) !== null) {
+                  // 添加链接前的文本
+                  if (match.index > lastIndex) {
+                    parts.push(line.substring(lastIndex, match.index));
+                  }
+                  
+                  // 添加链接
+                  parts.push(
+                    <a 
+                      key={match.index}
+                      href={match[2]} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="hover:underline"
+                      style={{ color: '#00837F' }}
+                    >
+                      {match[1]}
+                    </a>
+                  );
+                  
+                  lastIndex = match.index + match[0].length;
+                }
+                
+                // 添加最后部分的文本
+                if (lastIndex < line.length) {
+                  parts.push(line.substring(lastIndex));
+                }
+                
+                // 如果没有找到链接，处理粗体
+                if (parts.length === 0 && line.includes('**')) {
+                  const boldParts = line.split('**');
+                  return (
+                    <p key={index} className="mb-2">
+                      {boldParts.map((part, partIndex) => {
+                        if (partIndex % 2 === 1) {
+                          return <strong key={partIndex}>{part}</strong>;
+                        }
+                        return part;
+                      })}
+                    </p>
+                  );
+                }
+                
+                // 处理包含链接的行，也要处理粗体
                 return (
                   <p key={index} className="mb-2">
                     {parts.map((part, partIndex) => {
-                      if (partIndex % 2 === 1) {
-                        return <strong key={partIndex}>{part}</strong>;
+                      if (typeof part === 'string' && part.includes('**')) {
+                        const boldParts = part.split('**');
+                        return boldParts.map((boldPart, boldIndex) => {
+                          if (boldIndex % 2 === 1) {
+                            return <strong key={`${partIndex}-${boldIndex}`}>{boldPart}</strong>;
+                          }
+                          return boldPart;
+                        });
                       }
                       return part;
                     })}
