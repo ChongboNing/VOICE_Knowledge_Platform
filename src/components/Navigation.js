@@ -28,7 +28,11 @@ VOICE: Valorising Artist-led Innovation through Citizen Engagement is a European
  
 Using a combination of Inclusive Design and The PermaCultural Resilience Praxis, VOICE supports 'artist-driven' interventions, formulated as Art-Technology-Society Interactions (ATSI), to enable co-designed solutions to remedy regional or local challenges related to environmental and ecological sustainability.
  
-Learn more about VOICE [here](https://www.voice-community.eu/).` },
+Learn more about VOICE [here](https://www.voice-community.eu/).
+
+---
+
+Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or European Health and Digital Executive Agency (HADEA). Neither the European Union nor the granting authority can be held responsible for them. This work has received funding from the UK research and Innovation under contract number 101135803.` },
     { id: 'howto', icon: HelpCircle, label: 'How to use it', content: `**Map View**: Click and drag nodes to explore relationships. Hover over nodes to see connections and discover how different entities collaborate and influence each other.
 **Simple View**: Toggle to table format using the "Simple View" button for a more traditional data browsing experience.
 **Navigation**: Use sidebar controls to switch between view modes, apply filters, or access detailed entity information. Each interaction reveals new pathways through the evolving landscape of interactive art and research.` },

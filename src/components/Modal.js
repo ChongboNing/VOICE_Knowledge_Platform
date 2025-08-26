@@ -169,6 +169,11 @@ const Modal = ({ showModal, setShowModal }) => {
                 return <h2 key={index} className="text-lg md:text-xl font-bold text-gray-900 mt-3 mb-1">{line.substring(2)}</h2>;
               }
               
+              // 处理分割线
+              if (line.trim() === '---') {
+                return <hr key={index} className="my-4 border-gray-300" />;
+              }
+              
               // 处理带链接的列表项
               if (line.startsWith('- [') && line.includes('](') && line.includes(')')) {
                 const linkRegex = /- \[([^\]]+)\]\(([^)]+)\)/;
@@ -181,7 +186,7 @@ const Modal = ({ showModal, setShowModal }) => {
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="hover:underline"
-                          style={{ color: '#00837F' }}
+                          style={{ color: '#00837F', fontWeight: 'bold' }}
                         >
                           {match[1]}
                         </a>
@@ -242,7 +247,7 @@ const Modal = ({ showModal, setShowModal }) => {
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="hover:underline"
-                      style={{ color: '#00837F' }}
+                      style={{ color: '#00837F', fontWeight: 'bold' }}
                     >
                       {match[1]}
                     </a>
