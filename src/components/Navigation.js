@@ -8,7 +8,7 @@ const Navigation = ({ isNavExpanded, setIsNavExpanded, setShowModal, data }) => 
 
 Welcome to the VOICE Knowledge Platform: a rhizomatic map of projects, methods, people, and organisations working at the intersections of art, environmental action, and technology. 
 
-This platform is an accessible digital resource created for and by artists, researchers, policy makers, community groups and funders. It has been designed to share resources and tools, to offer insights and ideas, and to make the case for the important civic, social, and environmental role this work can play. This platform is a collaborative space, which we hope you'll add your own insights, projects and methods to! 
+This platform is an accessible digital resource created for and by artists, researchers, policy makers, community groups and funders. It has been designed to share resources and tools, to offer insights and ideas, and to make the case for the important civic, social, and environmental role this work can play. This platform is designed to grow collaboratively, and we hope you'll [add your own insights, projects and methods](https://docs.google.com/forms/d/e/1FAIpQLSfKmP8cBTo7IZVUqPOAncfjFykxaJktATmOVgiorX3O6CYkkA/viewform)! 
 
 We are using a rhizomatic mapping method – inspired by mycelium and constellations of stars, so that we can showcase the emerging knowledge from the VOICE project and its partners as an interconnected ecosystem. Explore the 'nodes' across this constellation to learn about some of the organisations, methods, artists we've been working with, and projects we've been working on within VOICE so far.
 

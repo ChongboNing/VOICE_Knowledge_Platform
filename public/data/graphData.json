@@ -329,7 +329,7 @@
     },
     {
       "id": "PR009",
-      "name": "CoDesRes: Codesigning for Resilience in rural development through P2P networks and STEAM place-based learning interventions",
+      "name": "CoDesRes",
       "type": "Projects",
       "description": [
         "CoDesRes was one of six national EPA-funded United Nations Sustainable Development Goals Projects. CoDesRes brings together an interdisciplinary team of artists, scholars, engineers and marine biologists to co-design and co-develop a multi-stakeholder approach for a ‘beyond-compliance’ engagement with the Sustainable Development Goals 4, Education; 11, Sustainable Cities And Communities; 14. Life Below Water and 15, Life On Land."
@@ -551,7 +551,7 @@
       "name": "Critical User Forums",
       "type": "Methods",
       "description": [
-        "Workshops, forums and design session involving direct interaction between design teams and a mixed group of users with severe disabilities. Typical forums consist of roughly 4 - 7 people with different disabilities. Over the course of the session a range of scenarios are explored to assist with the design and development of the artwork, product and/or output. "
+        "Workshops, forums and design sessions involving direct interaction between design teams and a mixed group of users with severe disabilities. Typical forums consist of roughly 4 - 7 people with different disabilities. Over the course of the session a range of scenarios are explored to assist with the design and development of the artwork, product and/or output. "
       ],
       "steps": "1. Recognise exclusion (who are excluded, and why)\n2. Identify critical users you intend to reach to gain insights for inclusion and innovation\n3. Hosting a forum with key critical users. In these sessions you'll co-create solutions to improve inclusivity (e.g. a participatory process, and a more inclusive intervention)\n4. Reflection  (e.g. on the early decision, the process, and the outcome, what can be learned, and what can be improved)\n5. Revise, re-engage, and re-centre those previously excluded.",
       "challenges": "Difficulties in identifying critical users.\nLack of time and space given to reflection",   
@@ -716,7 +716,7 @@
       "name": "Helen Hamlyn Centre",
       "type": "Institutions",
       "bio": [
-        "The Helen Hamlyn Centre for design is the RCA’s longest-standing research centre, a global leader in inclusive design."
+        "The Helen Hamlyn Centre for Design is a global leader in inclusive design and works with government, business, academia and the third sector to conduct research and knowledge exchange projects. The Helen Hamlyn Centre for design is the RCA’s longest-standing research centre, a global leader in inclusive design."
       ],
       "website": "https://www.rca.ac.uk/",
       "social": [
@@ -793,7 +793,7 @@
       "name": "Brunel University of London",
       "type": "Institutions",
       "bio": [
-        "As one of the UK’s foremost technical universities, Brunel has a rich history of world-leading research, innovation and teaching excellenceIt is a member of the University of London. It is the 1st Most International University in the UK and in the top 10% for social and environmental impact research. It was founded in 1966. It is a member of the University of London. "
+        "As one of the UK’s foremost technical universities, Brunel has a rich history of world-leading research, innovation and teaching excellence. It is a member of the University of London. It is the 1st Most International University in the UK and in the top 10% for social and environmental impact research. It was founded in 1966. It is a member of the University of London. "
       ],
       "website": "https://www.brunel.ac.uk/",
       "social": [
@@ -1204,7 +1204,7 @@
       "strength": 1
     },
     {
-      "source": "PR0011",
+      "source": "PR011",
       "target": "I002",
       "relationship": "connected",
       "strength": 1
