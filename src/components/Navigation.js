@@ -33,9 +33,14 @@ Learn more about VOICE [here](https://www.voice-community.eu/).
 ---
 
 Funded by the European Union. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or European Health and Digital Executive Agency (HADEA). Neither the European Union nor the granting authority can be held responsible for them. This work has received funding from the UK research and Innovation under contract number 101135803.` },
-    { id: 'howto', icon: HelpCircle, label: 'How to use it', content: `**Map View**: Click and drag nodes to explore relationships. Hover over nodes to see connections and discover how different entities collaborate and influence each other.
+
+    { id: 'howto', icon: HelpCircle, label: 'How to use it', content: `
+**Map View**: Click and drag nodes to explore relationships. Hover over nodes to see connections and discover how different entities collaborate and influence each other.
+
 **Simple View**: Toggle to table format using the "Simple View" button for a more traditional data browsing experience.
+
 **Navigation**: Use sidebar controls to switch between view modes, apply filters, or access detailed entity information. Each interaction reveals new pathways through the evolving landscape of interactive art and research.` },
+
     { id: 'accessibility', icon: Accessibility, label: 'Accessibility', content: `# Accessibility Features
 
 This site supports screen readers and keyboard navigation to ensure inclusive access for all users.
@@ -61,6 +66,7 @@ The site includes proper semantic markup and ARIA labels for assistive technolog
 - **Ctrl/Cmd + K**: Focus search box
 - **Ctrl/Cmd + B**: Toggle navigation sidebar
 - **?**: Show keyboard shortcuts help` },
+
     { id: 'translation', icon: Languages, label: 'Translation Help', content: `# Step 1: Choose a Translation Tool
 We recommend one of the following:
 - [Google Translate Extension (for Chrome)](https://chromewebstore.google.com/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb)
