@@ -20,7 +20,18 @@ const Toolbar = ({
       <div className="flex flex-col space-y-3 md:flex-row md:space-y-0 md:items-center md:justify-between">
         {/* 标题区域 + 移动端菜单按钮 */}
         <div className="flex items-center justify-between">
-          <h1 className="text-lg md:text-xl font-bold text-gray-900">VOICE Knowledge Platform</h1>
+          <div className="flex items-center">
+            <img 
+              src="/logo.svg" 
+              alt="VOICE Logo" 
+              className="h-8 w-auto mr-3"
+              onError={(e) => {
+                // 如果SVG加载失败，尝试加载PNG版本
+                e.target.src = "/logo.png";
+              }}
+            />
+            <h1 className="text-lg md:text-xl font-bold text-gray-900">Knowledge Platform</h1>
+          </div>
           {/* 移动端汉堡菜单按钮 */}
           <button 
             className="md:hidden p-2 hover:bg-gray-100 rounded transition-colors"

@@ -153,7 +153,7 @@ Once the tool is installed or enabled:
       <SimpleFeedback />
       
       {isNavExpanded && data.nodes && (
-        <div className="mx-4 mb-20 bg-gray-50 rounded-lg p-3">
+        <div className="mx-4 mb-20 bg-gray-50 rounded-lg p-3"> {/* 恢复为mb-20 */}
           <div className="text-sm text-gray-600 space-y-1">
             <div className="font-semibold">VOICE Prototype V1</div>
             <div className="text-sm text-gray-500 mb-2">Network Statistics:</div>

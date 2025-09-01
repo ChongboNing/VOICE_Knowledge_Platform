@@ -6,6 +6,7 @@ import SimpleView from './components/SimpleView';
 import NodeDetails from './components/NodeDetails';
 import Modal from './components/Modal';
 import KeyboardHelp from './components/KeyboardHelp';
+import FundingBar from './components/FundingBar';
 import { searchNodes } from './utils/graphUtils';
 
 const RelationshipGraphApp = () => {
@@ -232,6 +233,9 @@ const RelationshipGraphApp = () => {
       >
         {announcements}
       </div>
+
+      {/* Funding acknowledgment bar */}
+      <FundingBar />
     </div>
   );
 };
