@@ -65,7 +65,7 @@
         "Lucie addressed sustainable practices for interactive textiles in environmental and social contexts for WEAR Sustain, an EU Horizon 2020 Research and Development Programme, promoting the co-development of ethical and sustainable wearable technologies and e-textiles. She used the opportunity to develop a socially engaged design practice to work cooperatively with a broad range of people and involve them in the design process. Lucie's work revealed the value in developing co-produced design outcomes and processes with digital technologies, exploring attitudes to sustainable behaviour, imagining future scenarios with groups of users in the co-design of products and services. "
       ],
       "websites": [
-        "touchcraft.org.uk"
+        "https://touchcraft.org.uk/"
       ],
       "social": [
         "https://www.instagram.com/touchcrafttextiles/"
@@ -384,9 +384,18 @@
       "budget": "Self-funded Royalites pays for website and hosting events ",
       "methods": "Various / multi-disciplinary insights  - many of the practice chapters are unique methods the artists developed over years of operating in eco-social contexts. The book presents 20 original frameworks, toolkits, and learning exercises, these are signposted and cross-referenced throughout the book.",
       "website": [
-        "https://www.traumainformed.place/",
-        "McKeown & Courage (2024) Trauma Informed Placemaking: https://www.routledge.com/Trauma-Informed-Placemaking/Courage-McKeown/p/book/9781032443102?srsltid=AfmBOor-RRNb4DLeZR133T6_7G0y06x-Ocku_zHHo3c5mRz9fC4ZW1hI",
-        "Masterclass in Placemaking: https://architecturefoundation.ie/event/reimagine-masterclasses-in-placemaking/"
+        {
+          "title": "https://www.traumainformed.place/",
+          "url": "https://www.traumainformed.place/"
+        },
+        {
+          "title": "McKeown & Courage (2024) Trauma Informed Placemaking",
+          "url": "https://www.routledge.com/Trauma-Informed-Placemaking/Courage-McKeown/p/book/9781032443102?srsltid=AfmBOor-RRNb4DLeZR133T6_7G0y06x-Ocku_zHHo3c5mRz9fC4ZW1hI"
+        },
+        {
+          "title": "Masterclass in Placemaking",
+          "url": "https://architecturefoundation.ie/event/reimagine-masterclasses-in-placemaking/"
+        }
       ],
       "involved_institutions": "/"
     },
