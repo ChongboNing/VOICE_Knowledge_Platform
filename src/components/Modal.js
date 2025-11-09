@@ -222,7 +222,6 @@ const Modal = ({ showModal, setShowModal }) => {
               
               // Handle bold text and links
               if (line.includes('**') || (line.includes('[') && line.includes('](') && line.includes(')'))) {
-                let processedLine = line;
                 
                 // Process links
                 const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
