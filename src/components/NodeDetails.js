@@ -3,16 +3,16 @@ import { X, ExternalLink } from 'lucide-react';
 import { getNodeColor } from '../utils/graphUtils';
 
 const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
-  const [width, setWidth] = useState(50); // 默认50%宽度
+  const [width, setWidth] = useState(50);
   const isDragging = useRef(false);
   const detailsRef = useRef(null);
   const previousFocusRef = useRef(null);
 
-  // 将文本中的URL转换为可点击链接的函数
+  // Convert URLs in text to clickable links
   const renderTextWithLinks = (text) => {
     if (!text) return null;
     
-    // URL正则表达式
+    // URL regex pattern
     const urlRegex = /(https?:\/\/[^\s]+)/g;
     const parts = text.split(urlRegex);
     
@@ -35,11 +35,11 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
     });
   };
 
-  // 处理带冒号的文本，冒号前加粗
+  // Format text with bold before colons
   const renderFormattedText = (text, fieldType) => {
     if (!text) return null;
     
-    // 处理步骤列表（数字开头的项目）- 冒号前加粗
+    // Handle step lists (numbered items) - bold text before colon
     if (fieldType === 'steps') {
       const items = text.split(/(?=\d+\.)/);
       return items.map((item, index) => {
@@ -65,14 +65,14 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
       });
     }
     
-    // 处理挑战、条件等列表（每行前加bullet point）
+    // Handle challenge/condition lists (add bullet points)
     if (fieldType === 'challenges' || fieldType === 'conditions' || fieldType === 'legacy' || fieldType === 'project_challenges') {
       const paragraphs = text.split('\n').filter(p => p.trim());
       
-      // 根据字段类型选择颜色
+      // Choose color based on field type
       const bulletColor = (fieldType === 'legacy' || fieldType === 'project_challenges') 
-        ? 'text-orange-600'  // Projects用橙色
-        : 'text-green-600';  // Methods用绿色
+        ? 'text-orange-600'
+        : 'text-green-600';
         
       return paragraphs.map((para, index) => (
         <div key={index} className="mb-3 flex items-start">
@@ -82,29 +82,29 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
       ));
     }
     
-    // 默认处理
+    // Default handling
     return renderTextWithLinks(text);
   };
 
-  // 焦点管理effect
+  // Focus management
   useEffect(() => {
     if (selectedNode) {
-      // 保存当前焦点
+      // Save current focus
       previousFocusRef.current = document.activeElement;
       
-      // 设置焦点到详情面板
+      // Set focus to details panel
       setTimeout(() => {
         detailsRef.current?.focus();
       }, 100);
       
-      // Escape键处理
+      // Escape key handler
       const handleEscape = (e) => {
         if (e.key === 'Escape') {
           onNodeSelection(null);
         }
       };
       
-      // 键盘调整大小功能 - WCAG 2.2 AA合规 (2.5.7)
+      // Keyboard resize - WCAG 2.2 AA compliant (2.5.7)
       const handleKeyResize = (e) => {
         if ((e.metaKey || e.ctrlKey) && !e.shiftKey && !e.altKey) {
           if (e.key === 'ArrowLeft') {
@@ -126,7 +126,7 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
       return () => {
         document.removeEventListener('keydown', handleEscape);
         document.removeEventListener('keydown', handleKeyResize);
-        // 恢复焦点
+        // Restore focus
         if (previousFocusRef.current) {
           previousFocusRef.current.focus();
         }
@@ -144,7 +144,6 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
       if (!isDragging.current) return;
       
       const newWidth = ((window.innerWidth - e.clientX) / window.innerWidth) * 100;
-      // 限制宽度在20%到80%之间
       const clampedWidth = Math.min(Math.max(newWidth, 20), 80);
       setWidth(clampedWidth);
     };
@@ -159,7 +158,7 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
     document.addEventListener('mouseup', handleMouseUp);
   };
 
-  // 获取相关连接
+  // Get related connections
   const relatedLinks = data.links.filter(
     link => link.source === selectedNode.id || link.target === selectedNode.id
   );
@@ -169,10 +168,8 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
       className={`
         fixed bg-white shadow-2xl border-l border-gray-200 z-50 flex flex-col
         
-        // 桌面端：保持原有样式和功能
         md:right-0 md:top-0 md:h-full
         
-        // 移动端：全屏显示
         inset-0 md:inset-auto
       `}
       style={{ width: window.innerWidth > 768 ? `${width}%` : '100%' }}
@@ -181,7 +178,7 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
       ref={detailsRef}
       tabIndex={-1}
     >
-      {/* 移动端顶部导航条 */}
+      {/* Mobile top navigation bar */}
       <div className="flex items-center p-4 border-b bg-gray-50 md:hidden">
         <button
           onClick={() => onNodeSelection(null)}
@@ -191,10 +188,10 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
           <span className="text-lg">←</span>
         </button>
         <h2 className="flex-1 text-center font-bold text-lg">{selectedNode.name}</h2>
-        <div className="w-10"></div> {/* 占位符保持居中 */}
+        <div className="w-10"></div>
       </div>
       
-      {/* 桌面端面板头部 */}
+      {/* Desktop panel header */}
       <div className="hidden md:flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
         <div className="flex items-center">
           <div 
@@ -220,10 +217,10 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
         </button>
       </div>
       
-      {/* 可滚动内容区域 */}
+      {/* Scrollable content area */}
       <div className="flex-1 overflow-y-auto">
         <div className="p-6 space-y-6">
-          {/* People节点字段 */}
+          {/* People node fields */}
           {selectedNode.type === 'People' && (
             <>
               <div>
@@ -251,7 +248,7 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
               <div>
                 <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Website</h3>
                 {(() => {
-                  // 统一转换为数组处理
+                  // Convert to array for consistent handling
                   const websiteArray = Array.isArray(selectedNode.websites) 
                     ? selectedNode.websites 
                     : selectedNode.website && selectedNode.website !== '/' ? [selectedNode.website] : [];
@@ -311,7 +308,7 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
             </>
           )}
           
-          {/* Institutions节点字段 */}
+          {/* Institutions node fields */}
           {selectedNode.type === 'Institutions' && (
             <>
               <div>
@@ -332,14 +329,14 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
               <div>
                 <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Website</h3>
                 {(() => {
-                  // 支持 websites 数组或单个 website
+                  // Support both websites array and single website
                   const websites = selectedNode.websites || (selectedNode.website ? [selectedNode.website] : []);
                   
                   if (websites.length > 0 && websites.some(site => site !== '/')) {
                     const validWebsites = websites.filter(site => site !== '/');
                     
                     if (validWebsites.length === 1) {
-                      // 单个网站，使用原样式
+                      // Single website - use original style
                       return (
                         <a
                           href={validWebsites[0]}
@@ -357,7 +354,7 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
                         </a>
                       );
                     } else {
-                      // 多个网站，使用列表样式
+                      // Multiple websites - use list style
                       return (
                         <div className="space-y-2">
                           {validWebsites.map((website, index) => (
@@ -476,7 +473,7 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
               <div>
                 <h3 className="font-semibold mb-3 text-gray-800 border-b border-gray-200 pb-2 text-lg">Website / Links to videos</h3>
                 {(() => {
-                  // 统一转换为数组处理
+                  // Convert to array for consistent handling
                   const websiteArray = Array.isArray(selectedNode.website) 
                     ? selectedNode.website 
                     : selectedNode.website && selectedNode.website !== '/' ? [selectedNode.website] : [];
@@ -484,7 +481,7 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
                   return websiteArray.length > 0 ? (
                     <div className="space-y-2">
                       {websiteArray.map((link, index) => {
-                        // 支持两种格式：带标题的对象 或 纯URL字符串
+                        // Support both formats: object with title or plain URL string
                         const url = typeof link === 'string' ? link : link.url;
                         const title = typeof link === 'string' ? link : link.title;
                         
@@ -652,7 +649,7 @@ const NodeDetails = ({ selectedNode, onNodeSelection, data }) => {
         </div>
       </div>
       
-      {/* 左侧拖拽手柄 */}
+      {/* Left drag handle */}
       <div 
         className="absolute left-0 top-0 w-1 h-full bg-gray-300 cursor-col-resize transition-colors"
         onMouseDown={handleMouseDown}

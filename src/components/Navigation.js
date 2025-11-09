@@ -90,7 +90,7 @@ Once the tool is installed or enabled:
 
   return (
     <>
-      {/* 移动端遮罩层 - 只在移动端显示 */}
+      {/* Mobile overlay - only shown on mobile devices */}
       {isNavExpanded && (
         <div 
           className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
@@ -102,13 +102,11 @@ Once the tool is installed or enabled:
       <div className={`
         bg-white shadow-lg transition-all duration-300 border-r h-screen flex flex-col
         
-        // 移动端样式
         fixed md:relative
         w-full md:w-auto
         z-50 md:z-auto
         ${isNavExpanded ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0
         
-        // 桌面端样式（保持原有逻辑）
         md:${isNavExpanded ? 'w-64' : 'w-16'}
       `}>
       <div className="p-4">
@@ -149,11 +147,11 @@ Once the tool is installed or enabled:
         })}
       </nav>
 
-      {/* Feedback按钮 - 现在是独立浮窗 */}
+      {/* Feedback button - floating independently */}
       <SimpleFeedback />
       
       {isNavExpanded && data.nodes && (
-        <div className="mx-4 mb-20 bg-gray-50 rounded-lg p-3"> {/* 恢复为mb-20 */}
+        <div className="mx-4 mb-20 bg-gray-50 rounded-lg p-3">
           <div className="text-sm text-gray-600 space-y-1">
             <div className="font-semibold">VOICE Prototype V1</div>
             <div className="text-sm text-gray-500 mb-2">Network Statistics:</div>

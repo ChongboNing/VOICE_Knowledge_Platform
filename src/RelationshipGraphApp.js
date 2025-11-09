@@ -68,14 +68,14 @@ const RelationshipGraphApp = () => {
   // Global keyboard shortcuts
   useEffect(() => {
     const handleGlobalKeydown = (e) => {
-      // Cmd/Ctrl + E: 切换视图模式 (E = Exchange views, 避免Shift组合)
+      // Cmd/Ctrl + E: Toggle view mode
       if ((e.metaKey || e.ctrlKey) && !e.shiftKey && !e.altKey && (e.code === 'KeyE' || e.key.toLowerCase() === 'e')) {
         e.preventDefault();
         handleViewModeChange(viewMode === 'graph' ? 'simple' : 'graph');
         setAnnouncements(`Switched to ${viewMode === 'graph' ? 'accessible table' : 'interactive map'} view`);
       }
       
-      // Cmd/Ctrl + K: 聚焦到搜索框 (通用快捷键)
+      // Cmd/Ctrl + K: Focus search box
       if ((e.metaKey || e.ctrlKey) && !e.shiftKey && !e.altKey && (e.code === 'KeyK' || e.key.toLowerCase() === 'k')) {
         e.preventDefault();
         const searchInput = document.querySelector('input[role="searchbox"]');
@@ -85,14 +85,14 @@ const RelationshipGraphApp = () => {
         }
       }
       
-      // Cmd/Ctrl + B: 切换导航栏 (类似VS Code侧边栏)
+      // Cmd/Ctrl + B: Toggle navigation sidebar
       if ((e.metaKey || e.ctrlKey) && !e.shiftKey && !e.altKey && (e.code === 'KeyB' || e.key.toLowerCase() === 'b')) {
         e.preventDefault();
         setIsNavExpanded(!isNavExpanded);
         setAnnouncements(`Navigation ${!isNavExpanded ? 'expanded' : 'collapsed'}`);
       }
       
-      // ? 键: 显示快捷键帮助
+      // ? key: Show keyboard shortcuts help
       if (e.key === '?' && !e.metaKey && !e.ctrlKey && !e.altKey && !e.shiftKey) {
         e.preventDefault();
         setShowKeyboardHelp(true);

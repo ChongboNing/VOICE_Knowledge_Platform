@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { MessageCircle } from 'lucide-react';
 
 const SimpleFeedback = () => {
-  const [position, setPosition] = useState({ x: 10, y: window.innerHeight - 80 }); // 恢复原来的位置
+  const [position, setPosition] = useState({ x: 10, y: window.innerHeight - 80 });
   const [hasMoved, setHasMoved] = useState(false);
   const buttonRef = useRef(null);
 

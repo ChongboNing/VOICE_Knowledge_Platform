@@ -2,30 +2,30 @@ import React, { useState, useRef, useEffect } from 'react';
 import { X } from 'lucide-react';
 
 const Modal = ({ showModal, setShowModal }) => {
-  const [width, setWidth] = useState(50); // 默认50%宽度
+  const [width, setWidth] = useState(50);
   const isDragging = useRef(false);
   const modalRef = useRef(null);
   const previousFocusRef = useRef(null);
 
-  // 焦点管理effect
+  // Focus management
   useEffect(() => {
     if (showModal) {
-      // 保存当前焦点
+      // Save current focus
       previousFocusRef.current = document.activeElement;
       
-      // 设置焦点到模态框
+      // Set focus to modal
       setTimeout(() => {
         modalRef.current?.focus();
       }, 100);
       
-      // Escape键处理
+      // Escape key handler
       const handleEscape = (e) => {
         if (e.key === 'Escape') {
           setShowModal(null);
         }
       };
       
-      // 键盘调整大小功能 - WCAG 2.2 AA合规 (2.5.7)
+      // Keyboard resize - WCAG 2.2 AA compliant (2.5.7)
       const handleKeyResize = (e) => {
         if ((e.metaKey || e.ctrlKey) && !e.shiftKey && !e.altKey) {
           if (e.key === 'ArrowLeft') {
@@ -41,7 +41,7 @@ const Modal = ({ showModal, setShowModal }) => {
         }
       };
       
-      // 焦点陷阱
+      // Focus trap
       const handleTabKey = (e) => {
         if (e.key === 'Tab') {
           const focusableElements = modalRef.current?.querySelectorAll(
@@ -77,7 +77,7 @@ const Modal = ({ showModal, setShowModal }) => {
         document.removeEventListener('keydown', handleEscape);
         document.removeEventListener('keydown', handleKeyResize);
         document.removeEventListener('keydown', handleTabKey);
-        // 恢复焦点
+        // Restore focus
         if (previousFocusRef.current) {
           previousFocusRef.current.focus();
         }
@@ -95,7 +95,6 @@ const Modal = ({ showModal, setShowModal }) => {
       if (!isDragging.current) return;
       
       const newWidth = (e.clientX / window.innerWidth) * 100;
-      // 限制宽度在20%到80%之间
       const clampedWidth = Math.min(Math.max(newWidth, 20), 80);
       setWidth(clampedWidth);
     };
@@ -115,10 +114,8 @@ const Modal = ({ showModal, setShowModal }) => {
       className={`
         fixed bg-white shadow-2xl border-gray-200 z-50 flex flex-col
         
-        // 桌面端：保持原有侧边面板样式
         md:left-0 md:top-0 md:h-full md:border-r
         
-        // 移动端：全屏模态框
         inset-0 md:inset-auto
       `}
       style={{ width: window.innerWidth > 768 ? `${width}%` : '100%' }}
@@ -128,7 +125,7 @@ const Modal = ({ showModal, setShowModal }) => {
       ref={modalRef}
       tabIndex={-1}
     >
-      {/* 移动端顶部导航条 */}
+      {/* Mobile top navigation bar */}
       <div className="flex items-center p-4 border-b bg-gray-50 md:hidden">
         <button
           onClick={() => setShowModal(null)}
@@ -138,10 +135,10 @@ const Modal = ({ showModal, setShowModal }) => {
           <span className="text-lg">←</span>
         </button>
         <h2 className="flex-1 text-center font-bold text-lg">{showModal.label}</h2>
-        <div className="w-10"></div> {/* 占位符保持居中 */}
+        <div className="w-10"></div>
       </div>
       
-      {/* 桌面端模态框头部 */}
+      {/* Desktop modal header */}
       <div className="hidden md:flex items-center justify-between p-6 border-b border-gray-200 bg-gray-50">
         <div>
           <h2 id="modal-title" className="text-2xl font-bold text-gray-900">{showModal.label}</h2>
@@ -159,22 +156,22 @@ const Modal = ({ showModal, setShowModal }) => {
         </button>
       </div>
       
-      {/* 可滚动内容区域 */}
+      {/* Scrollable content area */}
       <div className="flex-1 overflow-y-auto">
         <div className="p-4 md:p-6">
           <div className="text-sm md:text-base text-gray-700 leading-relaxed whitespace-pre-line">
             {showModal.content.split('\n').map((line, index) => {
-              // 处理一级标题
+              // Handle h1 headers
               if (line.startsWith('# ')) {
                 return <h2 key={index} className="text-lg md:text-xl font-bold text-gray-900 mt-3 mb-1">{line.substring(2)}</h2>;
               }
               
-              // 处理分割线
+              // Handle horizontal rules
               if (line.trim() === '---') {
                 return <hr key={index} className="my-4 border-gray-300" />;
               }
               
-              // 处理带链接的列表项
+              // Handle list items with links
               if (line.startsWith('- [') && line.includes('](') && line.includes(')')) {
                 const linkRegex = /- \[([^\]]+)\]\(([^)]+)\)/;
                 const match = line.match(linkRegex);
@@ -195,7 +192,7 @@ const Modal = ({ showModal, setShowModal }) => {
                 }
               }
               
-              // 处理普通列表项（一级）
+              // Handle regular list items (first level)
               if (line.startsWith('- ') && !line.startsWith('  -')) {
                 return (
                   <p key={index} className="mb-2 ml-4">
@@ -209,7 +206,7 @@ const Modal = ({ showModal, setShowModal }) => {
                 );
               }
               
-              // 处理嵌套列表项（二级）
+              // Handle nested list items (second level)
               if (line.startsWith('  - ')) {
                 return (
                   <p key={index} className="mb-2 ml-8">
@@ -223,23 +220,23 @@ const Modal = ({ showModal, setShowModal }) => {
                 );
               }
               
-              // 处理粗体文本和链接
+              // Handle bold text and links
               if (line.includes('**') || (line.includes('[') && line.includes('](') && line.includes(')'))) {
                 let processedLine = line;
                 
-                // 处理链接
+                // Process links
                 const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
                 const parts = [];
                 let lastIndex = 0;
                 let match;
                 
                 while ((match = linkRegex.exec(line)) !== null) {
-                  // 添加链接前的文本
+                  // Add text before link
                   if (match.index > lastIndex) {
                     parts.push(line.substring(lastIndex, match.index));
                   }
                   
-                  // 添加链接
+                  // Add link
                   parts.push(
                     <a 
                       key={match.index}
@@ -256,12 +253,12 @@ const Modal = ({ showModal, setShowModal }) => {
                   lastIndex = match.index + match[0].length;
                 }
                 
-                // 添加最后部分的文本
+                // Add remaining text
                 if (lastIndex < line.length) {
                   parts.push(line.substring(lastIndex));
                 }
                 
-                // 如果没有找到链接，处理粗体
+                // If no links found, handle bold text
                 if (parts.length === 0 && line.includes('**')) {
                   const boldParts = line.split('**');
                   return (
@@ -276,7 +273,7 @@ const Modal = ({ showModal, setShowModal }) => {
                   );
                 }
                 
-                // 处理包含链接的行，也要处理粗体
+                // Handle lines with links and also process bold text
                 return (
                   <p key={index} className="mb-2">
                     {parts.map((part, partIndex) => {
@@ -295,19 +292,16 @@ const Modal = ({ showModal, setShowModal }) => {
                 );
               }
               
-              // 处理空行
               if (line.trim() === '') {
                 return <br key={index} />;
               }
               
-              // 普通段落
               return <p key={index} className="mb-2">{line}</p>;
             })}
           </div>
         </div>
       </div>
       
-      {/* 桌面端右侧拖拽手柄 */}
       <div 
         className="hidden md:block absolute right-0 top-0 w-1 h-full bg-gray-300 cursor-col-resize transition-colors"
         style={{ ':hover': { backgroundColor: '#00837F' } }}

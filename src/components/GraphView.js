@@ -19,7 +19,7 @@ const GraphView = ({
 
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
-  // 处理缩放
+  // Handle zoom
   const handleZoom = (direction) => {
     const svg = d3.select(svgRef.current);
     
@@ -30,14 +30,14 @@ const GraphView = ({
     }
   };
 
-  // SVG文本换行函数
+  // Text wrapping function for SVG
   const addTextWithWrapping = (textElement, text, maxWidth = 240, maxLines = 6) => {
     const words = text.split(/\s+/);
     const lineHeight = 1.2;
     let lines = [];
     let currentLine = [];
 
-    // 逐词测试宽度
+    // Test width word by word
     for (let i = 0; i < words.length; i++) {
       currentLine.push(words[i]);
       const testText = currentLine.join(' ');
@@ -61,10 +61,10 @@ const GraphView = ({
       lines.push(currentLine.join(' '));
     }
 
-    // 清空并重新添加文本
+    // Clear and rebuild text
     textElement.text('');
     
-    // 计算垂直居中的起始位置
+    // Calculate vertical center starting position
     const totalHeight = lines.length * lineHeight;
     const startY = -(totalHeight - 1) * 0.5;
     
@@ -76,7 +76,7 @@ const GraphView = ({
     });
   };
 
-  // 初始化D3力导向图
+  // Initialize D3 force-directed graph
   useEffect(() => {
     if (!data || !data.nodes || !data.links) return;
 
@@ -91,7 +91,7 @@ const GraphView = ({
 
     const g = svg.append('g');
 
-    // 缩放功能
+    // Zoom functionality
     const zoom = d3.zoom()
       .scaleExtent([0.1, 4])
       .on('zoom', (event) => {
@@ -105,7 +105,7 @@ const GraphView = ({
     // Set initial zoom to 50% without animation
     svg.call(zoom.transform, d3.zoomIdentity.scale(0.5));
 
-    // 确保连线数据中的source和target是对象引用
+    // Ensure source and target in link data are object references
     const nodesMap = new Map(currentData.nodes.map(d => [d.id, d]));
     const processedLinks = currentData.links.map(link => ({
       ...link,
@@ -113,7 +113,7 @@ const GraphView = ({
       target: typeof link.target === 'string' ? nodesMap.get(link.target) : link.target
     }));
 
-    // 力导向图模拟
+    // Force-directed graph simulation
     const simulation = d3.forceSimulation(currentData.nodes)
       .force('link', d3.forceLink(processedLinks).id(d => d.id).distance(d => {
         switch (d.relationship) {
@@ -130,7 +130,7 @@ const GraphView = ({
 
     simulationRef.current = simulation;
 
-    // 连线
+    // Links
     const link = g.append('g')
       .attr('class', 'links')
       .selectAll('line')
@@ -140,7 +140,7 @@ const GraphView = ({
       .attr('stroke-opacity', 0.6)
       .attr('stroke-width', d => Math.sqrt(d.strength) * 2);
 
-    // 创建节点组 - 只包含文本，没有背景
+    // Create node groups - text only, no background
     const nodeGroup = g.append('g')
       .attr('class', 'nodes')
       .selectAll('g')
@@ -149,32 +149,32 @@ const GraphView = ({
       .style('cursor', 'pointer')
       .style('filter', d => highlightedNodes.size > 0 && !highlightedNodes.has(d.id) ? 'opacity(0.3)' : 'none');
 
-    // 添加透明的交互区域（用于点击和拖拽，但不可见）
+    // Add transparent interaction area for clicking and dragging
     nodeGroup.append('rect')
       .attr('width', 260)
       .attr('height', 180)
       .attr('x', -130)
       .attr('y', -90)
-      .attr('fill', 'transparent')  // 完全透明
+      .attr('fill', 'transparent')
       .attr('stroke', 'none');
 
-    // 添加彩色文本 - 这是唯一可见的元素
+    // Add colored text - the only visible element
     const nodeText = nodeGroup.append('text')
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'central')
-      .attr('fill', d => getNodeColor(d.type))  // 使用彩色文字
+      .attr('fill', d => getNodeColor(d.type))
       .style('font-family', '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif')
       .style('font-size', '20px')
       .style('font-weight', '800')
       .style('line-height', '1.2')
-      .style('pointer-events', 'none');  // 文本不参与鼠标事件
+      .style('pointer-events', 'none');
 
-    // 为每个节点添加换行文本
+    // Add wrapped text for each node
     nodeText.each(function(d) {
       addTextWithWrapping(d3.select(this), d.name, 240, 6);
     });
 
-    // 拖拽行为
+    // Drag behavior
     const drag = d3.drag()
       .on('start', function(event, d) {
         if (!event.active) simulation.alphaTarget(0.3).restart();
@@ -194,23 +194,23 @@ const GraphView = ({
 
     nodeGroup.call(drag);
 
-    // 点击事件
+    // Click event
     nodeGroup.on('click', function(event, d) {
       event.stopPropagation();
       onNodeSelection(d);
     });
 
-    // 鼠标悬停效果 - 只放大文字
+    // Mouse hover effect - scale text only
     nodeGroup
       .on('mouseenter', function(event, d) {
-        // 放大文字效果
+        // Scale up text
         d3.select(this).select('text')
           .transition()
           .duration(200)
-          .style('font-size', '24px')  // 文字放大
+          .style('font-size', '24px')
           .style('font-weight', '900');
         
-        // 高亮相连的节点和线
+        // Highlight connected nodes and links
         const connectedNodes = new Set();
         processedLinks.forEach(l => {
           if (l.source.id === d.id) connectedNodes.add(l.target.id);
@@ -223,7 +223,7 @@ const GraphView = ({
           .style('opacity', l => l.source.id === d.id || l.target.id === d.id ? 1 : 0.2);
       })
       .on('mouseleave', function(event, d) {
-        // 恢复原始文字大小
+        // Restore original text size
         d3.select(this).select('text')
           .transition()
           .duration(200)
@@ -234,7 +234,7 @@ const GraphView = ({
         g.selectAll('line').style('opacity', 0.6);
       });
 
-    // Tick函数
+    // Tick function
     simulation.on('tick', () => {
       link
         .attr('x1', d => d.source.x)
@@ -261,7 +261,7 @@ const GraphView = ({
       >
       </svg>
  
-      {/* 桌面端过滤器 - 保持原有样式 */}
+      {/* Desktop filter panel */}
       <div className="hidden md:block absolute top-4 left-4 bg-white rounded-lg shadow-lg p-4 max-w-xs">
         <h2 className="font-semibold text-sm mb-3 flex items-center">
           <Filter size={16} className="mr-2 text-gray-500" />
@@ -308,7 +308,7 @@ const GraphView = ({
         </div>
       </div>
 
-      {/* 移动端过滤器按钮 */}
+      {/* Mobile filter button */}
       <button
         className="md:hidden absolute bottom-24 left-4 bg-white rounded-full shadow-lg p-3 border"
         onClick={() => setIsMobileFilterOpen(true)}
@@ -317,7 +317,7 @@ const GraphView = ({
         <Filter size={20} className="text-gray-600" />
       </button>
 
-      {/* 移动端过滤器全屏模态框 */}
+      {/* Mobile filter full-screen modal */}
       {isMobileFilterOpen && (
         <div className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-end">
           <div className="bg-white w-full rounded-t-xl p-4 max-h-96 overflow-y-auto">
@@ -369,7 +369,7 @@ const GraphView = ({
         </div>
       )}
 
-      <div className="absolute bottom-20 right-4 flex flex-col gap-2"> {/* 从bottom-4改为bottom-20，上移避免与logo重叠 */}
+      <div className="absolute bottom-20 right-4 flex flex-col gap-2">
         <button
           onClick={() => handleZoom('in')}
           className="p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-shadow border"

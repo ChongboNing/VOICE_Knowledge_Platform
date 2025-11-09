@@ -7,7 +7,7 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, onNodeSelection }) =
   return (
     <div className="p-6 overflow-auto h-full" role="main" aria-label="Accessible table view of network data">
       <div className="bg-white rounded-lg shadow border">
-        {/* 表格描述 - 对screen reader用户可见 */}
+        {/* Table description for screen reader users */}
         <div className="sr-only">
           <h2>VOICE Project Entities Table</h2>
           <p>
@@ -20,13 +20,10 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, onNodeSelection }) =
           className={`
             grid gap-4 p-4 bg-gray-50 font-semibold text-base text-gray-700 rounded-t-lg border-b
             
-            // 移动端：单列
             grid-cols-1
             
-            // 平板：双列  
             sm:grid-cols-2
             
-            // 桌面端：保持原有四列
             lg:grid-cols-4
           `}
           role="row"
@@ -53,13 +50,10 @@ const SimpleView = ({ data, visibleTypes, highlightedNodes, onNodeSelection }) =
           className={`
             grid gap-4 p-4
             
-            // 移动端：单列
             grid-cols-1
             
-            // 平板：双列  
             sm:grid-cols-2
             
-            // 桌面端：保持原有四列
             lg:grid-cols-4
           `}
           role="grid"

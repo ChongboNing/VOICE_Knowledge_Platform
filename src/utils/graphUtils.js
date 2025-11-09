@@ -1,4 +1,4 @@
-// 颜色配置
+// Node color configuration
 export const getNodeColor = (type) => {
   switch (type) {
     case 'People': return '#5F5BA3';     
@@ -32,13 +32,13 @@ export const searchNodes = (data, term) => {
   data.nodes.forEach(node => {
     const lowerTerm = term.toLowerCase();
     
-    // 检查名称
+    // Check name
     if (node.name.toLowerCase().includes(lowerTerm)) {
       matches.add(node.id);
       return;
     }
     
-    // 检查 bio（可能是字符串或数组）
+    // Check bio (can be string or array)
     if (node.bio) {
       const bioText = Array.isArray(node.bio) ? node.bio.join(' ') : node.bio;
       if (bioText.toLowerCase().includes(lowerTerm)) {
@@ -47,7 +47,7 @@ export const searchNodes = (data, term) => {
       }
     }
     
-    // 检查 description（可能是字符串或数组）
+    // Check description (can be string or array)
     if (node.description) {
       const descText = Array.isArray(node.description) ? node.description.join(' ') : node.description;
       if (descText.toLowerCase().includes(lowerTerm)) {
@@ -56,13 +56,13 @@ export const searchNodes = (data, term) => {
       }
     }
     
-    // 检查 methods
+    // Check methods
     if (node.methods && node.methods.toLowerCase().includes(lowerTerm)) {
       matches.add(node.id);
       return;
     }
     
-    // 检查 category
+    // Check category
     if (node.category && node.category.toLowerCase().includes(lowerTerm)) {
       matches.add(node.id);
       return;

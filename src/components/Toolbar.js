@@ -18,7 +18,7 @@ const Toolbar = ({
   return (
     <div className="bg-white shadow-sm border-b px-4 md:px-6 py-3">
       <div className="flex flex-col space-y-3 md:flex-row md:space-y-0 md:items-center md:justify-between">
-        {/* 标题区域 + 移动端菜单按钮 */}
+        {/* Title area and mobile menu button */}
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <img 
@@ -26,13 +26,12 @@ const Toolbar = ({
               alt="VOICE Logo" 
               className="h-8 w-auto mr-3"
               onError={(e) => {
-                // 如果SVG加载失败，尝试加载PNG版本
                 e.target.src = "/logo.png";
               }}
             />
             <h1 className="text-lg md:text-xl font-bold text-gray-900">Knowledge Platform</h1>
           </div>
-          {/* 移动端汉堡菜单按钮 */}
+          {/* Mobile hamburger menu button */}
           <button 
             className="md:hidden p-2 hover:bg-gray-100 rounded transition-colors"
             onClick={() => setIsNavExpanded(!isNavExpanded)}
@@ -42,7 +41,7 @@ const Toolbar = ({
           </button>
         </div>
 
-        {/* 搜索区域 - 移动端独占一行 */}
+        {/* Search area */}
         <div className="w-full md:flex-1 md:flex md:justify-center">
           <div className="flex items-center w-full md:max-w-md">
             <Search size={20} className="text-gray-400 mr-3" aria-hidden="true" />
@@ -68,7 +67,7 @@ const Toolbar = ({
           </div>
         </div>
         
-        {/* 按钮区域 */}
+        {/* Button area */}
         <div className="flex items-center space-x-2 justify-center md:justify-end flex-shrink-0">
           <button
             onClick={() => onViewModeChange(viewMode === 'graph' ? 'simple' : 'graph')}
